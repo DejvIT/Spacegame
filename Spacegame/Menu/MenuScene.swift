@@ -11,10 +11,15 @@ import SpriteKit
 class MenuScene: SKScene {
     
     var starfield:SKEmitterNode!
+    var SCREEN_HEIGHT = UIScreen.main.bounds.height
     
     var newGameButtonNode:SKSpriteNode!
     var difficultyButtonNode:SKSpriteNode!
     var difficultyLabelNode:SKLabelNode!
+    var coinLabelNode:SKLabelNode!
+    
+    var coins:Int = 0
+    var totalCoins = UserDefaults.standard.integer(forKey: "TOTALCOINS")
     
     override func didMove(to view: SKView) {
         
@@ -28,7 +33,6 @@ class MenuScene: SKScene {
         
         difficultyLabelNode = self.childNode(withName: "difficultyLabel") as! SKLabelNode
         
-        
         let userDefaults = UserDefaults.standard
         
         if (userDefaults.bool(forKey: "hard")) {
@@ -36,6 +40,10 @@ class MenuScene: SKScene {
         } else {
             difficultyLabelNode.text = "Easy"
         }
+        
+        coinLabelNode = self.childNode(withName: "coinLabel") as! SKLabelNode
+        coinLabelNode.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
+        coinManager()
         
     }
     
@@ -72,6 +80,21 @@ class MenuScene: SKScene {
         userDefaults.synchronize()
     }
     
+    func coinManager() {
+        
+        if (coinLabelNode.text == "TEXT") {
+            
+            coinLabelNode.text = "\(coins)"
+        } else {
+            
+            let x = Int(coinLabelNode.text!)! + coins
+            coinLabelNode.text = "\(x)"
+        }
+        
+        UserDefaults.standard.set(Int(coinLabelNode.text!)!, forKey: "TOTALCOINS")
+        coinLabelNode.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
+        
+    }
     
 }
 

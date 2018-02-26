@@ -12,7 +12,7 @@ class GameOverScene: SKScene {
 
     var starfield:SKEmitterNode!
     
-    var playAgainButton:SKSpriteNode!
+    var backToMenu:SKSpriteNode!
     var scoreLabel:SKLabelNode!
     var score:Int = 0
     
@@ -22,7 +22,7 @@ class GameOverScene: SKScene {
         starfield.advanceSimulationTime(10)
         starfield.zPosition = -1
         
-        playAgainButton = self.childNode(withName: "playAgainButton") as! SKSpriteNode
+        backToMenu = self.childNode(withName: "backToMenu") as! SKSpriteNode
         
         scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
         scoreLabel.text = "\(score)"
@@ -36,10 +36,12 @@ class GameOverScene: SKScene {
         if let location = touch?.location(in: self) {
             let nodesArray = self.nodes(at: location)
             
-            if (nodesArray.first?.name == "playAgainButton") {
+            if (nodesArray.first?.name == "backToMenu") {
+                
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
-                let gameScene = GameScene(size: self.size)
-                self.view?.presentScene(gameScene, transition: transition)
+                let gameScene = SKScene(fileNamed: "MenuScene") as! MenuScene
+                gameScene.coins = self.score
+                self.view?.presentScene(gameScene, transition:transition)
             }
         }
         

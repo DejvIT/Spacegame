@@ -21,12 +21,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+            scoreLabel.zPosition = 1
         }
     }
     
     var gameTimer:Timer!
     
-    var possibleAliens = ["diablik", "automat1", "automat2"]
+    var possibleAliens = ["diablik", "alien", "alien2", "alien3"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -93,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let position = CGFloat(randomAlienPosition.nextInt())
         
         alien.position = CGPoint(x: position, y: self.frame.size.height + alien.size.height)
-        alien.size = CGSize(width: 65, height: 65)
+        //alien.size = CGSize(width: 65, height: 65)
         
         alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
         alien.physicsBody?.isDynamic = true

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		323D0AEE2023CC1C007EC6E2 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323D0AED2023CC1C007EC6E2 /* MenuScene.swift */; };
+		324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 324F4756204459E700F6CAC2 /* MenuScene.sks */; };
 		327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 327F7E2A202A07D000648D52 /* GameOverScene.sks */; };
 		327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327F7E2C202A098900648D52 /* GameOverScene.swift */; };
 		32D8E8DA2023419D00D6B384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8E8D92023419D00D6B384 /* AppDelegate.swift */; };
@@ -22,12 +23,12 @@
 		32D8E8F42023436900D6B384 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F22023436900D6B384 /* torpedo.mp3 */; };
 		32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F72023444A00D6B384 /* Explosion.sks */; };
 		32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F82023444B00D6B384 /* Starfield.sks */; };
-		32E321DF2023B275005C19F4 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32E321DE2023B275005C19F4 /* MenuScene.sks */; };
 		32E321E32023B737005C19F4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 32E321E22023B737005C19F4 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		323D0AED2023CC1C007EC6E2 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		324F4756204459E700F6CAC2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		327F7E2A202A07D000648D52 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameOverScene.sks; path = Spacegame/GameOverScene.sks; sourceTree = SOURCE_ROOT; };
 		327F7E2C202A098900648D52 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = Spacegame/GameOverScene.swift; sourceTree = SOURCE_ROOT; };
 		32D8E8D62023419D00D6B384 /* Spacegame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spacegame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +45,6 @@
 		32D8E8F22023436900D6B384 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		32D8E8F72023444A00D6B384 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		32D8E8F82023444B00D6B384 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
-		32E321DE2023B275005C19F4 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		32E321E22023B737005C19F4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +62,7 @@
 		323D0AEF2023D621007EC6E2 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				32E321DE2023B275005C19F4 /* MenuScene.sks */,
+				324F4756204459E700F6CAC2 /* MenuScene.sks */,
 				323D0AED2023CC1C007EC6E2 /* MenuScene.swift */,
 			);
 			path = Menu;
@@ -204,9 +204,9 @@
 				32D8E8F32023436900D6B384 /* explosion.mp3 in Resources */,
 				32D8E8E52023419D00D6B384 /* Main.storyboard in Resources */,
 				327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */,
-				32E321DF2023B275005C19F4 /* MenuScene.sks in Resources */,
 				32D8E8DC2023419D00D6B384 /* GameScene.sks in Resources */,
 				32D8E8E72023419D00D6B384 /* Assets.xcassets in Resources */,
+				324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */,
 				32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */,
 				32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */,
 				32D8E8EA2023419D00D6B384 /* LaunchScreen.storyboard in Resources */,
