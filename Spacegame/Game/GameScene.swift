@@ -9,6 +9,8 @@
 import SpriteKit
 import GameplayKit
 
+var backgroundColorCustom = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var SCREEN_WIDTH = UIScreen.main.bounds.width
@@ -37,6 +39,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var difficulty:String = ""
     
     override func didMove(to view: SKView) {
+        
+        self.backgroundColor = backgroundColorCustom
         
         if (difficulty == "Hard") {
             addLives()
