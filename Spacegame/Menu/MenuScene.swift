@@ -61,6 +61,12 @@ class MenuScene: SKScene {
                 self.view?.presentScene(gameScene, transition: transition)
             } else if (nodesArray.first?.name == "difficultyButton") {
                 changeDifficulty()
+            } else if (nodesArray.first?.name == "shopButton") {
+                
+                let transition = SKTransition.doorsCloseHorizontal(withDuration: 1.5)
+                let gameScene = SKScene(fileNamed: "ShopScene") as! ShopScene
+                gameScene.coins = self.coins
+                self.view?.presentScene(gameScene, transition:transition)
             }
         }
         

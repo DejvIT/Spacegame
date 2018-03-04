@@ -11,7 +11,7 @@ import SpriteKit
 class ShopScene: SKScene {
     
     var starfield:SKEmitterNode!
-
+    
     var menuButtonNode:SKSpriteNode!
     var coinLabelNode:SKLabelNode!
     var coins:Int = 0
@@ -21,7 +21,7 @@ class ShopScene: SKScene {
         starfield = self.childNode(withName: "starfield") as! SKEmitterNode
         starfield.advanceSimulationTime(10)
         starfield.zPosition = -1
-    
+        
         menuButtonNode = self.childNode(withName: "menuButton") as! SKSpriteNode
         
         coinLabelNode = self.childNode(withName: "coinLabel") as! SKLabelNode
