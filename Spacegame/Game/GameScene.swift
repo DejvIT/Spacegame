@@ -82,7 +82,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         for live in 1 ... 3 {
             let liveNode = SKSpriteNode(imageNamed: "heart")
-            liveNode.position = CGPoint(x: self.frame.size.width - CGFloat(4 - live) * liveNode.size.width, y: self.frame.size.height - 50)
+            liveNode.position = CGPoint(x: self.frame.size.width - CGFloat(4 - live) * liveNode.size.width,
+                                        y: self.frame.size.height - 50)
             liveNode.size = CGSize(width: 35, height: 35)
             self.addChild(liveNode)
             livesArray.append(liveNode)
