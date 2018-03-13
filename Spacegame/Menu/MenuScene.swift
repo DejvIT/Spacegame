@@ -10,6 +10,8 @@ import SpriteKit
 
 class MenuScene: SKScene {
     
+    var gameController: GameViewController?
+    
     var starfield:SKEmitterNode!
     var SCREEN_HEIGHT = UIScreen.main.bounds.height
     
@@ -63,10 +65,7 @@ class MenuScene: SKScene {
                 changeDifficulty()
             } else if (nodesArray.first?.name == "shopButton") {
                 
-                let transition = SKTransition.doorsCloseHorizontal(withDuration: 1.5)
-                let gameScene = SKScene(fileNamed: "ShopScene") as! ShopScene
-                gameScene.coins = self.coins
-                self.view?.presentScene(gameScene, transition:transition)
+                gameController?.performSegue(withIdentifier: String(describing: ShopController.self), sender: nil)
             }
         }
         
@@ -89,10 +88,10 @@ class MenuScene: SKScene {
     func coinManager() {
         
         if (coinLabelNode.text == "TEXT") {
-            
+
             coinLabelNode.text = "\(coins)"
         } else {
-            
+
             let x = Int(coinLabelNode.text!)! + coins
             coinLabelNode.text = "\(x)"
         }

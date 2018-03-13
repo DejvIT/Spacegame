@@ -203,6 +203,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         
+        let coin = SKSpriteNode(imageNamed: "coin")
+        coin.position = CGPoint(x: alienNode.position.x, y: alienNode.position.y)
+        coin.size = CGSize(width: 25, height: 45)
+        self.addChild(coin)
+        let animationDuration:TimeInterval = 0.75
+        var actionArray = [SKAction]()
+        actionArray.append(SKAction.move(to: CGPoint(x: coin.position.x, y: coin.position.y - self.frame.size.height), duration: animationDuration))
+        actionArray.append(SKAction.removeFromParent())
+        coin.run(SKAction.sequence(actionArray))
+        
         torpedoNode.removeFromParent()
         alienNode.removeFromParent()
         
@@ -212,8 +222,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         score += 5
     }
-    
-    
     
     
     
