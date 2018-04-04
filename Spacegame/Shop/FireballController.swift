@@ -1,34 +1,31 @@
 //
-//  ShopController.swift
+//  FireballController.swift
 //  Spacegame
 //
-//  Created by MaestroDavo on 13.3.18.
+//  Created by MaestroDavo on 5.4.18.
 //  Copyright © 2018 MaestroDavo. All rights reserved.
 //
 
 import UIKit
 
-class ShopController: UIViewController {
-    
+class FireballController: UIViewController {
+
     @IBOutlet weak var coinLabel: UILabel?
     var coins:String?
     
-    @IBAction func backToMenu(_ sender: Any) {
-        self.performSegue(withIdentifier: String(describing: "MenuController"), sender: nil)
-    }
-    
-    @IBAction func fireballShop(_ sender: Any) {
-        self.performSegue(withIdentifier: String(describing: "FireballController"), sender: nil)
-    }
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var ships = Ship.fetchShips()
+    @IBAction func back(_ sender: Any) {
+        self.performSegue(withIdentifier: String(describing: "ShopController"), sender: nil)
+    }
+    
+    
+    var fireballs = Fireball.fetchFireballs()
     let cellScaling: CGFloat = 0.6
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.coinLabel?.text = self.coins
         
@@ -43,43 +40,43 @@ class ShopController: UIViewController {
         collectionView?.delegate = self
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
 
-extension ShopController: UICollectionViewDataSource {
+extension FireballController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ships.count
+        return fireballs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shipCell", for: indexPath) as! ShopCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fireballCell", for: indexPath) as! FireballCollectionViewCell
         
-        cell.ship = ships[indexPath.item]
+        cell.fireball = fireballs[indexPath.item]
         
         return cell
     }
 }
 
-extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
+extension FireballController : UIScrollViewDelegate, UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-
+        
         var offset = targetContentOffset.pointee
         let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
         let roundedIndex = round(index)
-
+        
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
     }

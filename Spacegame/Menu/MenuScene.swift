@@ -12,39 +12,39 @@ class MenuScene: SKScene {
     
     var gameController: GameViewController?
     
-    var starfield:SKEmitterNode!
+    var starfield:SKEmitterNode?
     var SCREEN_HEIGHT = UIScreen.main.bounds.height
     
-    var newGameButtonNode:SKSpriteNode!
-    var difficultyButtonNode:SKSpriteNode!
-    var difficultyLabelNode:SKLabelNode!
-    var coinLabelNode:SKLabelNode!
+    var newGameButtonNode:SKSpriteNode?
+    var difficultyButtonNode:SKSpriteNode?
+    var difficultyLabelNode:SKLabelNode?
+    var coinLabelNode:SKLabelNode?
     
     var coins:Int = 0
     var totalCoins = UserDefaults.standard.integer(forKey: "TOTALCOINS")
     
     override func didMove(to view: SKView) {
         
-        starfield = self.childNode(withName: "starfield") as! SKEmitterNode
-        starfield.advanceSimulationTime(10)
-        starfield.zPosition = -1
+        starfield = self.childNode(withName: "starfield") as? SKEmitterNode
+        starfield?.advanceSimulationTime(10)
+        starfield?.zPosition = -1
         
-        newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
+        newGameButtonNode = self.childNode(withName: "newGameButton") as? SKSpriteNode
         
-        difficultyButtonNode = self.childNode(withName: "difficultyButton") as! SKSpriteNode
+        difficultyButtonNode = self.childNode(withName: "difficultyButton") as? SKSpriteNode
         
-        difficultyLabelNode = self.childNode(withName: "difficultyLabel") as! SKLabelNode
+        difficultyLabelNode = self.childNode(withName: "difficultyLabel") as? SKLabelNode
         
         let userDefaults = UserDefaults.standard
         
         if (userDefaults.bool(forKey: "hard")) {
-            difficultyLabelNode.text = "Hard"
+            difficultyLabelNode?.text = "Hard"
         } else {
-            difficultyLabelNode.text = "Easy"
+            difficultyLabelNode?.text = "Easy"
         }
         
-        coinLabelNode = self.childNode(withName: "coinLabel") as! SKLabelNode
-        coinLabelNode.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
+        coinLabelNode = self.childNode(withName: "coinLabel") as? SKLabelNode
+        coinLabelNode?.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
         coinManager()
         
     }
@@ -59,7 +59,7 @@ class MenuScene: SKScene {
             if (nodesArray.first?.name == "newGameButton") {
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = GameScene(size: self.size)
-                gameScene.difficulty = self.difficultyLabelNode.text!
+                gameScene.difficulty = (self.difficultyLabelNode?.text)!
                 self.view?.presentScene(gameScene, transition: transition)
             } else if (nodesArray.first?.name == "difficultyButton") {
                 changeDifficulty()
@@ -68,17 +68,16 @@ class MenuScene: SKScene {
                 gameController?.performSegue(withIdentifier: String(describing: ShopController.self), sender: nil)
             }
         }
-        
     }
     
     func changeDifficulty() {
         let userDefaults = UserDefaults.standard
         
-        if (difficultyLabelNode.text == "Easy") {
-            difficultyLabelNode.text = "Hard"
+        if (difficultyLabelNode?.text == "Easy") {
+            difficultyLabelNode?.text = "Hard"
             userDefaults.set(true, forKey: "hard")
         } else {
-            difficultyLabelNode.text = "Easy"
+            difficultyLabelNode?.text = "Easy"
             userDefaults.set(false, forKey: "hard")
         }
         
@@ -87,17 +86,17 @@ class MenuScene: SKScene {
     
     func coinManager() {
         
-        if (coinLabelNode.text == "TEXT") {
+        if (coinLabelNode?.text == "TEXT") {
 
-            coinLabelNode.text = "\(coins)"
+            coinLabelNode?.text = "\(coins)"
         } else {
 
-            let x = Int(coinLabelNode.text!)! + coins
-            coinLabelNode.text = "\(x)"
+            let x = Int((coinLabelNode?.text)!)! + coins
+            coinLabelNode?.text = "\(x)"
         }
         
-        UserDefaults.standard.set(Int(coinLabelNode.text!)!, forKey: "TOTALCOINS")
-        coinLabelNode.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
+        UserDefaults.standard.set(Int((coinLabelNode?.text)!)!, forKey: "TOTALCOINS")
+        coinLabelNode?.text = "\(UserDefaults.standard.integer(forKey: "TOTALCOINS"))"
         
     }
     

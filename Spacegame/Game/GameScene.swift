@@ -16,25 +16,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var SCREEN_WIDTH = UIScreen.main.bounds.width
     var SCREEN_HEIGHT = UIScreen.main.bounds.height
     
-    var starfield:SKEmitterNode!
-    var player:SKSpriteNode!
+    var starfield:SKEmitterNode?
+    var player:SKSpriteNode?
     
-    var scoreLabel:SKLabelNode!
+    var scoreLabel:SKLabelNode?
     var score:Int = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
-            scoreLabel.zPosition = 1
+            scoreLabel?.text = "Score: \(score)"
+            scoreLabel?.zPosition = 1
         }
     }
     
-    var gameTimer:Timer!
+    var gameTimer:Timer?
     
-    var possibleAliens = ["diablik", "alien", "alien2", "alien3"]
+    var possibleAliens = ["devil", "alien", "alien2", "alien3"]
     
     let alienCategory:UInt32 = 0x1 << 1
-    let photonTorpedoCategory:UInt32 = 0x1 << 0
+    let photonFireballCategory:UInt32 = 0x1 << 0
     
-    var livesArray:[SKSpriteNode]!
+    var livesArray:[SKSpriteNode]?
     
     var difficulty:String = ""
     
@@ -47,28 +47,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         starfield = SKEmitterNode(fileNamed: "Starfield")
-        starfield.position = CGPoint(x: 0, y: Int(SCREEN_HEIGHT))
-        starfield.advanceSimulationTime(10)
-        self.addChild(starfield)
+        starfield?.position = CGPoint(x: 0, y: Int(SCREEN_HEIGHT))
+        starfield?.advanceSimulationTime(10)
+        self.addChild(starfield!)
         
-        starfield.zPosition = -1
+        starfield?.zPosition = -1
         
-        player = SKSpriteNode(imageNamed: "vesmirnaLod")
-        player.position = CGPoint(x: self.frame.size.width / 2, y: player.size.height / 2 + 20)
+        player = SKSpriteNode(imageNamed: "spaceship1")
+        player?.position = CGPoint(x: self.frame.size.width / 2, y: (player?.size.height)! / 2 + 20)
         
-        self.addChild(player)
+        self.addChild(player!)
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self
         
         scoreLabel = SKLabelNode(text: "Score: 0")
-        scoreLabel.position = CGPoint(x: 80, y: self.frame.size.height - 60)
-        scoreLabel.fontName = "AmericanTypewriter-Bold"
-        scoreLabel.fontSize = 28
-        scoreLabel.fontColor = UIColor.white
+        scoreLabel?.position = CGPoint(x: 80, y: self.frame.size.height - 60)
+        scoreLabel?.fontName = "AmericanTypewriter-Bold"
+        scoreLabel?.fontSize = 28
+        scoreLabel?.fontColor = UIColor.white
         score = 0
         
-        self.addChild(scoreLabel)
+        self.addChild(scoreLabel!)
         
         
         
@@ -86,7 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                         y: self.frame.size.height - 50)
             liveNode.size = CGSize(width: 35, height: 35)
             self.addChild(liveNode)
-            livesArray.append(liveNode)
+            livesArray?.append(liveNode)
         }
         
     }
@@ -104,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
         alien.physicsBody?.isDynamic = true
         alien.physicsBody?.categoryBitMask = alienCategory
-        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory
+        alien.physicsBody?.contactTestBitMask = photonFireballCategory
         alien.physicsBody?.collisionBitMask = 0
         
         self.addChild(alien)
@@ -118,12 +118,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (difficulty == "Hard") {
             actionArray.append(SKAction.run {
                 
-                if (self.livesArray.count > 0) {
-                    let liveNode = self.livesArray.first
+                if ((self.livesArray?.count)! > 0) {
+                    let liveNode = self.livesArray?.first
                     liveNode!.removeFromParent()
-                    self.livesArray.removeFirst()
+                    self.livesArray?.removeFirst()
                     
-                } else if (self.livesArray.count == 0) {
+                } else if (self.livesArray?.count == 0) {
                     
                     let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
                     let gameScene = SKScene(fileNamed: "GameOverScene") as! GameOverScene
@@ -144,38 +144,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // position of the ship to coordinate of x of the touched point
         if let touch = touches.first {
             let position = touch.location(in: self)
-            player.position = CGPoint(x: position.x, y: player.position.y)
+            player?.position = CGPoint(x: position.x, y: (player?.position.y)!)
         }
         
-        fireTorpedo()
+        launchFireball()
         
     }
     
-    func fireTorpedo() {
-        self.run(SKAction.playSoundFileNamed("torpedo.mp3", waitForCompletion: false))
+    func launchFireball() {
+        self.run(SKAction.playSoundFileNamed("fireball.mp3", waitForCompletion: false))
         
-        let torpedoNode = SKSpriteNode(imageNamed: "torpedo")
-        torpedoNode.position = player.position
-        torpedoNode.position.y += 40
+        let fireballNode = SKSpriteNode(imageNamed: "fireball1-classic")
+        fireballNode.position = (player?.position)!
+        fireballNode.position.y += 40
         
-        torpedoNode.physicsBody = SKPhysicsBody(circleOfRadius: torpedoNode.size.width / 2)
-        torpedoNode.physicsBody?.isDynamic = true
+        fireballNode.physicsBody = SKPhysicsBody(circleOfRadius: fireballNode.size.width / 2)
+        fireballNode.physicsBody?.isDynamic = true
         
-        torpedoNode.physicsBody?.categoryBitMask = photonTorpedoCategory
-        torpedoNode.physicsBody?.contactTestBitMask = alienCategory
-        torpedoNode.physicsBody?.collisionBitMask = 0
-        torpedoNode.physicsBody?.usesPreciseCollisionDetection = true
+        fireballNode.physicsBody?.categoryBitMask = photonFireballCategory
+        fireballNode.physicsBody?.contactTestBitMask = alienCategory
+        fireballNode.physicsBody?.collisionBitMask = 0
+        fireballNode.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.addChild(torpedoNode)
+        self.addChild(fireballNode)
         
         let animationDuration:TimeInterval = 0.5
         
         var actionArray = [SKAction]()
         
-        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x, y: self.frame.size.height + 10), duration: animationDuration))
+        actionArray.append(SKAction.move(to: CGPoint(x: (player?.position.x)!, y: self.frame.size.height + 10), duration: animationDuration))
         actionArray.append(SKAction.removeFromParent())
         
-        torpedoNode.run(SKAction.sequence(actionArray))
+        fireballNode.run(SKAction.sequence(actionArray))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -190,12 +190,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if((firstBody.categoryBitMask & photonTorpedoCategory) != 0 && (secondBody.categoryBitMask & alienCategory) != 0) {
-            torpedoDidCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode)
+        if((firstBody.categoryBitMask & photonFireballCategory) != 0 && (secondBody.categoryBitMask & alienCategory) != 0) {
+            fireballDidCollideWithAlien(fireballNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode)
         }
     }
     
-    func torpedoDidCollideWithAlien(torpedoNode: SKSpriteNode, alienNode: SKSpriteNode) {
+    func fireballDidCollideWithAlien(fireballNode: SKSpriteNode, alienNode: SKSpriteNode) {
         
         let explosion = SKEmitterNode(fileNamed: "Explosion")!
         explosion.position = alienNode.position
@@ -213,7 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         actionArray.append(SKAction.removeFromParent())
         coin.run(SKAction.sequence(actionArray))
         
-        torpedoNode.removeFromParent()
+        fireballNode.removeFromParent()
         alienNode.removeFromParent()
         
         self.run(SKAction.wait(forDuration: 2)) {

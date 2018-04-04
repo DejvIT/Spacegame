@@ -10,9 +10,8 @@ import UIKit
 
 class Ship {
 
-    // MARK: - Public API
     var price = ""
-    var featuredImage: UIImage
+    var featuredImage: UIImage?
     
     init(price: String, featuredImage: UIImage)
     {
@@ -20,16 +19,17 @@ class Ship {
         self.featuredImage = featuredImage
     }
     
-    // MARK: - Private
-    // dummy data
     static func fetchShips() -> [Ship]
     {
         return [
-            Ship(price: "1 000", featuredImage: UIImage(named: "vesmirnaLod")!),
-            Ship(price: "5 000", featuredImage: UIImage(named: "diablik")!),
-            Ship(price: "10 000", featuredImage: UIImage(named: "alien")!),
-            Ship(price: "20 000", featuredImage: UIImage(named: "alien3")!),
-            Ship(price: "1000 000", featuredImage: UIImage(named: "alien-spaceship")!)
+            Ship(price: "Owned", featuredImage: UIImage(named: "spaceship1")!),
+            Ship(price: "250", featuredImage: UIImage(named: "spaceship2")!),
+            Ship(price: "500", featuredImage: UIImage(named: "spaceship3")!),
+            Ship(price: "1 000", featuredImage: UIImage(named: "spaceship4")!),
+            Ship(price: "2 000", featuredImage: UIImage(named: "spaceship5")!),
+            Ship(price: "4 000", featuredImage: UIImage(named: "spaceship6")!),
+            Ship(price: "8 000", featuredImage: UIImage(named: "spaceship7")!),
+            Ship(price: "16 000", featuredImage: UIImage(named: "spaceship8")!)
         ]
     }
 

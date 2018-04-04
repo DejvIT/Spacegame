@@ -1,19 +1,19 @@
 //
-//  ShopCollectionViewCell.swift
+//  FireballCollectionViewCell.swift
 //  Spacegame
 //
-//  Created by MaestroDavo on 13.3.18.
+//  Created by MaestroDavo on 4.4.18.
 //  Copyright © 2018 MaestroDavo. All rights reserved.
 //
 
 import UIKit
 
-class ShopCollectionViewCell: UICollectionViewCell {
+class FireballCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var featuredImageView: UIImageView?
-    @IBOutlet weak var shipPriceLabel: UILabel?
+    @IBOutlet weak var featuredImageView: UIImageView!
+    @IBOutlet weak var fireballPriceLabel: UILabel!
     
-    var ship: Ship? {
+    var fireball: Fireball? {
         didSet {
             self.updateUI()
         }
@@ -21,12 +21,12 @@ class ShopCollectionViewCell: UICollectionViewCell {
     
     private func updateUI()
     {
-        if let ship = ship {
-            featuredImageView?.image = ship.featuredImage
-            shipPriceLabel?.text = ship.price
+        if let fireball = fireball {
+            featuredImageView?.image = fireball.featuredImage
+            fireballPriceLabel?.text = fireball.price
         } else {
             featuredImageView?.image = nil
-            shipPriceLabel?.text = nil
+            fireballPriceLabel?.text = nil
         }
     }
     
@@ -41,3 +41,4 @@ class ShopCollectionViewCell: UICollectionViewCell {
         self.clipsToBounds = false
     }
 }
+

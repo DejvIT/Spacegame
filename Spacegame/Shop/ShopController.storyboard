@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVz-Nc-mHg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVz-Nc-mHg">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-Pl-pFt">
-                                <rect key="frame" x="25" y="46" width="75.5" height="36"/>
+                                <rect key="frame" x="25" y="46" width="76" height="36.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PEQ-Pl-pFt" secondAttribute="height" multiplier="25:12" id="mtf-pL-fYF"/>
                                 </constraints>
@@ -35,11 +35,8 @@
                                     <constraint firstAttribute="width" secondItem="N06-Bt-LjQ" secondAttribute="height" multiplier="75:83" id="tEt-r2-XcO"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="door" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-gK-5EF">
-                                <rect key="frame" x="20" y="463" width="85" height="85"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NVH-Ps-2c6">
-                                <rect key="frame" x="0.0" y="114" width="320" height="341"/>
+                                <rect key="frame" x="0.0" y="114.5" width="320" height="340.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rNo-hk-ZMt">
                                     <size key="itemSize" width="321" height="296"/>
@@ -55,13 +52,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="321" height="296"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imageView:8za-BR-HQL:image" translatesAutoresizingMaskIntoConstraints="NO" id="8za-BR-HQL">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceship1" translatesAutoresizingMaskIntoConstraints="NO" id="8za-BR-HQL">
                                                     <rect key="frame" x="0.0" y="0.0" width="321" height="214"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Si-tBt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Si-tBt">
                                                     <rect key="frame" x="0.0" y="222" width="321" height="74"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="74" id="Ug3-zy-DAf"/>
+                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="TEXT">
                                                             <attributes>
@@ -75,6 +73,15 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="trailing" secondItem="Pvh-Si-tBt" secondAttribute="trailing" id="7gI-bp-HJm"/>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="leading" secondItem="Soe-V8-W2N" secondAttribute="leading" id="H1r-rq-FVf"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pvh-Si-tBt" secondAttribute="bottom" id="T8x-iN-0oh"/>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="top" secondItem="Soe-V8-W2N" secondAttribute="top" id="X7H-km-cIc"/>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="leading" secondItem="Pvh-Si-tBt" secondAttribute="leading" id="hEg-rq-0zB"/>
+                                            <constraint firstItem="Pvh-Si-tBt" firstAttribute="top" secondItem="8za-BR-HQL" secondAttribute="bottom" constant="8" symbolic="YES" id="s5N-Ng-VGJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="8za-BR-HQL" secondAttribute="trailing" id="yI8-2D-e4f"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="featuredImageView" destination="8za-BR-HQL" id="YoG-XS-XRt"/>
                                             <outlet property="shipPriceLabel" destination="Pvh-Si-tBt" id="2Tt-0v-4BW"/>
@@ -82,6 +89,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBk-ia-J8d">
+                                <rect key="frame" x="16" y="463" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eBk-ia-J8d" secondAttribute="height" multiplier="1:1" id="BbD-ov-x6e"/>
+                                </constraints>
+                                <state key="normal" image="door"/>
+                                <connections>
+                                    <action selector="backToMenu:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="svz-bp-le3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LR4-wd-0gp">
+                                <rect key="frame" x="156.5" y="495" width="147.5" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LR4-wd-0gp" secondAttribute="height" multiplier="48:23" constant="36.652173913043484" id="lRG-I7-3nW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="Torpedo"/>
+                                <connections>
+                                    <action selector="fireballShop:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="3pX-uf-ThP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -91,11 +119,13 @@
                             <constraint firstItem="app-0T-Bs9" firstAttribute="trailing" secondItem="NVH-Ps-2c6" secondAttribute="trailing" id="4ab-F0-IMH"/>
                             <constraint firstItem="NVH-Ps-2c6" firstAttribute="top" secondItem="PEQ-Pl-pFt" secondAttribute="bottom" constant="32" id="AJ5-lT-Xph"/>
                             <constraint firstItem="N06-Bt-LjQ" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" constant="3" id="G5a-Ka-dN0"/>
-                            <constraint firstItem="app-0T-Bs9" firstAttribute="bottom" secondItem="xcA-gK-5EF" secondAttribute="bottom" constant="20" id="aZQ-Xb-2SD"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="bottom" secondItem="LR4-wd-0gp" secondAttribute="bottom" constant="20" id="T0p-un-Ex0"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="bottom" secondItem="eBk-ia-J8d" secondAttribute="bottom" constant="20" id="Ytk-gv-rwq"/>
+                            <constraint firstItem="eBk-ia-J8d" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" constant="16" id="cfc-hW-242"/>
                             <constraint firstItem="N06-Bt-LjQ" firstAttribute="leading" secondItem="PEQ-Pl-pFt" secondAttribute="trailing" constant="7.5" id="gtP-SD-TP1"/>
-                            <constraint firstItem="xcA-gK-5EF" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" constant="20" id="iBH-Jd-1Vf"/>
-                            <constraint firstItem="xcA-gK-5EF" firstAttribute="top" secondItem="NVH-Ps-2c6" secondAttribute="bottom" constant="8" id="iU6-OY-2PY"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="trailing" secondItem="LR4-wd-0gp" secondAttribute="trailing" constant="16" id="kg1-mv-OrL"/>
                             <constraint firstItem="N06-Bt-LjQ" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" constant="3" id="orH-rp-mkG"/>
+                            <constraint firstItem="eBk-ia-J8d" firstAttribute="top" secondItem="NVH-Ps-2c6" secondAttribute="bottom" constant="8" symbolic="YES" id="pZn-o8-xhX"/>
                             <constraint firstItem="PEQ-Pl-pFt" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" constant="26" id="qoA-Rd-yKj"/>
                             <constraint firstItem="PEQ-Pl-pFt" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" constant="26" id="yzc-ep-nDh"/>
                             <constraint firstItem="PEQ-Pl-pFt" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" constant="25" id="z7d-BJ-g2H"/>
@@ -103,627 +133,145 @@
                         <viewLayoutGuide key="safeArea" id="app-0T-Bs9"/>
                     </view>
                     <connections>
+                        <outlet property="coinLabel" destination="PEQ-Pl-pFt" id="vUJ-Pv-tkv"/>
                         <outlet property="collectionView" destination="NVH-Ps-2c6" id="bdX-7Z-Mzb"/>
+                        <segue destination="4Ts-nr-Vra" kind="show" identifier="MenuController" id="Kpu-UN-d22"/>
+                        <segue destination="x31-2N-jLA" kind="show" identifier="FireballController" id="5RW-eA-0aF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62R-Lv-If2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-363.75" y="34.859154929577464"/>
         </scene>
+        <!--GameViewController-->
+        <scene sceneID="UYB-LE-O0E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameViewController" id="4Ts-nr-Vra" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWI-nZ-7XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="-401"/>
+        </scene>
+        <!--FireballController-->
+        <scene sceneID="0lO-W2-tJx">
+            <objects>
+                <viewController id="x31-2N-jLA" userLabel="FireballController" customClass="FireballController" customModule="Spacegame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="usS-IH-Jdh" customClass="FireballController">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-ik-ywd" userLabel="Coin Label">
+                                <rect key="frame" x="25" y="46" width="76" height="36.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vCR-ik-ywd" secondAttribute="height" multiplier="25:12" id="uYF-Nf-Uni"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-Fh-P1e">
+                                <rect key="frame" x="108" y="22.5" width="75" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nRe-Fh-P1e" secondAttribute="height" multiplier="71:85" constant="5.6705882352941188" id="7bG-yO-2No"/>
+                                    <constraint firstAttribute="width" secondItem="nRe-Fh-P1e" secondAttribute="height" multiplier="75:83" id="aZI-Na-IwZ"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DhW-To-w5P">
+                                <rect key="frame" x="0.0" y="116.5" width="320" height="341.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dsr-0A-L1l">
+                                    <size key="itemSize" width="321" height="296"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fireballCell" id="YqS-QF-NXD" userLabel="fireballCell" customClass="FireballCollectionViewCell" customModule="Spacegame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="23" width="321" height="296"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="296"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFq-iQ-5dD" userLabel="Fireball Price Label">
+                                                    <rect key="frame" x="0.0" y="222" width="321" height="74"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="74" id="89z-v4-wVY"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="TEXT">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="0.028078071959999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="42" name="MarkerFelt-Wide"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fireball1-classic" translatesAutoresizingMaskIntoConstraints="NO" id="DRi-ln-6S2">
+                                                    <rect key="frame" x="0.0" y="-2" width="321" height="216"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="DRi-ln-6S2" secondAttribute="trailing" id="7wd-aP-2hE"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="leading" secondItem="YqS-QF-NXD" secondAttribute="leading" id="CAY-Wb-tfj"/>
+                                            <constraint firstAttribute="bottom" secondItem="hFq-iQ-5dD" secondAttribute="bottom" id="GtE-3B-i5p"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="top" secondItem="YqS-QF-NXD" secondAttribute="top" constant="-2" id="O2c-sq-k3S"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="leading" secondItem="hFq-iQ-5dD" secondAttribute="leading" id="RYq-Ds-Jkg"/>
+                                            <constraint firstItem="hFq-iQ-5dD" firstAttribute="top" secondItem="DRi-ln-6S2" secondAttribute="bottom" constant="8" symbolic="YES" id="fWZ-ba-4cJ"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="trailing" secondItem="hFq-iQ-5dD" secondAttribute="trailing" id="iVq-g0-GTD"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="featuredImageView" destination="DRi-ln-6S2" id="BdW-GK-5NV"/>
+                                            <outlet property="fireballPriceLabel" destination="hFq-iQ-5dD" id="Q0o-xT-HIx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-Oh-UFN">
+                                <rect key="frame" x="16" y="463" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cMl-Oh-UFN" secondAttribute="height" multiplier="1:1" id="xQr-0D-Snj"/>
+                                </constraints>
+                                <state key="normal" image="door"/>
+                                <connections>
+                                    <action selector="back:" destination="x31-2N-jLA" eventType="touchUpInside" id="WJH-Ec-H5n"/>
+                                    <action selector="backToMenu:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="vgn-ex-GQG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UIr-YW-ivL" firstAttribute="bottom" secondItem="cMl-Oh-UFN" secondAttribute="bottom" constant="20" id="3XV-rt-baj"/>
+                            <constraint firstAttribute="trailing" secondItem="DhW-To-w5P" secondAttribute="trailing" id="4qE-KW-UjG"/>
+                            <constraint firstItem="vCR-ik-ywd" firstAttribute="top" secondItem="UIr-YW-ivL" secondAttribute="top" constant="26" id="9vU-64-WB0"/>
+                            <constraint firstItem="cMl-Oh-UFN" firstAttribute="top" secondItem="DhW-To-w5P" secondAttribute="bottom" constant="5" id="BG7-NF-ipC"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="leading" secondItem="usS-IH-Jdh" secondAttribute="leading" id="Du6-Vf-ZxR"/>
+                            <constraint firstItem="vCR-ik-ywd" firstAttribute="leading" secondItem="UIr-YW-ivL" secondAttribute="leading" constant="25" id="MKX-rr-6kw"/>
+                            <constraint firstItem="cMl-Oh-UFN" firstAttribute="leading" secondItem="UIr-YW-ivL" secondAttribute="leading" constant="16" id="ZCE-gu-N2Q"/>
+                            <constraint firstItem="vCR-ik-ywd" firstAttribute="centerY" secondItem="nRe-Fh-P1e" secondAttribute="centerY" id="eOb-3y-mXy"/>
+                            <constraint firstItem="nRe-Fh-P1e" firstAttribute="leading" secondItem="vCR-ik-ywd" secondAttribute="trailing" constant="7.5" id="jrZ-aF-36Y"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="top" secondItem="nRe-Fh-P1e" secondAttribute="bottom" constant="11" id="jrh-qD-VWr"/>
+                            <constraint firstItem="nRe-Fh-P1e" firstAttribute="leading" secondItem="vCR-ik-ywd" secondAttribute="trailing" constant="7.5" id="pT4-2I-s37"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UIr-YW-ivL"/>
+                    </view>
+                    <connections>
+                        <outlet property="coinLabel" destination="vCR-ik-ywd" id="e9w-Y8-veN"/>
+                        <outlet property="collectionView" destination="DhW-To-w5P" id="w0c-Sb-44d"/>
+                        <segue destination="WVz-Nc-mHg" kind="show" identifier="ShopController" id="sWn-F7-7gL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6J-oP-11i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="29.577464788732396"/>
+        </scene>
     </scenes>
     <resources>
         <image name="coin" width="246" height="297"/>
         <image name="door" width="85" height="85"/>
-        <image name="imageView:8za-BR-HQL:image" width="85" height="85">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI
-ExQZHh8jJCsuMTtDR0tPUlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdz
-Vk5TUmVwc1dOU0NvbG9ygAKAERIgwAAAgAOAC1h7ODUsIDg1fdIVChYYWk5TLm9iamVjdHOhF4AEgArS
-FQoaHaIbHIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPEXmaTU0AKgAAcOwA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAABAQEBBAMDAwgFBQULBgcHDwoKChMLDAwWDAwNFwwMDRcLCwsVCQkJEQYFBw4E
-BAQKAgICBgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBBgQDBA4H
-CAgWCwsMHhAREiUWFhctGRkaMhobHDMbGxwzGRkZMRQVFSsODxAjCQsLGwYGBhMDAwQMAAAABAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBBgMEAxAICAgdDQ4OKhQVFjccHR1EJSUmTikpK1Mr
-LC1TKywtUycoK1IiIyRMGhscQBITFDMMDQ0mBwcIGgMDAw0AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAwIDAw4GBgceDAwNMBMTFkIcHR5UKCgqZDIzNG84OjtzOjw9czo8PXM3ODlyLzIybSQmJ2Aa
-GhxPEhITPQsLCysFBgYaAQICCwAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQkEBAQZCgoKLhAREkQb
-GxxbJicocjM0NoQ/QUKORkhLkkpMTpNJS02TREVIkTw9P4wvMDKAISIkbBgYGVUPDxA/CAgJKQMDAxUA
-AAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCAgIRBQUGJw0MDUEVFhdcISEjdi4wMZBAQkSpT1BTslhaXrde
-YGO3YGBjt1laXrZNTlGxPkBCpS4xMpMfHyFxERITUQwMDDwGBgYjAgICDwAAAAMAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA
-AAAKAwMDHQgICDYQERFVGRobcCosLZxMTVHjZWZq+nZ4ffuIipD7oKKo+8DExvuvsbT7jJCT+nh7gPpr
-bHD5VFdZ5ScpKpEMDA1ICAgJMwMEBBsBAQEJAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQECEgUFBSoKCgtIEhMTZR8gIY5C
-REfwT1JW/1lbX/9pa2//eXyB/5GTl/+ytLf/n6Gl/3+Chv9tcHT/YGFl/1ZYXP9MTlH7ISIkjggICT0F
-BQYoAgIDEQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAABAQEBCgICAx0HBwg6Dg4QWRcXGHYvMTPfOTk8/0hKTf9eX2P/Z2ls/3V3fP+F
-hor/nJ2g/5SWmv98f4X/bG90/2VobP9SVFf/OzxA/zY3OvYUFBZsBgcHMwQFBB0CAgIKAAAAAgAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEAgICCgMEBBgF
-BQYxDA0OURQVFmkgICK2KSos/0FCRf9JSk7/Ojw//11fYv+PkZT/o6Sn/62usf+oq67/jpCT/1haXv9F
-R0r/Wlxf/0lKTf8uLzL/JScp1gwMDE0HBwgxBAUFGgICAgwAAAAFAAAAAQAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBAQEIAwMDEQUFBRwHBwgvDAwMTRQUFWkdHx+LGhod9S4uMf8y
-MzX/Hh8h/05QVP9pa27/cXN2/4GDhv+RlJf/goSH/25wdP9xc3b/TlBT/ycoKv8+QEL/NTc5/ygqLP8Y
-GBqeDAwMRgkKCjIGBgYeAwMDEgEBAQkAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAQcC
-AgIPAwMEGQYGByYKCgs3DQ0OThMTE2odHh99GxwdyRocHv8qKS3/HiAh/0dJTf9lZ2z/bW90/3N2e/9/
-gIX/k5SX/5CRlf+AhIj/d3t//29xdf9LS0//KCor/y4uMf8qLC7/ICIk8BUWFnIODxBPCwwMOQcHCCkE
-BAQaAgMDEAABAAcAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABQEBAgsDAwMWBAQFIggICDEMDA1DERARVRMUFWwa
-GxyCIiIjnhcZGfcbGx3/Hh8h/zM1N/9RU1f/V1ld/0lKTf9ub3D/m5yc/6Wmpf+RkpP/YWJk/1tdYP9q
-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
-EwtCKB8QWj0uGHZVQSOTdlotoohsObRaTTfYPjcq+ZZ8P/+ZdkD/y5dE/yMkI/8aHiT/Kyws/4iJe/+W
-l4j/mZmJ/1laUf8mJyr/Njk6/xscHv85OTr/JCUm/yMkJf8gISH/Kiss/zg5O/8vMDL/HyAg/yAgIP8g
-ICD/ICAg/x8gIP8gICD/ICAh/zQ0OP8+P0H/KCgp/yUlJv8nKCj/Kior/zw9P/8RERP/ODk8/zM0OP88
-PDn/nZyO/6Chkv+goZP/REVB/xUYIP88Ni3/06RL/5FzP/+skkb/SD0i/zw0IuRWRCixU0AfijgqE3Ek
-GgxXFA4HPQgFAycAAAAUAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAADgMCAiEQDgg4IRoOUzUoFW9QOxyKblQspVhIMMoZ
-GBrzfGc1/8edSP/2uVL/9rRO/9ugS/+eczL/ODAi/0RHR/+goZH/i4t+/5WWhf9tbWP/IiQm/zI0Nv8c
-HB7/MC8x/yAgIf8fICD/HR8f/yEiIv8zNjj/Li4x/yEhIv8hISL/ISEi/yEhIv8gISL/ICEi/yEhIv8x
-MjT/Njc5/x4gIP8fICD/ICAi/yUmJv8uLjH/ExMW/zI0N/8uMDP/S01J/6Kik/+UlYf/nZ+P/4GDfP9I
-OSL/yJI///e4WP/ytk//9LtT/7CPRf+tjUD/AwQJ/CQfF9FDMxuMMyYRZBwVCk4LCQU0AQEBHAAAAAoA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAgAAABUEBAMrFhIKRyohEGFGNRp6Sz0lrSYiH+g2MR//j3Q2//K6U//+wFT//rpR//e0T//g
-3tf/t5hp/5xpI/9wXD3/naCf/52glv+Wl4r/Ozs5/0pBMP8pLDH/ICAi/yEhI/8gICD/Gxwc/xoaG/8Z
-Ghr/LS4u/y4vMv8iIyP/JCUl/yMkJP8jIyT/IyMk/yMjI/8gICH/MTM0/y0tLv8XGBj/Ghob/xobG/8i
-IyP/HyAh/xYWGP8sLzP/WE46/y8yNf+Dgnv/oqOW/6yvq/+AeGb/k2Qg/8unav/g4Nv//LtU//67Uf/+
-wFX/8btT/3xmMP8lHxL/CgoK8CEcE6glHA9aEg4GOwIBAScAAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAEdBgYENR4WDEox
-Jxl5JCAczA0NDv12YzD/+8VW//G2UP/+vFP//LpR//66Uf/3tE3/06Rd/6V5OP+cbSz/vIEy/5twN/9q
-ZFX/XF1b/zEyMv+QcDb/Iygt/yUmKP8WFxn/Hh8g/xcYGP8XGBj/FhYW/yMjJP8yMzb/IyMk/ykqKv8n
-Jyj/JiYm/yYmJ/8nJyj/ICAh/zEyNv8iIyT/FBQV/xYXF/8XFxf/HR4f/xQVFv8aHB3/MDIw/491Ov8y
-OD//MTI1/397bv+Majj/kGMp/55yLf/DkUP/6bVn//66UP/8ulL//LpS//68U//3vFL/9sFW/2VRKP8A
-AAL/CwsJ2A8MCHIEAwInAAAAEQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAIAgICEMbGRakDQ4Q8wkJBv+OczX//sta//q3Uv/a
-oUf//cJg//3FZ//+u1P/97VQ/9GVP/+kdDD/mmwt/8GIOP/4qkT/zpc6/y8zM/87Pz7/0ZU5/y4vK/8m
-KSz/FBUW/xkZGv8WFhb/FRYW/xMUFf8XFxj/Njg7/x0eH/8gICD/IyQm/ykpKv8jJCX/Hx8g/xoaG/8z
-NTn/GBka/xISE/8TFBT/ExQV/xcXF/8QERL/Gh0i/0tCL//Djjv/MTY//1NLPf+/hzP/0pA4/6p3Mf+a
-cC7/w4w7//GrSv/+ulL//LpS//y9WP/9yWn/4alN//q4Uv/+yVr/iHA1/woJBf8AAAD+BgQGsAAAATIA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAABQoIBSkiIBrZAAAE/wsJBf+jgTz//sxa//u7U//orEz/05xG//rYhf/945r//sJe//e0Tv/R
-l0L/pHUx/5ptLf/BiDj/7aJD//CtRv8+QkH/P0FA//GmPP9URy3/ICUq/xkaGv8SExP/ExMU/xMTE/8R
-ERH/FhYX/zk6Pv87PUD/TU9U/2ptc/+Wmp//eXyC/05QVf81ODr/ODk9/xYWF/8PDxD/ERER/xEREf8R
-EhP/EhMT/xgdJP+FYjH/1JQ7/y80PP9fVEH//bFG/86OPP+ldTH/m3At/8OMPf/wrU3//rpS//y4UP/9
-yGn//+qg/9msWP/lqEn/+7tT//7LWv+siT7/ExAL/wAAAP8KCAbsHRYMOwAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEWsmJBycp4xB/yAbEP+m
-hT//+cFV/+GoSv/fsl3/2Z9F/9WlT//66aL//vKy//7Nb//3tE7/0ZdC/6R2Mf+bbi3/wYg5/+6jQ//s
-rEb/P0JB/zE4QP+9iz//mm8y/xkfJ/8gICH/ERIT/xAREf8PEBD/FBQW/y8xM/83OTv/Ojw//0BARP9C
-REj/T1FV/09RVf9BQkf/Oz5B/zg5PP8vMTP/ExUW/w4ODv8PEBD/EBER/xYWF/8ZHiP/zIkz/5FuPP8r
-MTz/UUxA//GoRP/Ojjv/pnQx/5twLf/DjDz/8K1N//66Uv/8uFL//dR8///3tP/gw3j/2ZxA/9agSP/q
-tl3/+b9S/8ahSP8nIBH/eGUu/2haKZYAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaGRrAFhYc/2tcPv/aq0z/4qtK/+ClSf/ss1P/+dWD//W8WP/e
-s13/+++s//7yrf/+0Hb/97RO/9KYQ/+ldzH/nG8u/8KJOf/upkT/5qZH/0BBQ/80OUD/bF0//9uYOf8e
-IiT/IiMl/xUWF/8QERH/Dg8Q/xYXGf8nKCr/LS4w/z5AQ/9QU1j/XmBk/3R2ef9vcXX/UVNY/zg6Pf8q
-Ky7/KCor/xwcHf8ODhD/Dg4P/xISE/8VFhn/Miwj//GcNf9IQzj/Ky4z/01FNf/3qT//0I47/6RyMf+b
-bi7/w4w8//CtTf/+ulH//LxW//3Ygv/+8Kj/99uW//y6Vv/5x2j/78Nt/92jRv/hqEn/3KtL/35pNf8N
-DAj+AAAAvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
-AQEPFhQV3w4NE/9tXz7/971Q//q4Uf/+vFP//sFc//7gj//31YL/6s6G//7wrP/96qH//s1w//e1T//S
-l0P/pXcx/51vLv/Dizv/8KdG/+KlSf9AQUP/PT9C/zo9Pv/hoT//PDUm/xwfI/8aGhz/ExQV/xAQEf8R
-EhT/Li8y/0BAQ/9OUFX/aGtw/4mMkf+wtbr/kpWa/2Nma/9LTVH/PT5B/yorLv8UFRb/EhMU/xEREv8T
-ExX/EBMa/21OJf/PijL/Mjo7/1Jfa/9ec3z/vJhh/8WMOP+tdy7/mm0t/8OMPf/wrUz//rpR//y8V//9
-1X7//emc//fblf/80X7//duF//7Tef/+u1P/+rZP//e8UP9fUTL/AAAA/wAAANwAAAANAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICJRAOD/gFBQv/n39H//7DU//8
-uFH//rpR//7CXP/73o//892Z/+7Ylv//6qH//eCS//7GY//3tU//0phD/6V4Mv+dcC//w4s7//CoR//i
-pkn/QUJE/0BAQ/8tMjz/qYE//3xeLv8VGCD/HR4f/xYXGf8REhP/Ghsc/zM0N/9RUlb/XF5g/1pbXP9T
-U1T/UFBR/1FRUv9RUVP/UFNV/0NESP8yMjX/Ghoc/xITFP8XGBn/FRYX/xASGP+jayX/VUE+/xsmqP8l
-Uuz/Zab//yEuzP8mI4X/aVMw/55vK//Dizz/8KtM//64Uf/8ulP//c1v//7kkP/uz4X/78+F//zfjv/+
-1Hr//rtT//y1Tv/+v1D/nn9F/wAAAP8AAAD5AAAAJQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAIBAlEJBQb/AgUK/7mSSf/+vlH//LhQ/++vSv/gp03/7cqC/+/Qif/q
-zYf//+WW//3Ufv/+vVf/97ZQ/9KYQ/+meDL/nnIv/8SNPP/zq0j/2qVK/z5BRf9BQkT/MzU7/1lQOv+7
-ijn/ExYc/x4fIP8XFxr/Gxwd/yMjJv84OTz/Li4u/zg4OP9KSkv/VldY/15eX/9NTU//QUFB/yoqKv8m
-Jyf/LS4v/x8gIv8XGRr/FhYX/xIUFv8iHhf/XEgm/xUYXv8tMYn/KSmW/3d1xP80MY7/QEOP/zM4af+O
-c0L/woo4//CqS//+uFH//LhQ//3CYP/+2oL/7cl7/+vGeP/pwnf/6Lto/+upSP/7tEz//rxO/7mPRP8B
-AQX/AAAA/wAAAE8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAB1AAAA/xAPDf/WpEz/46RE/9mcQv/doET/8LNS//3ag//82YX/58Z8//7dhv/9xmX//rpR//m2Uf/T
-mUP/pngy/55xMP/Lkj3/8K5K/5h+Tv8+QEb/QkNF/zo7Pv8rLzP/xpZA/ygkH/8XGRz/HBwe/yIjJf8k
-JSf/IyMj/1lZWv9JSUv/Kywu/zU2N/9MTU3/IiMl/y4uMP9VVVf/PTw9/xYWFv8cHR7/HR4g/xUVFv8L
-DRH/QC8c/1JPR/8uLkb/AABm/xAKVf8qK1n/AABh/wkAW/9MVIz/kl1c/79rLP/wrUv//rdP//y2T//8
-uFT//s5u/+vCb//8znT//dJ2//TDaP/cnUD/1phA/+KhQv/Tokn/EA8N/wAAAP8AAAByAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqQAAAP8aFhD/6KlH/+2nRP/7
-sUr//bVM//66VP/90HP/+c50/+K8bv/+0nL//LtV//66Uv/5tVD/0pY//6p6M/+neDD/o3o8/2BWR/86
-P0f/OTk8/0JERv88PT//Iycv/450Pf9dSij/DxEX/xscHf8jJCf/Gxwd/0VFRv9ISEr/VFRV/zY2OP9I
-SEn/VFRU/zQ0N/9BQUL/R0dH/zAxMv8sLCz/ERET/x0eIP8TExX/CQoO/1A0F/9SUlr/XV5h/zY2WP8W
-FTD/HBsz/xEPMf9GRmL/OzhU/1BHRf+3fTL/8aZD//21TP/8tE3//LRM//7AWf/ltGD/+MFl//3HaP/+
-wV7//bFJ//uvSP/to0L/56dF/xwYEP8AAAD/AAAAqQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAABQAAAMoAAAD/MikZ//2xR//9q0T//KxG//yuSP/8skz//cNj//rLd//x
-w2v//r9c//y3UP/8uFD/+bpZ/+C0aP+kdjH/Vkgw/zIzNP8mKC7/ODg5/0BBQv9DREf/PD5A/yorMP9G
-QzL/l3Q1/wsME/8VFhb/Gxwf/y8vLv8uLi//GBoc/1JSU/9RUlP/REZG/0BBQf9DREX/UVFR/yQkJv8T
-ExX/LCwt/xYWF/8XFxr/DQ0O/xIPDf+cXB7/KCgu/6+0uP+5u7f/PD49/yUmJv9bXV3/wcTC/29ucf8K
-BRT/u4A2//G3Zv/7tVP//K9H//yvSP/8sEn/8LFT//jBZf/8vFr//LRP//ypRP/8qUP//alD//2xRv8y
-Khj/AAAA/wAAAMoAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgA
-AADuAAAA/1E6Gf/9rT3//KM///yoQv/8qkT//KxF//u4V//o3cP/+cVt//2ySv/8tU7//rtO//vBXP+Z
-jXT/MC8r/xwhJv8lJin/ISIk/z9AQf9ERUj/Q0VH/z0+Qf8tLjL/MDAq/82dP/8WFBP/EBES/xUWGP43
-OTf/WVla/1VWVv9ERET/Gxwe/yAgIv8dHiD/GRob/yAgIP9HR0f/OTk6/z4/P/8WFxf/DQ4O/wEECv83
-IhD/zHIm/zM2QP8gHSr/cnGH/3h5iP9iYnL/jo6d/3JufP8UEhv/AABc/zkzKv+qlWv//rpS//2sQv/8
-qUT//ahC//axUv/e0rn/+7BM//ynQ//8oz///KM+//yiPv/9rT3/VD0b/wAAAP8AAADtAAAAGAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3AAAA/AABCf93XDD/5rt5//2aNf/8
-njz//KM///ynQv/8q0f/+bVX//uxS//9skr//r1N/9anT/9nXkf/Kisw/x0gI/8aGx3/Kiot/ycpK/84
-OTr/Q0RH/0NER/89P0H/LC4y/zAwKv/0tEf/NywZ/wgKDf4ZGRnpJCUm/yMjJv8hIiP/R0dH/xYWF/8P
-DxD/Dg4O/w4ODv8jIyT/Kioq/wsLDP8aGhv/ERES/wkJCvwAAAb/gEUX/8dpHv+NlJz/hYWM/xUUGf8L
-Chr/Cwke/wsKEv8AAAT/AAAn/wcAe/8cHyP/JCcq/2taOv/gn0D//as///2jP//7oTv/96JA//yhPP/8
-njr//J06//ycOf/9mTP/6r9+/2dVNf8AAAH/AAAA/AAAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAYQsMDv96UCT/840w//SROP/8kDH//JY1//yaOP/8njv//KI///2mQv/9
-sUT/8rBJ/412R/84Oj//LS83/yYmKP8eHyD/IyMm/y0uMf8mJyr/MzM2/0FCRP9CQ0b/Pj9B/y0uM/8w
-MCr//rpK/3hYJ/8AAgr/Dw8P/hMTFP8kJCX/PD0+/zs8PP8zMzT/KCkp/yMjJP8nJyj/LzAv/yoqKv8W
-Fhf/ExMT/wkHCf8ICAj+BwUH/8ZmHv9pRSH/hY+Z/+Hm5/+ChYn/QUFG/yQlJP8oKCr/Kigu/w0HKv8U
-D1v/JSUm/x4fIP8dISj/Li8u/5JtNv/5oDn//Z03//2XNf/8ljb//Jc2//yVNf/8lTX//JMy//aXPP/f
-jjX/SToi/wkJC/8AAABlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYHCnsh
-Hxr/+n0l//x7Jv/9fij/+4Qs//yLL//8jzL//JU1//2eOf/9pz3/s4Y//0JBOP8lKDH/LS4v/yoqK/8p
-KSr/JCUm/yIiJv8tLi//JSYo/y4vMv9BQUT/QkNF/z0+Qf8tLjL/MzIs/9uhQf+hcy7/CgoK/w4ODv8j
-Jif/GBga/yAgIf8RERL/EA8R/x0dHv8qKir/DQ4O/wsLDP8cHBz/FhcX/wwNDf8TExT/BAQG/yYZDP+g
-XiH/HCAj/5udo//Jzc//cnR3/1NUVv8sLS//LS4w/yQlJ/8ODhL/XFxr/xoaGv8cHB7/Gxsc/xwcH/8V
-GiL/Pjcn/75/Mv/9mTL//ZAw//yOMP/8jTD//Iww//yLL//7iC3//Yst//yTMP8tKiH/BgcJfQAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAZYMSAT7upqHv/8cSH//HEi//t1Jf/7
-fCf//YQo//2TL//PhTP/V0cv/xsfJv8gISb/JCMl/yYmJv8xMjP/Kiks/yAhI/8hIiT/Kywu/yQlJ/8q
-Ky7/PkBB/0FCRP8+P0H/LC4w/yYnI//XnED/9K9G/yUeEv8LCw3/MjM0/y8yNf4DBAS/CQoK7w0NDf8P
-DxD/EhIT/woKC/8KCgr/AwQE3AcHBr4eHyL+HR0f/wAAAv9mPxf/ZE4u/xwhKv9dXWH/Ojs+/05QU/+B
-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
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDA6lTzQW/2xGGv9qRBr/c0ob/3BJHP9MMxb/FhAI/BocHch+
-g4X/S01R4gECAg8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgYGHk1PUu16foT/GxsbqVU2E/p3
-TRz/b0Yb/2hBGf9hPRf/YTwV/0gwFv8NDRCbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAABQUJUi0gEv9rQxj/Xz4X/zsnEf8UDwn/AAAA/wAAAP8ZGhvEdnp//0ZIS+IBAQIPAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAUFBh5HSU3tdXh9/xgZG64GBAP7JBkQ/04zFv9gPBf/WzkV/1k3E/8v
-IhX+BAUHSgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAhAUEA7kLR4P/w4LCf8A
-AAH/AAAA/wAAANgAAABwFBYXfXh9gf9BQ0jgAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE
-BAQeRUZL7Xh8gf8WFxefBAAB6woJC/8MDA7/HxcR/z8qFP9QMhL/GRYT4gAAAQ8AAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQkKmQECB/8CAgX/AQEBzAAAAF8AAAAMAAAAAC4vMHxe
-YGH/REVH4wICAgYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgYHH0dJSvRgYWP/JicocAAAACcH
-BQaODAsM5g8OEP8QEBL/HBgW/wwMDZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAYGBkgHBwa/AgICUwAAAAYAAAAAAAAAAAAAAAASEhJSJiYpyhcXGY4AAAADAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAICAgkYGRqjKCgqyA4ODj8AAAAAAAAAAAEBARwHBwd9EA8P3hUUFv8G
-BgZKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQEBAQAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAEBARUJCQlwAQEBFQAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAADAAAAAQBVAAABAQADAAAA
-AQBVAAABAgADAAAABAAAcbIBAwADAAAAAQABAAABBgADAAAAAQACAAABCgADAAAAAQABAAABEQAEAAAA
-AQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQBVAAABFwAEAAAAAQAAcOQBHAADAAAA
-AQABAAABKAADAAAAAQACAAABUgADAAAAAQABAAABUwADAAAABAAAcbqHcwAHAAAH2AAAccIAAAAAAAgA
-CAAIAAgAAQABAAEAAQAAB9hhcHBsAiAAAG1udHJSR0IgWFlaIAfZAAIAGQALABoAC2Fjc3BBUFBMAAAA
-AGFwcGwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2Rlc2MAAAEIAAAAb2RzY20AAAF4AAAFnGNwcnQAAAcUAAAA
-OHd0cHQAAAdMAAAAFHJYWVoAAAdgAAAAFGdYWVoAAAd0AAAAFGJYWVoAAAeIAAAAFHJUUkMAAAecAAAA
-DmNoYWQAAAesAAAALGJUUkMAAAecAAAADmdUUkMAAAecAAAADmRlc2MAAAAAAAAAFEdlbmVyaWMgUkdC
-IFByb2ZpbGUAAAAAAAAAAAAAABRHZW5lcmljIFJHQiBQcm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtbHVjAAAAAAAAAB8AAAAMc2tTSwAAACgAAAGEZGFE
-SwAAAC4AAAGsY2FFUwAAACQAAAHadmlWTgAAACQAAAH+cHRCUgAAACYAAAIidWtVQQAAACoAAAJIZnJG
-VQAAACgAAAJyaHVIVQAAACgAAAKaemhUVwAAABYAAALCbmJOTwAAACYAAALYY3NDWgAAACIAAAL+aGVJ
-TAAAAB4AAAMgaXRJVAAAACgAAAM+cm9STwAAACQAAANmZGVERQAAACwAAAOKa29LUgAAABYAAAO2c3ZT
-RQAAACYAAALYemhDTgAAABYAAAPMamFKUAAAABoAAAPiZWxHUgAAACIAAAP8cHRQTwAAACYAAAQebmxO
-TAAAACgAAAREZXNFUwAAACYAAAQedGhUSAAAACQAAARsdHJUUgAAACIAAASQZmlGSQAAACgAAASyaHJI
-UgAAACgAAATacGxQTAAAACwAAAUCcnVSVQAAACIAAAUuYXJFRwAAACYAAAVQZW5VUwAAACYAAAV2AFYB
-YQBlAG8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBlAHIAZQBsACAAUgBHAEIA
-LQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMA
-Qx6lAHUAIABoAOwAbgBoACAAUgBHAEIAIABDAGgAdQBuAGcAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcA
-ZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsAIABSAEcAQgBQAHIA
-bwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBWAEIAwQBsAHQAYQBsAOEAbgBvAHMAIABSAEcA
-QgAgAHAAcgBvAGYAaQBskBp1KAAgAFIARwBCACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABSAEcA
-QgAtAHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF
-3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkAbABvACAAUgBHAEIAIABnAGUAbgBlAHIAaQBjAG8A
-UAByAG8AZgBpAGwAIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAA
-UgBHAEIALQBQAHIAbwBmAGkAbMd8vBgAIABSAEcAQgAg1QS4XNMMx3xmbpAaACAAUgBHAEIAIGPPj/Bl
-h072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsDkwO1A70DuQO6A8wAIAPAA8EDvwPGA68DuwAgAFIA
-RwBCAFAAZQByAGYAaQBsACAAUgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUAZQBuACAA
-UgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAgDhcOMQ5IDicORA4bAEcA
-ZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwAaQBZAGwAZQBpAG4AZQBuACAAUgBHAEIALQBwAHIA
-bwBmAGkAaQBsAGkARwBlAG4AZQByAGkBDQBrAGkAIABSAEcAQgAgAHAAcgBvAGYAaQBsAFUAbgBpAHcA
-ZQByAHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAAUgBHAEIEHgQxBEkEOAQ5ACAEPwRABD4ERAQ4BDsE
-TAAgAFIARwBCBkUGRAZBACAGKgY5BjEGSgZBACAAUgBHAEIAIAYnBkQGOQYnBkUARwBlAG4AZQByAGkA
-YwAgAFIARwBCACAAUAByAG8AZgBpAGwAZXRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwg
-YWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD
-0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEBzQAAc2Yz
-MgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//+6L///2jAAAD3AAAwGzSJSYnKFokY2xhc3NuYW1lWCRj
-bGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMnKSpaTlNJbWFnZVJlcFhOU09iamVjdNIlJiwtV05TQXJy
-YXmiLCrSJSYvMF5OU011dGFibGVBcnJheaMvLCrVMjM0NQo2Nzg5OldOU1doaXRlXE5TQ29tcG9uZW50
-c1xOU0NvbG9yU3BhY2VfEBJOU0N1c3RvbUNvbG9yU3BhY2VEMCAwAEMwIDAQA4AMgBDUPD0+Cj9AQUJU
-TlNJRFVOU0lDQ1dOU01vZGVsEAmADRAAgA/SRApFRldOUy5kYXRhTxERaAAAEWhhcHBsAgAAAG1udHJH
-UkFZWFlaIAfcAAgAFwAPAC4AD2Fjc3BBUFBMAAAAAG5vbmUAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAA
-ANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWRlc2MA
-AADAAAAAeWRzY20AAAE8AAAH6GNwcnQAAAkkAAAAI3d0cHQAAAlIAAAAFGtUUkMAAAlcAAAIDGRlc2MA
-AAAAAAAAH0dlbmVyaWMgR3JheSBHYW1tYSAyLjIgUHJvZmlsZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt
-bHVjAAAAAAAAAB8AAAAMc2tTSwAAAC4AAAGEZGFESwAAADgAAAGyY2FFUwAAADgAAAHqdmlWTgAAAEAA
-AAIicHRCUgAAAEoAAAJidWtVQQAAACwAAAKsZnJGVQAAAD4AAALYaHVIVQAAADQAAAMWemhUVwAAAB4A
-AANKbmJOTwAAADoAAANoY3NDWgAAACgAAAOiaGVJTAAAACQAAAPKaXRJVAAAAE4AAAPucm9STwAAACoA
-AAQ8ZGVERQAAAE4AAARma29LUgAAACIAAAS0c3ZTRQAAADgAAAGyemhDTgAAAB4AAATWamFKUAAAACYA
-AAT0ZWxHUgAAACoAAAUacHRQTwAAAFIAAAVEbmxOTAAAAEAAAAWWZXNFUwAAAEwAAAXWdGhUSAAAADIA
-AAYidHJUUgAAACQAAAZUZmlGSQAAAEYAAAZ4aHJIUgAAAD4AAAa+cGxQTAAAAEoAAAb8cnVSVQAAADoA
-AAdGZW5VUwAAADwAAAeAYXJFRwAAACwAAAe8AFYBYQBlAG8AYgBlAGMAbgDhACAAcwBpAHYA4QAgAGcA
-YQBtAGEAIAAyACwAMgBHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QAgADIALAAyACAAZwBhAG0AbQBhAHAA
-cgBvAGYAaQBsAEcAYQBtAG0AYQAgAGQAZQAgAGcAcgBpAHMAbwBzACAAZwBlAG4A6AByAGkAYwBhACAA
-MgAuADIAQx6lAHUAIABoAOwAbgBoACAATQDgAHUAIAB4AOEAbQAgAEMAaAB1AG4AZwAgAEcAYQBtAG0A
-YQAgADIALgAyAFAAZQByAGYAaQBsACAARwBlAG4A6QByAGkAYwBvACAAZABhACAARwBhAG0AYQAgAGQA
-ZQAgAEMAaQBuAHoAYQBzACAAMgAsADIEFwQwBDMEMAQ7BEwEPQQwACAARwByAGEAeQAtBDMEMAQ8BDAA
-IAAyAC4AMgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAZwByAGkAcwAgAGcAYQBtAG0A
-YQAgADIALAAyAMEAbAB0AGEAbADhAG4AbwBzACAAcwB6APwAcgBrAGUAIABnAGEAbQBtAGEAIAAyAC4A
-MpAadShwcJaOUUlepgAgADIALgAyACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QAgAGcA
-YQBtAG0AYQAgADIALAAyAC0AcAByAG8AZgBpAGwATwBiAGUAYwBuAOEAIAFhAGUAZADhACAAZwBhAG0A
-YQAgADIALgAyBdIF0AXeBdQAIAXQBeQF1QXoACAF2wXcBdwF2QAgADIALgAyAFAAcgBvAGYAaQBsAG8A
-IABnAHIAaQBnAGkAbwAgAGcAZQBuAGUAcgBpAGMAbwAgAGQAZQBsAGwAYQAgAGcAYQBtAG0AYQAgADIA
-LAAyAEcAYQBtAGEAIABnAHIAaQAgAGcAZQBuAGUAcgBpAGMBAwAgADIALAAyAEEAbABsAGcAZQBtAGUA
-aQBuAGUAcwAgAEcAcgBhAHUAcwB0AHUAZgBlAG4ALQBQAHIAbwBmAGkAbAAgAEcAYQBtAG0AYQAgADIA
-LAAyx3y8GAAg1ozAyQAgrBC5yAAgADIALgAyACDVBLhc0wzHfGZukBpwcF6mfPtlcAAgADIALgAyACBj
-z4/wZYdO9k4AgiwwsDDsMKQwrDDzMN4AIAAyAC4AMgAgMNcw7TDVMKEwpDDrA5MDtQO9A7kDugPMACAD
-kwO6A8EDuQAgA5MDrAO8A7wDsQAgADIALgAyAFAAZQByAGYAaQBsACAAZwBlAG4A6QByAGkAYwBvACAA
-ZABlACAAYwBpAG4AegBlAG4AdABvAHMAIABkAGEAIABHAGEAbQBtAGEAIAAyACwAMgBBAGwAZwBlAG0A
-ZQBlAG4AIABnAHIAaQBqAHMAIABnAGEAbQBtAGEAIAAyACwAMgAtAHAAcgBvAGYAaQBlAGwAUABlAHIA
-ZgBpAGwAIABnAGUAbgDpAHIAaQBjAG8AIABkAGUAIABnAGEAbQBtAGEAIABkAGUAIABnAHIAaQBzAGUA
-cwAgADIALAAyDiMOMQ4HDioONQ5BDgEOIQ4hDjIOQA4BDiMOIg5MDhcOMQ5IDicORA4bACAAMgAuADIA
-RwBlAG4AZQBsACAARwByAGkAIABHAGEAbQBhACAAMgAsADIAWQBsAGUAaQBuAGUAbgAgAGgAYQByAG0A
-YQBhAG4AIABnAGEAbQBtAGEAIAAyACwAMgAgAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAQ0A
-awBpACAARwByAGEAeQAgAEcAYQBtAG0AYQAgADIALgAyACAAcAByAG8AZgBpAGwAVQBuAGkAdwBlAHIA
-cwBhAGwAbgB5ACAAcAByAG8AZgBpAGwAIABzAHoAYQByAG8BWwBjAGkAIABnAGEAbQBtAGEAIAAyACwA
-MgQeBDEESQQwBE8AIARBBDUEQAQwBE8AIAQzBDAEPAQ8BDAAIAAyACwAMgAtBD8EQAQ+BEQEOAQ7BEwA
-RwBlAG4AZQByAGkAYwAgAEcAcgBhAHkAIABHAGEAbQBtAGEAIAAyAC4AMgAgAFAAcgBvAGYAaQBsAGUG
-OgYnBkUGJwAgADIALgAyACAGRAZIBkYAIAYxBkUGJwYvBkoAIAY5BicGRXRleHQAAAAAQ29weXJpZ2h0
-IEFwcGxlIEluYy4sIDIwMTIAAFhZWiAAAAAAAADzUQABAAAAARbMY3VydgAAAAAAAAQAAAAABQAKAA8A
-FAAZAB4AIwAoAC0AMgA3ADsAQABFAEoATwBUAFkAXgBjAGgAbQByAHcAfACBAIYAiwCQAJUAmgCfAKQA
-qQCuALIAtwC8AMEAxgDLANAA1QDbAOAA5QDrAPAA9gD7AQEBBwENARMBGQEfASUBKwEyATgBPgFFAUwB
-UgFZAWABZwFuAXUBfAGDAYsBkgGaAaEBqQGxAbkBwQHJAdEB2QHhAekB8gH6AgMCDAIUAh0CJgIvAjgC
-QQJLAlQCXQJnAnECegKEAo4CmAKiAqwCtgLBAssC1QLgAusC9QMAAwsDFgMhAy0DOANDA08DWgNmA3ID
-fgOKA5YDogOuA7oDxwPTA+AD7AP5BAYEEwQgBC0EOwRIBFUEYwRxBH4EjASaBKgEtgTEBNME4QTwBP4F
-DQUcBSsFOgVJBVgFZwV3BYYFlgWmBbUFxQXVBeUF9gYGBhYGJwY3BkgGWQZqBnsGjAadBq8GwAbRBuMG
-9QcHBxkHKwc9B08HYQd0B4YHmQesB78H0gflB/gICwgfCDIIRghaCG4IggiWCKoIvgjSCOcI+wkQCSUJ
-OglPCWQJeQmPCaQJugnPCeUJ+woRCicKPQpUCmoKgQqYCq4KxQrcCvMLCwsiCzkLUQtpC4ALmAuwC8gL
-4Qv5DBIMKgxDDFwMdQyODKcMwAzZDPMNDQ0mDUANWg10DY4NqQ3DDd4N+A4TDi4OSQ5kDn8Omw62DtIO
-7g8JDyUPQQ9eD3oPlg+zD88P7BAJECYQQxBhEH4QmxC5ENcQ9RETETERTxFtEYwRqhHJEegSBxImEkUS
-ZBKEEqMSwxLjEwMTIxNDE2MTgxOkE8UT5RQGFCcUSRRqFIsUrRTOFPAVEhU0FVYVeBWbFb0V4BYDFiYW
-SRZsFo8WshbWFvoXHRdBF2UXiReuF9IX9xgbGEAYZRiKGK8Y1Rj6GSAZRRlrGZEZtxndGgQaKhpRGnca
-nhrFGuwbFBs7G2MbihuyG9ocAhwqHFIcexyjHMwc9R0eHUcdcB2ZHcMd7B4WHkAeah6UHr4e6R8THz4f
-aR+UH78f6iAVIEEgbCCYIMQg8CEcIUghdSGhIc4h+yInIlUigiKvIt0jCiM4I2YjlCPCI/AkHyRNJHwk
-qyTaJQklOCVoJZclxyX3JicmVyaHJrcm6CcYJ0kneierJ9woDSg/KHEooijUKQYpOClrKZ0p0CoCKjUq
-aCqbKs8rAis2K2krnSvRLAUsOSxuLKIs1y0MLUEtdi2rLeEuFi5MLoIuty7uLyQvWi+RL8cv/jA1MGww
-pDDbMRIxSjGCMbox8jIqMmMymzLUMw0zRjN/M7gz8TQrNGU0njTYNRM1TTWHNcI1/TY3NnI2rjbpNyQ3
-YDecN9c4FDhQOIw4yDkFOUI5fzm8Ofk6Njp0OrI67zstO2s7qjvoPCc8ZTykPOM9Ij1hPaE94D4gPmA+
-oD7gPyE/YT+iP+JAI0BkQKZA50EpQWpBrEHuQjBCckK1QvdDOkN9Q8BEA0RHRIpEzkUSRVVFmkXeRiJG
-Z0arRvBHNUd7R8BIBUhLSJFI10kdSWNJqUnwSjdKfUrESwxLU0uaS+JMKkxyTLpNAk1KTZNN3E4lTm5O
-t08AT0lPk0/dUCdQcVC7UQZRUFGbUeZSMVJ8UsdTE1NfU6pT9lRCVI9U21UoVXVVwlYPVlxWqVb3V0RX
-klfgWC9YfVjLWRpZaVm4WgdaVlqmWvVbRVuVW+VcNVyGXNZdJ114XcleGl5sXr1fD19hX7NgBWBXYKpg
-/GFPYaJh9WJJYpxi8GNDY5dj62RAZJRk6WU9ZZJl52Y9ZpJm6Gc9Z5Nn6Wg/aJZo7GlDaZpp8WpIap9q
-92tPa6dr/2xXbK9tCG1gbbluEm5rbsRvHm94b9FwK3CGcOBxOnGVcfByS3KmcwFzXXO4dBR0cHTMdSh1
-hXXhdj52m3b4d1Z3s3gReG54zHkqeYl553pGeqV7BHtje8J8IXyBfOF9QX2hfgF+Yn7CfyN/hH/lgEeA
-qIEKgWuBzYIwgpKC9INXg7qEHYSAhOOFR4Wrhg6GcobXhzuHn4gEiGmIzokziZmJ/opkisqLMIuWi/yM
-Y4zKjTGNmI3/jmaOzo82j56QBpBukNaRP5GokhGSepLjk02TtpQglIqU9JVflcmWNJaflwqXdZfgmEyY
-uJkkmZCZ/JpomtWbQpuvnByciZz3nWSd0p5Anq6fHZ+Ln/qgaaDYoUehtqImopajBqN2o+akVqTHpTil
-qaYapoum/adup+CoUqjEqTepqaocqo+rAqt1q+msXKzQrUStuK4trqGvFq+LsACwdbDqsWCx1rJLssKz
-OLOutCW0nLUTtYq2AbZ5tvC3aLfguFm40blKucK6O7q1uy67p7whvJu9Fb2Pvgq+hL7/v3q/9cBwwOzB
-Z8Hjwl/C28NYw9TEUcTOxUvFyMZGxsPHQce/yD3IvMk6ybnKOMq3yzbLtsw1zLXNNc21zjbOts83z7jQ
-OdC60TzRvtI/0sHTRNPG1EnUy9VO1dHWVdbY11zX4Nhk2OjZbNnx2nba+9uA3AXcit0Q3ZbeHN6i3ynf
-r+A24L3hROHM4lPi2+Nj4+vkc+T85YTmDeaW5x/nqegy6LzpRunQ6lvq5etw6/vshu0R7ZzuKO6070Dv
-zPBY8OXxcvH/8ozzGfOn9DT0wvVQ9d72bfb794r4Gfio+Tj5x/pX+uf7d/wH/Jj9Kf26/kv+3P9t//+A
-DtIlJkhJXU5TTXV0YWJsZURhdGGjSEoqVk5TRGF0YdIlJkxNXE5TQ29sb3JTcGFjZaJOKlxOU0NvbG9y
-U3BhY2XSJSZQUVdOU0NvbG9yolAq0iUmU1RXTlNJbWFnZaJTKl8QD05TS2V5ZWRBcmNoaXZlctFXWFRy
-b290gAEACAARABoAIwAtADIANwBMAFIAXQBkAGsAeAB/AIcAiQCLAJAAkgCUAJ0AogCtAK8AsQCzALgA
-uwC9AL8AwQDDAMgA3wDhAON6gXqGepF6mnqterF6vHrFesp60nrVetp66Xrtevh7AHsNexp7L3s0ezh7
-Ons8ez57R3tMe1J7Wntce157YHtie2d7b4zbjN2M4ozwjPSM+40AjQ2NEI0djSKNKo0tjTKNOo09jU+N
-Uo1XAAAAAAAAAgEAAAAAAAAAWQAAAAAAAAAAAAAAAAAAjVk
-</mutableData>
-        </image>
+        <image name="fireball1-classic" width="20" height="20"/>
+        <image name="spaceship1" width="133" height="133"/>
     </resources>
 </document>

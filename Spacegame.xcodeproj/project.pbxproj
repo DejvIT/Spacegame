@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 324F4756204459E700F6CAC2 /* MenuScene.sks */; };
+		3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5A20757F4D007DB4AB /* Fireball.swift */; };
+		3259CC5D2075805E007DB4AB /* FireballCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */; };
+		3259CC5F207588A7007DB4AB /* FireballController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5E207588A7007DB4AB /* FireballController.swift */; };
 		327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 327F7E2A202A07D000648D52 /* GameOverScene.sks */; };
 		327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327F7E2C202A098900648D52 /* GameOverScene.swift */; };
 		3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3288A802205089E400EEDBD8 /* ShopController.storyboard */; };
@@ -20,18 +23,21 @@
 		32D8E8E02023419D00D6B384 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8E8DF2023419D00D6B384 /* GameScene.swift */; };
 		32D8E8E22023419D00D6B384 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8E8E12023419D00D6B384 /* GameViewController.swift */; };
 		32D8E8E52023419D00D6B384 /* GameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8E32023419D00D6B384 /* GameViewController.storyboard */; };
-		32D8E8E72023419D00D6B384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8E62023419D00D6B384 /* Assets.xcassets */; };
 		32D8E8EA2023419D00D6B384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8E82023419D00D6B384 /* LaunchScreen.storyboard */; };
 		32D8E8F32023436900D6B384 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F12023436900D6B384 /* explosion.mp3 */; };
-		32D8E8F42023436900D6B384 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F22023436900D6B384 /* torpedo.mp3 */; };
+		32D8E8F42023436900D6B384 /* fireball.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F22023436900D6B384 /* fireball.mp3 */; };
 		32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F72023444A00D6B384 /* Explosion.sks */; };
 		32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32D8E8F82023444B00D6B384 /* Starfield.sks */; };
 		32E321E32023B737005C19F4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 32E321E22023B737005C19F4 /* spark.png */; };
 		32E8664E204C3F8800B9852A /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E8664D204C3F8800B9852A /* MenuScene.swift */; };
+		32E8C60F2075976600963E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E8C60E2075976600963E93 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		324F4756204459E700F6CAC2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		3259CC5A20757F4D007DB4AB /* Fireball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireball.swift; sourceTree = "<group>"; };
+		3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballCollectionViewCell.swift; sourceTree = "<group>"; };
+		3259CC5E207588A7007DB4AB /* FireballController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballController.swift; sourceTree = "<group>"; };
 		327F7E2A202A07D000648D52 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameOverScene.sks; path = Spacegame/GameOverScene.sks; sourceTree = SOURCE_ROOT; };
 		327F7E2C202A098900648D52 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = Spacegame/GameOverScene.swift; sourceTree = SOURCE_ROOT; };
 		3288A802205089E400EEDBD8 /* ShopController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopController.storyboard; sourceTree = "<group>"; };
@@ -45,15 +51,15 @@
 		32D8E8DF2023419D00D6B384 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		32D8E8E12023419D00D6B384 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		32D8E8E42023419D00D6B384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GameViewController.storyboard; sourceTree = "<group>"; };
-		32D8E8E62023419D00D6B384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32D8E8E92023419D00D6B384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32D8E8EB2023419D00D6B384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D8E8F12023436900D6B384 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
-		32D8E8F22023436900D6B384 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
+		32D8E8F22023436900D6B384 /* fireball.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fireball.mp3; sourceTree = "<group>"; };
 		32D8E8F72023444A00D6B384 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		32D8E8F82023444B00D6B384 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		32E321E22023B737005C19F4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		32E8664D204C3F8800B9852A /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		32E8C60E2075976600963E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				3288A802205089E400EEDBD8 /* ShopController.storyboard */,
+				3259CC5E207588A7007DB4AB /* FireballController.swift */,
 				32D02AE02057FE3F001B0359 /* ShopCollectionViewCell.swift */,
+				3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */,
 				32D02ADE2057F92A001B0359 /* ShopController.swift */,
 				32D02AE620580E0E001B0359 /* Ship.swift */,
+				3259CC5A20757F4D007DB4AB /* Fireball.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -125,8 +134,8 @@
 				32D8E8E32023419D00D6B384 /* GameViewController.storyboard */,
 				32E321DC2023B1F4005C19F4 /* Emitters */,
 				32E321DD2023B225005C19F4 /* Sounds */,
-				32D8E8E62023419D00D6B384 /* Assets.xcassets */,
 				32D8E8E82023419D00D6B384 /* LaunchScreen.storyboard */,
+				32E8C60E2075976600963E93 /* Assets.xcassets */,
 				32D8E8EB2023419D00D6B384 /* Info.plist */,
 			);
 			path = Spacegame;
@@ -155,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				32D8E8F12023436900D6B384 /* explosion.mp3 */,
-				32D8E8F22023436900D6B384 /* torpedo.mp3 */,
+				32D8E8F22023436900D6B384 /* fireball.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -187,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = MaestroDavo;
 				TargetAttributes = {
 					32D8E8D52023419D00D6B384 = {
@@ -220,13 +229,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E321E32023B737005C19F4 /* spark.png in Resources */,
-				32D8E8F42023436900D6B384 /* torpedo.mp3 in Resources */,
+				32D8E8F42023436900D6B384 /* fireball.mp3 in Resources */,
 				32D8E8F32023436900D6B384 /* explosion.mp3 in Resources */,
 				32D8E8E52023419D00D6B384 /* GameViewController.storyboard in Resources */,
 				3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */,
 				327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */,
+				32E8C60F2075976600963E93 /* Assets.xcassets in Resources */,
 				32D8E8DC2023419D00D6B384 /* GameScene.sks in Resources */,
-				32D8E8E72023419D00D6B384 /* Assets.xcassets in Resources */,
 				324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */,
 				32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */,
 				32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */,
@@ -243,10 +252,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */,
+				3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */,
 				32D02AE720580E0E001B0359 /* Ship.swift in Sources */,
 				32D02ADF2057F92A001B0359 /* ShopController.swift in Sources */,
 				32D02AE12057FE3F001B0359 /* ShopCollectionViewCell.swift in Sources */,
+				3259CC5D2075805E007DB4AB /* FireballCollectionViewCell.swift in Sources */,
 				32D8E8E02023419D00D6B384 /* GameScene.swift in Sources */,
+				3259CC5F207588A7007DB4AB /* FireballController.swift in Sources */,
 				32E8664E204C3F8800B9852A /* MenuScene.swift in Sources */,
 				32D8E8E22023419D00D6B384 /* GameViewController.swift in Sources */,
 				32D8E8DA2023419D00D6B384 /* AppDelegate.swift in Sources */,
@@ -289,6 +301,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -296,6 +309,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -346,6 +360,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -353,6 +368,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

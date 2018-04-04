@@ -10,22 +10,22 @@ import SpriteKit
 
 class GameOverScene: SKScene {
 
-    var starfield:SKEmitterNode!
+    var starfield:SKEmitterNode?
     
-    var backToMenu:SKSpriteNode!
-    var scoreLabel:SKLabelNode!
+    var backToMenu:SKSpriteNode?
+    var scoreLabel:SKLabelNode?
     var score:Int = 0
     
     override func didMove(to view: SKView) {
         
-        starfield = self.childNode(withName: "starfield") as! SKEmitterNode
-        starfield.advanceSimulationTime(10)
-        starfield.zPosition = -1
+        starfield = self.childNode(withName: "starfield") as? SKEmitterNode
+        starfield?.advanceSimulationTime(10)
+        starfield?.zPosition = -1
         
-        backToMenu = self.childNode(withName: "backToMenu") as! SKSpriteNode
+        backToMenu = self.childNode(withName: "backToMenu") as? SKSpriteNode
         
-        scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
-        scoreLabel.text = "\(score)"
+        scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
+        scoreLabel?.text = "\(score)"
         
     }
     
