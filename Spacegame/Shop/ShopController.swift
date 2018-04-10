@@ -75,12 +75,12 @@ extension ShopController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shipCell", for: indexPath) as! ShopCollectionViewCell
         
         cell.ship = shipForIndexPath(indexPath)
-        
         return cell
     }
 }
 
 extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -98,6 +98,7 @@ extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
         
         let selectedShip = shipForIndexPath(indexPath)
         
+        print(indexPath.row)
         if self.coins >= selectedShip.price || selectedShip.owned {
             
             if !selectedShip.owned {
@@ -106,6 +107,7 @@ extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
                 selectedShip.owned = true
             }
             
+            self.gameData.saveUserDefaultsShip(index: indexPath.row, bool: true)
             self.gameData.selectedShip = selectedShip.name
             self.gameData.coins = self.coins
             self.gameData.saveUserDefaultsCoins()

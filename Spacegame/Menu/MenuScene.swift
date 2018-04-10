@@ -44,9 +44,10 @@ class MenuScene: SKScene {
         coinLabelNode = self.childNode(withName: "coinLabel") as? SKLabelNode
         coinManager()
         
-        print(gameData.defaults.string(forKey: "ShipKey"))
-        print(gameData.defaults.integer(forKey: "Coins"))
-        
+        print("SpaceShip: " + gameData.defaults.string(forKey: "ShipKey")!)
+        print("Coins: " + String(gameData.defaults.integer(forKey: "Coins")))
+        let array = gameData.defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
+        print(array)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -25,15 +25,18 @@ class Ship {
     
     static func fetchShips() -> [Ship]
     {
+        let gameData = GameData.shared
+        let boughtShips = gameData.defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
+        
         return [
-            Ship(price: 0, featuredImage: UIImage(named: "spaceship1")!, owned: true, name: "spaceship1"),
-            Ship(price: 250, featuredImage: UIImage(named: "spaceship2")!, owned: false, name: "spaceship2"),
-            Ship(price: 500, featuredImage: UIImage(named: "spaceship3")!, owned: false, name: "spaceship3"),
-            Ship(price: 1000, featuredImage: UIImage(named: "spaceship4")!, owned: false, name: "spaceship4"),
-            Ship(price: 2000, featuredImage: UIImage(named: "spaceship5")!, owned: false, name: "spaceship5"),
-            Ship(price: 4000, featuredImage: UIImage(named: "spaceship6")!, owned: false, name: "spaceship6"),
-            Ship(price: 8000, featuredImage: UIImage(named: "spaceship7")!, owned: false, name: "spaceship7"),
-            Ship(price: 16000, featuredImage: UIImage(named: "spaceship8")!, owned: false, name: "spaceship8")
+            Ship(price: 0, featuredImage: UIImage(named: "spaceship1")!, owned: boughtShips[0], name: "spaceship1"),
+            Ship(price: 250, featuredImage: UIImage(named: "spaceship2")!, owned: boughtShips[1], name: "spaceship2"),
+            Ship(price: 500, featuredImage: UIImage(named: "spaceship3")!, owned: boughtShips[2], name: "spaceship3"),
+            Ship(price: 1000, featuredImage: UIImage(named: "spaceship4")!, owned: boughtShips[3], name: "spaceship4"),
+            Ship(price: 2000, featuredImage: UIImage(named: "spaceship5")!, owned: boughtShips[4], name: "spaceship5"),
+            Ship(price: 4000, featuredImage: UIImage(named: "spaceship6")!, owned: boughtShips[5], name: "spaceship6"),
+            Ship(price: 8000, featuredImage: UIImage(named: "spaceship7")!, owned: boughtShips[6], name: "spaceship7"),
+            Ship(price: 16000, featuredImage: UIImage(named: "spaceship8")!, owned: boughtShips[7], name: "spaceship8")
         ]
     }
 }
