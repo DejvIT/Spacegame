@@ -11,7 +11,7 @@ import UIKit
 class FireballController: UIViewController {
 
     @IBOutlet weak var coinLabel: UILabel?
-    var coins:String?
+    var coins:Int?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,7 +27,9 @@ class FireballController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.coinLabel?.text = self.coins
+        let gameData = GameData.shared
+        self.coins = gameData.coins
+        self.coinLabel?.text = String(self.coins!)
         
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width)

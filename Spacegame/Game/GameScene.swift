@@ -13,17 +13,20 @@ var backgroundColorCustom = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var gameData = GameData.shared
+    var ship:String?
+    
     var SCREEN_WIDTH = UIScreen.main.bounds.width
     var SCREEN_HEIGHT = UIScreen.main.bounds.height
     
     var starfield:SKEmitterNode?
     var player:SKSpriteNode?
     
-    var scoreLabel:SKLabelNode?
-    var score:Int = 0 {
+    var coinLabelNode:SKLabelNode?
+    var coins:Int = 0 {
         didSet {
-            scoreLabel?.text = "Score: \(score)"
-            scoreLabel?.zPosition = 1
+            coinLabelNode?.text = "Coins: \(coins)"
+            coinLabelNode?.zPosition = 1
         }
     }
     
@@ -53,7 +56,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         starfield?.zPosition = -1
         
-        player = SKSpriteNode(imageNamed: "spaceship1")
+        ship = gameData.defaults.string(forKey: "ShipKey")
+        player = SKSpriteNode(imageNamed: ship!)
         player?.position = CGPoint(x: self.frame.size.width / 2, y: (player?.size.height)! / 2 + 20)
         
         self.addChild(player!)
@@ -61,14 +65,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self
         
-        scoreLabel = SKLabelNode(text: "Score: 0")
-        scoreLabel?.position = CGPoint(x: 80, y: self.frame.size.height - 60)
-        scoreLabel?.fontName = "AmericanTypewriter-Bold"
-        scoreLabel?.fontSize = 28
-        scoreLabel?.fontColor = UIColor.white
-        score = 0
+        coinLabelNode = SKLabelNode(text: "Score: 0")
+        coinLabelNode?.position = CGPoint(x: 80, y: self.frame.size.height - 60)
+        coinLabelNode?.fontName = "AmericanTypewriter-Bold"
+        coinLabelNode?.fontSize = 28
+        coinLabelNode?.fontColor = UIColor.white
+        coins = 0
         
-        self.addChild(scoreLabel!)
+        self.addChild(coinLabelNode!)
         
         
         
@@ -127,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
                     let gameScene = SKScene(fileNamed: "GameOverScene") as! GameOverScene
-                    gameScene.score = self.score
+                    gameScene.coins = self.coins
                     self.view?.presentScene(gameScene, transition:transition)
                 }
                 
@@ -220,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion.removeFromParent()
         }
         
-        score += 5
+        self.coins += 5
     }
     
     

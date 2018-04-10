@@ -10,8 +10,10 @@ import UIKit
 
 class ShopController: UIViewController {
     
-    @IBOutlet weak var coinLabel: UILabel?
-    var coins:String?
+    var gameData = GameData.shared
+    
+    @IBOutlet weak var coinLabel: UILabel!
+    var coins:Int!
     
     @IBAction func backToMenu(_ sender: Any) {
         self.performSegue(withIdentifier: String(describing: "MenuController"), sender: nil)
@@ -30,23 +32,31 @@ class ShopController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.coinLabel?.text = self.coins
+        self.coins = self.gameData.defaults.integer(forKey: "Coins")
+        self.coinLabel.text = String(self.coins)
         
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width)
         let cellHeight = floor(screenSize.height * cellScaling)
         
-        let layout = collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         
-        collectionView?.dataSource = self
-        collectionView?.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// MARK: - Private
+private extension ShopController {
+    func shipForIndexPath(_ indexPath: IndexPath) -> Ship {
+        return ships[(indexPath as NSIndexPath).row]
     }
 }
 
@@ -64,7 +74,7 @@ extension ShopController: UICollectionViewDataSource {
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shipCell", for: indexPath) as! ShopCollectionViewCell
         
-        cell.ship = ships[indexPath.item]
+        cell.ship = shipForIndexPath(indexPath)
         
         return cell
     }
@@ -73,7 +83,7 @@ extension ShopController: UICollectionViewDataSource {
 extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
-        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
 
         var offset = targetContentOffset.pointee
@@ -82,6 +92,28 @@ extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
 
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        let selectedShip = shipForIndexPath(indexPath)
+        
+        if self.coins >= selectedShip.price || selectedShip.owned {
+            
+            if !selectedShip.owned {
+                self.coins = self.coins - selectedShip.price
+                self.coinLabel.text = String(self.coins)
+                selectedShip.owned = true
+            }
+            
+            self.gameData.selectedShip = selectedShip.name
+            self.gameData.coins = self.coins
+            self.gameData.saveUserDefaultsCoins()
+            self.gameData.saveUserDefaultsShip()
+            
+            return true
+        }
+        return false
     }
 }
 

@@ -9,12 +9,14 @@
 import SpriteKit
 
 class GameOverScene: SKScene {
+    
+    var gameData = GameData.shared
 
     var starfield:SKEmitterNode?
     
     var backToMenu:SKSpriteNode?
-    var scoreLabel:SKLabelNode?
-    var score:Int = 0
+    var coinLabelNode:SKLabelNode?
+    var coins:Int = 0
     
     override func didMove(to view: SKView) {
         
@@ -24,8 +26,8 @@ class GameOverScene: SKScene {
         
         backToMenu = self.childNode(withName: "backToMenu") as? SKSpriteNode
         
-        scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
-        scoreLabel?.text = "\(score)"
+        coinLabelNode = self.childNode(withName: "coinLabelNode") as? SKLabelNode
+        coinLabelNode?.text = "\(coins)"
         
     }
     
@@ -40,7 +42,8 @@ class GameOverScene: SKScene {
                 
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = SKScene(fileNamed: "MenuScene") as! MenuScene
-                gameScene.coins = self.score
+                self.gameData.coins = self.gameData.defaults.integer(forKey: "Coins") + self.coins
+                self.gameData.saveUserDefaultsCoins()
                 self.view?.presentScene(gameScene, transition:transition)
             }
         }

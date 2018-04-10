@@ -10,8 +10,8 @@ import UIKit
 
 class ShopCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var featuredImageView: UIImageView?
-    @IBOutlet weak var shipPriceLabel: UILabel?
+    @IBOutlet weak var featuredImageView: UIImageView!
+    @IBOutlet weak var shipPriceLabel: UILabel!
     
     var ship: Ship? {
         didSet {
@@ -22,8 +22,14 @@ class ShopCollectionViewCell: UICollectionViewCell {
     private func updateUI()
     {
         if let ship = ship {
-            featuredImageView?.image = ship.featuredImage
-            shipPriceLabel?.text = ship.price
+            featuredImageView.image = ship.featuredImage
+            
+            if ship.owned {
+                shipPriceLabel.text = "Owned"
+            } else {
+                
+                shipPriceLabel.text = String(ship.price)
+            }
         } else {
             featuredImageView?.image = nil
             shipPriceLabel?.text = nil
@@ -39,5 +45,21 @@ class ShopCollectionViewCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 5, height: 10)
         
         self.clipsToBounds = false
+    }
+    
+    
+    // MARK: - Properties
+    override var isSelected: Bool {
+        didSet {
+            featuredImageView?.layer.backgroundColor = isSelected ? bgColorSelected.cgColor : bgColorDefault.cgColor
+            updateUI()
+        }
+    }
+    
+    // MARK: - View Life Cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        featuredImageView?.layer.backgroundColor = bgColorDefault.cgColor
+        isSelected = false
     }
 }

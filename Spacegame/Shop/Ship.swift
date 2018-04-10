@@ -10,27 +10,30 @@ import UIKit
 
 class Ship {
 
-    var price = ""
+    var price:Int
     var featuredImage: UIImage?
+    var owned:Bool
+    var name:String
     
-    init(price: String, featuredImage: UIImage)
+    init(price: Int, featuredImage: UIImage, owned: Bool, name: String)
     {
         self.price = price
         self.featuredImage = featuredImage
+        self.owned = owned
+        self.name = name
     }
     
     static func fetchShips() -> [Ship]
     {
         return [
-            Ship(price: "Owned", featuredImage: UIImage(named: "spaceship1")!),
-            Ship(price: "250", featuredImage: UIImage(named: "spaceship2")!),
-            Ship(price: "500", featuredImage: UIImage(named: "spaceship3")!),
-            Ship(price: "1 000", featuredImage: UIImage(named: "spaceship4")!),
-            Ship(price: "2 000", featuredImage: UIImage(named: "spaceship5")!),
-            Ship(price: "4 000", featuredImage: UIImage(named: "spaceship6")!),
-            Ship(price: "8 000", featuredImage: UIImage(named: "spaceship7")!),
-            Ship(price: "16 000", featuredImage: UIImage(named: "spaceship8")!)
+            Ship(price: 0, featuredImage: UIImage(named: "spaceship1")!, owned: true, name: "spaceship1"),
+            Ship(price: 250, featuredImage: UIImage(named: "spaceship2")!, owned: false, name: "spaceship2"),
+            Ship(price: 500, featuredImage: UIImage(named: "spaceship3")!, owned: false, name: "spaceship3"),
+            Ship(price: 1000, featuredImage: UIImage(named: "spaceship4")!, owned: false, name: "spaceship4"),
+            Ship(price: 2000, featuredImage: UIImage(named: "spaceship5")!, owned: false, name: "spaceship5"),
+            Ship(price: 4000, featuredImage: UIImage(named: "spaceship6")!, owned: false, name: "spaceship6"),
+            Ship(price: 8000, featuredImage: UIImage(named: "spaceship7")!, owned: false, name: "spaceship7"),
+            Ship(price: 16000, featuredImage: UIImage(named: "spaceship8")!, owned: false, name: "spaceship8")
         ]
     }
-
 }

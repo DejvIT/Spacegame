@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		321368902078FDD80001F918 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3213688F2078FDD80001F918 /* GameData.swift */; };
 		324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 324F4756204459E700F6CAC2 /* MenuScene.sks */; };
 		3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5A20757F4D007DB4AB /* Fireball.swift */; };
 		3259CC5D2075805E007DB4AB /* FireballCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3213688F2078FDD80001F918 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		324F4756204459E700F6CAC2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		3259CC5A20757F4D007DB4AB /* Fireball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireball.swift; sourceTree = "<group>"; };
 		3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -124,10 +126,11 @@
 		32D8E8D82023419D00D6B384 /* Spacegame */ = {
 			isa = PBXGroup;
 			children = (
+				3213688F2078FDD80001F918 /* GameData.swift */,
 				323D0AEF2023D621007EC6E2 /* Menu */,
-				324B113B204C34BA0079145D /* Shop */,
 				32E321DB2023B159005C19F4 /* Game */,
 				323D0AF52023EA39007EC6E2 /* GameOver */,
+				324B113B204C34BA0079145D /* Shop */,
 				32D8E8D92023419D00D6B384 /* AppDelegate.swift */,
 				32D8E8E12023419D00D6B384 /* GameViewController.swift */,
 				32D8E8DD2023419D00D6B384 /* Actions.sks */,
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */,
+				321368902078FDD80001F918 /* GameData.swift in Sources */,
 				3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */,
 				32D02AE720580E0E001B0359 /* Ship.swift in Sources */,
 				32D02ADF2057F92A001B0359 /* ShopController.swift in Sources */,
