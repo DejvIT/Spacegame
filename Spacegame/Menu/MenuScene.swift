@@ -48,6 +48,15 @@ class MenuScene: SKScene {
         print("Coins: " + String(gameData.defaults.integer(forKey: "Coins")))
         let array = gameData.defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
         print(array)
+        
+        
+        if gameData.defaults.bool(forKey: "FirstRun") {
+            gameData.saveUserDefaultsSelectedShipToPlay(index: 0, bool: true)
+            gameData.saveUserDefaultsFirstRun(bool: true)
+        }
+        print("FirstRun: " + String(gameData.defaults.bool(forKey: "FirstRun")))
+        let playShip = gameData.defaults.array(forKey: "SelectedShipToPlay")  as? [Bool] ?? [Bool]()
+        print(playShip)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

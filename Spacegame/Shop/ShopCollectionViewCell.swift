@@ -26,8 +26,9 @@ class ShopCollectionViewCell: UICollectionViewCell {
             
             if ship.owned {
                 shipPriceLabel.text = "Owned"
+            } else if ship.selectedShip {   // TU TO VIAZNE
+                shipPriceLabel.text = "Selected"
             } else {
-                
                 shipPriceLabel.text = String(ship.price)
             }
         } else {
