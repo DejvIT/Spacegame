@@ -23,6 +23,9 @@ class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        //gameData.removeAllUserDefaults()
+        //gameData.addCoins(amount: 10000)
+        
         starfield = self.childNode(withName: "starfield") as? SKEmitterNode
         starfield?.advanceSimulationTime(10)
         starfield?.zPosition = -1
@@ -41,21 +44,23 @@ class MenuScene: SKScene {
             difficultyLabelNode?.text = "Easy"
         }
         
+        if !gameData.defaults.bool(forKey: gameData.keys.first_app_run_done) {
+            
+            gameData.saveUserDefaultsPlayShip()
+            gameData.saveUserDefaultsSelectedShipInShop(index: 0, bool: true)
+            gameData.saveUserDefaultsBoughtShips(index: 0, bool: true)
+            gameData.saveUserDefaultsFirstAppRunDone(bool: true)
+        }
+        
         coinLabelNode = self.childNode(withName: "coinLabel") as? SKLabelNode
         coinManager()
         
-        print("SpaceShip: " + gameData.defaults.string(forKey: "ShipKey")!)
-        print("Coins: " + String(gameData.defaults.integer(forKey: "Coins")))
-        let array = gameData.defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
+        print("SpaceShip: " + gameData.defaults.string(forKey: gameData.keys.play_ship)!)
+        print("Coins: " + String(gameData.defaults.integer(forKey: gameData.keys.coins)))
+        let array = gameData.defaults.array(forKey: gameData.keys.bought_ships)  as? [Bool] ?? [Bool]()
         print(array)
-        
-        
-        if gameData.defaults.bool(forKey: "FirstRun") {
-            gameData.saveUserDefaultsSelectedShipToPlay(index: 0, bool: true)
-            gameData.saveUserDefaultsFirstRun(bool: true)
-        }
-        print("FirstRun: " + String(gameData.defaults.bool(forKey: "FirstRun")))
-        let playShip = gameData.defaults.array(forKey: "SelectedShipToPlay")  as? [Bool] ?? [Bool]()
+        print("FirstRun: " + String(gameData.defaults.bool(forKey: gameData.keys.first_app_run_done)))
+        let playShip = gameData.defaults.array(forKey: gameData.keys.selected_ship_shop)  as? [Bool] ?? [Bool]()
         print(playShip)
     }
     
@@ -67,14 +72,16 @@ class MenuScene: SKScene {
             let nodesArray = self.nodes(at: location)
             
             if (nodesArray.first?.name == "newGameButton") {
+                
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = GameScene(size: self.size)
                 gameScene.difficulty = (self.difficultyLabelNode?.text)!
                 self.view?.presentScene(gameScene, transition: transition)
+                
             } else if (nodesArray.first?.name == "difficultyButton") {
                 changeDifficulty()
-            } else if (nodesArray.first?.name == "shopButton") {
                 
+            } else if (nodesArray.first?.name == "shopButton") {
                 gameController?.performSegue(withIdentifier: String(describing: ShopController.self), sender: nil)
             }
         }
@@ -86,7 +93,9 @@ class MenuScene: SKScene {
         if (difficultyLabelNode?.text == "Easy") {
             difficultyLabelNode?.text = "Hard"
             userDefaults.set(true, forKey: "hard")
+            
         } else {
+            
             difficultyLabelNode?.text = "Easy"
             userDefaults.set(false, forKey: "hard")
         }
@@ -96,7 +105,7 @@ class MenuScene: SKScene {
     
     func coinManager() {
         
-        let coins = gameData.defaults.integer(forKey: "Coins")
+        let coins = gameData.defaults.integer(forKey: gameData.keys.coins)
         self.coinLabelNode?.text = String(coins)
         self.gameData.coins = coins
         self.gameData.saveUserDefaultsCoins()

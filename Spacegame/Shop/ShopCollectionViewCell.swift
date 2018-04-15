@@ -24,12 +24,20 @@ class ShopCollectionViewCell: UICollectionViewCell {
         if let ship = ship {
             featuredImageView.image = ship.featuredImage
             
+            print("Owned? " + String(ship.owned))
+            print("Selected? " + String(ship.selectedShip))
+            
             if ship.owned {
                 shipPriceLabel.text = "Owned"
-            } else if ship.selectedShip {   // TU TO VIAZNE
-                shipPriceLabel.text = "Selected"
             } else {
                 shipPriceLabel.text = String(ship.price)
+            }
+        
+            if ship.selectedShip {
+                featuredImageView.layer.backgroundColor = bgColorSelected.cgColor
+                shipPriceLabel.text = "Selected"
+            } else {
+                featuredImageView.layer.backgroundColor = bgColorDefault.cgColor
             }
         } else {
             featuredImageView?.image = nil
@@ -52,7 +60,6 @@ class ShopCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     override var isSelected: Bool {
         didSet {
-            featuredImageView?.layer.backgroundColor = isSelected ? bgColorSelected.cgColor : bgColorDefault.cgColor
             updateUI()
         }
     }
@@ -60,7 +67,6 @@ class ShopCollectionViewCell: UICollectionViewCell {
     // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        featuredImageView?.layer.backgroundColor = bgColorDefault.cgColor
         isSelected = false
     }
 }

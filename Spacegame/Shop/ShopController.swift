@@ -32,7 +32,7 @@ class ShopController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.coins = self.gameData.defaults.integer(forKey: "Coins")
+        self.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins)
         self.coinLabel.text = String(self.coins)
         
         let screenSize = UIScreen.main.bounds.size
@@ -98,7 +98,6 @@ extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
         
         let selectedShip = shipForIndexPath(indexPath)
         
-        print(indexPath.row)
         if self.coins >= selectedShip.price || selectedShip.owned {
             
             if !selectedShip.owned {
@@ -107,11 +106,23 @@ extension ShopController : UIScrollViewDelegate, UICollectionViewDelegate {
                 selectedShip.owned = true
             }
             
-            self.gameData.saveUserDefaultsShip(index: indexPath.row, bool: true)
-            self.gameData.selectedShip = selectedShip.name
+            selectedShip.selectedShip = true
+            
+            self.gameData.saveUserDefaultsBoughtShips(index: indexPath.row, bool: true)
+            self.gameData.playShip = selectedShip.name
+            self.gameData.saveUserDefaultsPlayShip()
+            self.gameData.saveUserDefaultsSelectedShipInShop(index: indexPath.row, bool: true)
             self.gameData.coins = self.coins
             self.gameData.saveUserDefaultsCoins()
-            self.gameData.saveUserDefaultsShip()
+            
+            self.ships = Ship.fetchShips()
+            
+            let array = gameData.defaults.array(forKey: gameData.keys.bought_ships)  as? [Bool] ?? [Bool]()
+            print(array)
+            let playShip = gameData.defaults.array(forKey: gameData.keys.selected_ship_shop)  as? [Bool] ?? [Bool]()
+            print(playShip)
+            print("Index of cell: " + String(indexPath.row))
+            
             
             return true
         }

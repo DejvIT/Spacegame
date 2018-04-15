@@ -42,7 +42,7 @@ class GameOverScene: SKScene {
                 
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = SKScene(fileNamed: "MenuScene") as! MenuScene
-                self.gameData.coins = self.gameData.defaults.integer(forKey: "Coins") + self.coins
+                self.gameData.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins) + self.coins
                 self.gameData.saveUserDefaultsCoins()
                 self.view?.presentScene(gameScene, transition:transition)
             }

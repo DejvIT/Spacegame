@@ -16,50 +16,81 @@ class GameData {
     
     let defaults = UserDefaults.standard
     
+    let keys = (
+        coins: "Coins",
+        play_ship: "PlayShip",
+        bought_ships: "BoughtShips",
+        selected_ship_shop: "SelectedShipInShop",
+        first_app_run_done: "FirstAppRun"
+        
+    )
+    
+    //Default user data
     var coins:Int = 0
-    var selectedShip:String = "spaceship1"
+    var playShip:String = "spaceship1"
     var boughtShips = [true, false, false, false, false ,false ,false, false]
-    var selectedShipToPlay = [false, false, false, false, false ,false ,false, false]
-    var firstRun:Bool = true
+    var selectedShipInShop = [false, false, false, false, false ,false ,false, false]
+    var firstAppRunDone:Bool = false
+    // end of default user data
     
     public func saveUserDefaultsCoins() {
-        defaults.set(coins, forKey: "Coins")
+        defaults.set(coins, forKey: keys.coins)
     }
     
-    public func saveUserDefaultsShip() {
-        defaults.set(selectedShip, forKey: "ShipKey")
+    public func saveUserDefaultsPlayShip() {
+        defaults.set(playShip, forKey: keys.play_ship)
     }
     
-    public func saveUserDefaultsShip(index: Int, bool: Bool) {
-        var newArray = defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
-        newArray[index] = bool
-        defaults.set(newArray, forKey: "BoughtShips")
+    public func saveUserDefaultsBoughtShips(index: Int, bool: Bool) {
+//        var newArray = defaults.array(forKey: )  as? [Bool] ?? [Bool]()
+//        newArray[index] = bool
+        
+        boughtShips[index] = bool
+        defaults.set(boughtShips, forKey: keys.bought_ships)
     }
     
     public func setAllShipsToBuy() {
-        var newArray = defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
+        //var newArray = defaults.array(forKey: "BoughtShips")  as? [Bool] ?? [Bool]()
         
-        var i = 0
-        while i < newArray.count {
+        var i = 1
+        while i < boughtShips.count {
             
-            if i == 0 {
-                newArray[i] = true
-            }
-            
-            newArray[i] = false
+            boughtShips[i] = false
             i = i + 1
         }
         
-        defaults.set(newArray, forKey: "BoughtShips")
+        defaults.set(boughtShips, forKey: keys.bought_ships)
     }
     
-    public func saveUserDefaultsSelectedShipToPlay(index: Int, bool: Bool) {
-        selectedShipToPlay[index] = bool
-        defaults.set(selectedShipToPlay, forKey: "SelectedShipToPlay")
+    public func saveUserDefaultsSelectedShipInShop(index: Int, bool: Bool) {
+        
+        var i = 0
+        while i < selectedShipInShop.count {
+            
+            selectedShipInShop[i] = false
+            i = i + 1
+        }
+        
+        selectedShipInShop[index] = bool
+        defaults.set(selectedShipInShop, forKey: keys.selected_ship_shop)
     }
     
-    public func saveUserDefaultsFirstRun(bool: Bool) {
-        firstRun = bool
-        defaults.set(firstRun, forKey: "FirstRun")
+    public func saveUserDefaultsFirstAppRunDone(bool: Bool) {
+        firstAppRunDone = bool
+        defaults.set(firstAppRunDone, forKey: keys.first_app_run_done)
+    }
+    
+    
+    public func addCoins(amount: Int) {
+        coins = defaults.integer(forKey: keys.coins) + amount
+        saveUserDefaultsCoins()
+    }
+    
+    public func removeAllUserDefaults() {
+        let domain = Bundle.main.bundleIdentifier!
+        defaults.removePersistentDomain(forName: domain)
+        defaults.synchronize()
+        
+        print(Array(defaults.dictionaryRepresentation().keys).count)
     }
 }

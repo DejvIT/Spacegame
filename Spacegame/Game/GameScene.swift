@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var coinLabelNode:SKLabelNode?
     var coins:Int = 0 {
         didSet {
-            coinLabelNode?.text = "Coins: \(coins)"
+            coinLabelNode?.text = "Score: \(coins)"
             coinLabelNode?.zPosition = 1
         }
     }
@@ -56,7 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         starfield?.zPosition = -1
         
-        ship = gameData.defaults.string(forKey: "ShipKey")
+        ship = gameData.defaults.string(forKey: gameData.keys.play_ship)
         player = SKSpriteNode(imageNamed: ship!)
         player?.position = CGPoint(x: self.frame.size.width / 2, y: (player?.size.height)! / 2 + 20)
         
