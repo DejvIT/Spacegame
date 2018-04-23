@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVz-Nc-mHg">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shop Controller-->
+        <scene sceneID="lzX-gM-f48">
+            <objects>
+                <viewController id="WVz-Nc-mHg" customClass="ShopController" customModule="Spacegame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DhF-zC-Nwu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-Pl-pFt">
+                                <rect key="frame" x="20" y="36" width="84" height="46"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="35"/>
+                                <color key="textColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NVH-Ps-2c6">
+                                <rect key="frame" x="0.0" y="132" width="320" height="324"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rNo-hk-ZMt">
+                                    <size key="itemSize" width="321" height="296"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shipCell" id="Soe-V8-W2N" customClass="ShopCollectionViewCell" customModule="Spacegame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="321" height="296"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="296"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceship1" translatesAutoresizingMaskIntoConstraints="NO" id="8za-BR-HQL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="321" height="236"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Si-tBt">
+                                                    <rect key="frame" x="0.0" y="241" width="321" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Pvh-Si-tBt" secondAttribute="height" multiplier="321:55" id="91J-Jg-T10"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="TEXT">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="0.028078071959999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="42" name="MarkerFelt-Wide"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Pvh-Si-tBt" secondAttribute="trailing" id="2Tr-wS-Dsg"/>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="leading" secondItem="Soe-V8-W2N" secondAttribute="leading" id="7uj-bg-r4b"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pvh-Si-tBt" secondAttribute="bottom" id="9pE-N9-w5A"/>
+                                            <constraint firstItem="Pvh-Si-tBt" firstAttribute="top" secondItem="8za-BR-HQL" secondAttribute="bottom" constant="5" id="JGR-uq-l6b"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pvh-Si-tBt" secondAttribute="trailing" id="JLp-ht-U2d"/>
+                                            <constraint firstItem="Pvh-Si-tBt" firstAttribute="leading" secondItem="Soe-V8-W2N" secondAttribute="leading" id="Yif-tV-iCT"/>
+                                            <constraint firstAttribute="trailing" secondItem="8za-BR-HQL" secondAttribute="trailing" id="cSY-zV-uvH"/>
+                                            <constraint firstItem="Pvh-Si-tBt" firstAttribute="leading" secondItem="Soe-V8-W2N" secondAttribute="leading" id="dgY-uA-Xii"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pvh-Si-tBt" secondAttribute="bottom" id="eTG-8j-tTC"/>
+                                            <constraint firstItem="8za-BR-HQL" firstAttribute="top" secondItem="Soe-V8-W2N" secondAttribute="top" id="kSa-iE-5bW"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="featuredImageView" destination="8za-BR-HQL" id="YoG-XS-XRt"/>
+                                            <outlet property="shipPriceLabel" destination="Pvh-Si-tBt" id="2Tt-0v-4BW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBk-ia-J8d">
+                                <rect key="frame" x="16" y="463" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eBk-ia-J8d" secondAttribute="height" multiplier="1:1" id="zoM-Gu-eR3"/>
+                                </constraints>
+                                <state key="normal" image="door"/>
+                                <connections>
+                                    <action selector="backToMenu:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="svz-bp-le3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LR4-wd-0gp">
+                                <rect key="frame" x="124" y="479" width="180" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LR4-wd-0gp" secondAttribute="height" multiplier="60:23" id="hjE-an-7hg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                <state key="normal" title="Buy a Fireball">
+                                    <color key="titleColor" red="0.47272333737936695" green="0.21968847828451124" blue="0.73582249365482233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fireballShop:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="3pX-uf-ThP"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="N06-Bt-LjQ">
+                                <rect key="frame" x="109" y="20" width="100" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="8ai-RA-3kX"/>
+                                    <constraint firstAttribute="width" constant="100" id="tkc-q5-seS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NVH-Ps-2c6" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" id="0a6-gG-ant"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="trailing" secondItem="NVH-Ps-2c6" secondAttribute="trailing" id="4ab-F0-IMH"/>
+                            <constraint firstItem="N06-Bt-LjQ" firstAttribute="leading" secondItem="PEQ-Pl-pFt" secondAttribute="trailing" constant="5" id="5vM-t7-cK6"/>
+                            <constraint firstItem="NVH-Ps-2c6" firstAttribute="width" secondItem="DhF-zC-Nwu" secondAttribute="height" multiplier="40:71" id="CU6-BK-Xje"/>
+                            <constraint firstItem="N06-Bt-LjQ" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" id="G5a-Ka-dN0"/>
+                            <constraint firstItem="NVH-Ps-2c6" firstAttribute="centerX" secondItem="app-0T-Bs9" secondAttribute="centerX" id="Hhm-Vr-5iz"/>
+                            <constraint firstItem="NVH-Ps-2c6" firstAttribute="centerY" secondItem="app-0T-Bs9" secondAttribute="centerY" id="LGy-dR-eJp"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="bottom" secondItem="LR4-wd-0gp" secondAttribute="bottom" constant="20" id="Lux-h2-A3Z"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="bottom" secondItem="eBk-ia-J8d" secondAttribute="bottom" constant="20" id="M9B-p7-cN7"/>
+                            <constraint firstItem="app-0T-Bs9" firstAttribute="trailing" secondItem="LR4-wd-0gp" secondAttribute="trailing" constant="16" id="Y05-1h-74D"/>
+                            <constraint firstItem="PEQ-Pl-pFt" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" constant="16" id="YsL-3k-mK7"/>
+                            <constraint firstItem="PEQ-Pl-pFt" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" constant="20" id="hlM-46-O81"/>
+                            <constraint firstItem="N06-Bt-LjQ" firstAttribute="top" secondItem="app-0T-Bs9" secondAttribute="top" id="orH-rp-mkG"/>
+                            <constraint firstItem="eBk-ia-J8d" firstAttribute="top" secondItem="NVH-Ps-2c6" secondAttribute="bottom" constant="7" id="v0M-7X-fEx"/>
+                            <constraint firstItem="eBk-ia-J8d" firstAttribute="leading" secondItem="app-0T-Bs9" secondAttribute="leading" constant="16" id="zJB-jO-62v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="app-0T-Bs9"/>
+                    </view>
+                    <connections>
+                        <outlet property="coinLabel" destination="PEQ-Pl-pFt" id="vUJ-Pv-tkv"/>
+                        <outlet property="collectionView" destination="NVH-Ps-2c6" id="bdX-7Z-Mzb"/>
+                        <segue destination="4Ts-nr-Vra" kind="show" identifier="MenuController" id="Kpu-UN-d22"/>
+                        <segue destination="x31-2N-jLA" kind="show" identifier="FireballController" id="5RW-eA-0aF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="62R-Lv-If2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-363.75" y="34.859154929577464"/>
+        </scene>
+        <!--GameViewController-->
+        <scene sceneID="UYB-LE-O0E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameViewController" id="4Ts-nr-Vra" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWI-nZ-7XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="-401"/>
+        </scene>
+        <!--FireballController-->
+        <scene sceneID="0lO-W2-tJx">
+            <objects>
+                <viewController id="x31-2N-jLA" userLabel="FireballController" customClass="FireballController" customModule="Spacegame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="usS-IH-Jdh" customClass="FireballController">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-ik-ywd" userLabel="Coin Label">
+                                <rect key="frame" x="20" y="36" width="84" height="46"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="35"/>
+                                <color key="textColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-Fh-P1e">
+                                <rect key="frame" x="109" y="20" width="100" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="G19-Pk-K36"/>
+                                    <constraint firstAttribute="width" constant="100" id="voi-Ci-3HO"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DhW-To-w5P">
+                                <rect key="frame" x="0.0" y="129" width="320" height="330"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dsr-0A-L1l">
+                                    <size key="itemSize" width="321" height="296"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fireballCell" id="YqS-QF-NXD" userLabel="fireballCell" customClass="FireballCollectionViewCell" customModule="Spacegame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="17" width="321" height="296"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="296"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFq-iQ-5dD" userLabel="Fireball Price Label">
+                                                    <rect key="frame" x="0.0" y="222" width="321" height="74"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="hFq-iQ-5dD" secondAttribute="height" multiplier="321:74" id="NLm-nh-ZL5"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="TEXT">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="0.028078071959999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="42" name="MarkerFelt-Wide"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fireball1-classic" translatesAutoresizingMaskIntoConstraints="NO" id="DRi-ln-6S2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="321" height="217"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="hFq-iQ-5dD" firstAttribute="leading" secondItem="YqS-QF-NXD" secondAttribute="leading" id="1pE-iD-6DF"/>
+                                            <constraint firstItem="hFq-iQ-5dD" firstAttribute="top" secondItem="DRi-ln-6S2" secondAttribute="bottom" constant="5" id="2EZ-xm-hyS"/>
+                                            <constraint firstAttribute="trailing" secondItem="hFq-iQ-5dD" secondAttribute="trailing" id="3Kj-1E-2qo"/>
+                                            <constraint firstAttribute="bottom" secondItem="hFq-iQ-5dD" secondAttribute="bottom" id="JEL-cm-51S"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="leading" secondItem="YqS-QF-NXD" secondAttribute="leading" id="Rwc-Tm-dvH"/>
+                                            <constraint firstAttribute="trailing" secondItem="DRi-ln-6S2" secondAttribute="trailing" id="awL-ng-AWd"/>
+                                            <constraint firstItem="DRi-ln-6S2" firstAttribute="top" secondItem="YqS-QF-NXD" secondAttribute="top" id="tx5-oA-5ox"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="featuredImageView" destination="DRi-ln-6S2" id="BdW-GK-5NV"/>
+                                            <outlet property="fireballPriceLabel" destination="hFq-iQ-5dD" id="Q0o-xT-HIx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-Oh-UFN">
+                                <rect key="frame" x="16" y="463" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cMl-Oh-UFN" secondAttribute="height" multiplier="1:1" id="OZd-Vc-gwV"/>
+                                    <constraint firstAttribute="width" secondItem="cMl-Oh-UFN" secondAttribute="height" multiplier="1:1" id="xQr-0D-Snj"/>
+                                </constraints>
+                                <state key="normal" image="door"/>
+                                <connections>
+                                    <action selector="back:" destination="x31-2N-jLA" eventType="touchUpInside" id="WJH-Ec-H5n"/>
+                                    <action selector="backToMenu:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="vgn-ex-GQG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nRe-Fh-P1e" firstAttribute="top" secondItem="UIr-YW-ivL" secondAttribute="top" id="8uw-o0-yAe"/>
+                            <constraint firstItem="UIr-YW-ivL" firstAttribute="bottom" secondItem="cMl-Oh-UFN" secondAttribute="bottom" constant="20" id="LQd-OL-MGL"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="centerX" secondItem="UIr-YW-ivL" secondAttribute="centerX" id="O6g-DQ-nf7"/>
+                            <constraint firstItem="vCR-ik-ywd" firstAttribute="top" secondItem="UIr-YW-ivL" secondAttribute="top" constant="16" id="Qh3-mI-OmC"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="centerY" secondItem="UIr-YW-ivL" secondAttribute="centerY" id="RKU-QH-xoN"/>
+                            <constraint firstItem="vCR-ik-ywd" firstAttribute="leading" secondItem="UIr-YW-ivL" secondAttribute="leading" constant="20" id="ZT0-Nw-rOq"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="leading" secondItem="usS-IH-Jdh" secondAttribute="leading" id="cze-UH-FAR"/>
+                            <constraint firstItem="nRe-Fh-P1e" firstAttribute="leading" secondItem="vCR-ik-ywd" secondAttribute="trailing" constant="5" id="eHV-ph-bkD"/>
+                            <constraint firstItem="cMl-Oh-UFN" firstAttribute="leading" secondItem="UIr-YW-ivL" secondAttribute="leading" constant="16" id="fpL-ma-ZnZ"/>
+                            <constraint firstItem="DhW-To-w5P" firstAttribute="centerY" secondItem="UIr-YW-ivL" secondAttribute="centerY" id="xZl-yT-T0n"/>
+                            <constraint firstItem="cMl-Oh-UFN" firstAttribute="top" secondItem="DhW-To-w5P" secondAttribute="bottom" constant="4" id="yVN-QW-bea"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UIr-YW-ivL"/>
+                    </view>
+                    <connections>
+                        <outlet property="coinLabel" destination="vCR-ik-ywd" id="e9w-Y8-veN"/>
+                        <outlet property="collectionView" destination="DhW-To-w5P" id="w0c-Sb-44d"/>
+                        <segue destination="WVz-Nc-mHg" kind="show" identifier="ShopController" id="sWn-F7-7gL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6J-oP-11i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="29.577464788732396"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="coin" width="246" height="297"/>
+        <image name="door" width="85" height="85"/>
+        <image name="fireball1-classic" width="20" height="20"/>
+        <image name="spaceship1" width="133" height="133"/>
+    </resources>
+</document>
