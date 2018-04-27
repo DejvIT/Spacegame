@@ -31,16 +31,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var gameTimer:Timer?
+    var spawnTimer:Timer?
+    var enemySpeedTimer:Timer?
     
-    var possibleAliens = ["devil", "alien", "alien2", "alien3"]
+    var possibleEnemies = ["devil", "asteroid", "asteroid2", "martian"]
+    var enemySpeed:Double = 2.0
     
-    let alienCategory:UInt32 = 0x1 << 1
+    let enemyCategory:UInt32 = 0x1 << 1
     let photonFireballCategory:UInt32 = 0x1 << 0
     
     var livesArray:[SKSpriteNode]?
     
-    var difficulty:String = ""
+    var gameDifficulty:Int?
     
     override func didMove(to view: SKView) {
         
@@ -49,7 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = backgroundColorCustom
         fetchPlayableFireballs()
         
-        if (difficulty == "Hard") {
+        gameDifficulty = gameData.defaults.integer(forKey: gameData.keys.game_difficulty)
+        if gameDifficulty != 1 {
             addLives()
         }
         
@@ -80,13 +83,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
+        spawnTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addEnemy), userInfo: nil, repeats: true)
+        enemySpeedTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(speedUpEnemy), userInfo: nil, repeats: true)
         
     }
     
     func addLives() {
         
         livesArray = [SKSpriteNode]()
+        
+        //TODO zivoty rozne pre normal a chinese game
         
         for live in 1 ... 3 {
             let liveNode = SKSpriteNode(imageNamed: "heart")
@@ -99,31 +105,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    @objc func addAlien() {
-        possibleAliens = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAliens) as! [String]
+    @objc func speedUpEnemy() {
         
-        let alien = SKSpriteNode(imageNamed: possibleAliens[0])
-        let randomAlienPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
-        let position = CGFloat(randomAlienPosition.nextInt())
+        //TODO rychlost pre difficulty rozna
+        enemySpeed += 0.05
+    }
+    
+    @objc func addEnemy() {
+        possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleEnemies) as! [String]
         
-        alien.position = CGPoint(x: position, y: self.frame.size.height + alien.size.height)
-        alien.size = CGSize(width: 80, height: 65)
+        let enemy = SKSpriteNode(imageNamed: possibleEnemies[0])
+        let randomEnemyPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
+        let position = CGFloat(randomEnemyPosition.nextInt())
         
-        alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-        alien.physicsBody?.isDynamic = true
-        alien.physicsBody?.categoryBitMask = alienCategory
-        alien.physicsBody?.contactTestBitMask = photonFireballCategory
-        alien.physicsBody?.collisionBitMask = 0
+        enemy.position = CGPoint(x: position, y: self.frame.size.height + enemy.size.height)
+        enemy.size = CGSize(width: 80, height: 65)
         
-        self.addChild(alien)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
+        enemy.physicsBody?.isDynamic = true
+        enemy.physicsBody?.categoryBitMask = enemyCategory
+        enemy.physicsBody?.contactTestBitMask = photonFireballCategory
+        enemy.physicsBody?.collisionBitMask = 0
         
-        let animationDuration:TimeInterval = 4
+        self.addChild(enemy)
+        
+        let animationDuration:TimeInterval = enemySpeed
         
         var actionArray = [SKAction]()
         
-        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -alien.size.height), duration: animationDuration))
+        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -enemy.size.height), duration: animationDuration))
         
-        if (difficulty == "Hard") {
+        if gameDifficulty != 1 {
             actionArray.append(SKAction.run {
                 
                 if ((self.livesArray?.count)! > 0) {
@@ -144,7 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         actionArray.append(SKAction.removeFromParent())
         
-        alien.run(SKAction.sequence(actionArray))
+        enemy.run(SKAction.sequence(actionArray))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -188,7 +200,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fireballNode.physicsBody?.isDynamic = true
         
         fireballNode.physicsBody?.categoryBitMask = photonFireballCategory
-        fireballNode.physicsBody?.contactTestBitMask = alienCategory
+        fireballNode.physicsBody?.contactTestBitMask = enemyCategory
         fireballNode.physicsBody?.collisionBitMask = 0
         fireballNode.physicsBody?.usesPreciseCollisionDetection = true
         
@@ -216,21 +228,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if((firstBody.categoryBitMask & photonFireballCategory) != 0 && (secondBody.categoryBitMask & alienCategory) != 0) {
-            fireballDidCollideWithAlien(fireballNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode)
+        if((firstBody.categoryBitMask & photonFireballCategory) != 0 && (secondBody.categoryBitMask & enemyCategory) != 0) {
+            fireballDidCollideWithEnemy(fireballNode: firstBody.node as! SKSpriteNode, enemyNode: secondBody.node as! SKSpriteNode)
         }
     }
     
-    func fireballDidCollideWithAlien(fireballNode: SKSpriteNode, alienNode: SKSpriteNode) {
+    func fireballDidCollideWithEnemy(fireballNode: SKSpriteNode, enemyNode: SKSpriteNode) {
         
         let explosion = SKEmitterNode(fileNamed: "Explosion")!
-        explosion.position = alienNode.position
+        explosion.position = enemyNode.position
         self.addChild(explosion)
         
         self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         
         let coin = SKSpriteNode(imageNamed: "coin")
-        coin.position = CGPoint(x: alienNode.position.x, y: alienNode.position.y)
+        coin.position = CGPoint(x: enemyNode.position.x, y: enemyNode.position.y)
         coin.size = CGSize(width: 25, height: 45)
         self.addChild(coin)
         let animationDuration:TimeInterval = 0.75
@@ -240,7 +252,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.run(SKAction.sequence(actionArray))
         
         fireballNode.removeFromParent()
-        alienNode.removeFromParent()
+        enemyNode.removeFromParent()
         
         self.run(SKAction.wait(forDuration: 2)) {
             explosion.removeFromParent()

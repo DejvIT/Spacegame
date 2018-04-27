@@ -24,7 +24,8 @@ class GameData {
         first_app_run_done: "FirstAppRun",
         bought_fireballs: "BoughtFireballs",
         selected_fireball_shop: "SelectedFireballInShop",
-        play_fireballs: "PlayFireballs"
+        play_fireballs: "PlayFireballs",
+        game_difficulty: "GameDifficulty"
     )
     
     //Default user data
@@ -35,6 +36,7 @@ class GameData {
     var firstAppRunDone:Bool = false
     var boughtFireballs:[Bool] = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     var selectedFireballInShop:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    var gameDifficulty:Int = 0
     // end of default user data
     
     public func saveUserDefaultsCoins() {
@@ -105,6 +107,17 @@ class GameData {
     public func addCoins(amount: Int) {
         coins = defaults.integer(forKey: keys.coins) + amount
         saveUserDefaultsCoins()
+    }
+    
+    public func saveUserDefaultsChangeGameDifficulty() {
+        gameDifficulty = defaults.integer(forKey: keys.game_difficulty)
+        gameDifficulty += 1
+        
+        if gameDifficulty > 3 {
+            gameDifficulty = 1
+        }
+        
+        defaults.set(gameDifficulty, forKey: keys.game_difficulty)
     }
     
     public func removeAllUserDefaults() {

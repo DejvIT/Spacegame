@@ -59,11 +59,19 @@ class MenuScene: SKScene {
             gameData.saveUserDefaultsBoughtShips(index: 0, bool: true)
             gameData.saveUserDefaultsBoughtFireballs(index: 0, bool: true)
             gameData.saveUserDefaultsFirstAppRunDone(bool: true)
+            gameData.saveUserDefaultsChangeGameDifficulty()
         }
         
         coinLabelNode = self.childNode(withName: "coinLabel") as? SKLabelNode
         coinManager()
 
+        if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 3 {
+            difficultyLabelNode?.text = "Chinese"
+        } else if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 2 {
+            difficultyLabelNode?.text = "Normal"
+        } else {
+            difficultyLabelNode?.text = "Fun"
+        }
         
         print("FirstRunDone: " + String(gameData.defaults.bool(forKey: gameData.keys.first_app_run_done)))
         print("SpaceShip: " + gameData.defaults.string(forKey: gameData.keys.play_ship)!)
@@ -94,32 +102,15 @@ class MenuScene: SKScene {
                 
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = GameScene(size: self.size)
-                gameScene.difficulty = (self.difficultyLabelNode?.text)!
                 self.view?.presentScene(gameScene, transition: transition)
                 
             } else if (nodesArray.first?.name == "difficultyButton") {
-                changeDifficulty()
+                gameData.saveUserDefaultsChangeGameDifficulty()
                 
             } else if (nodesArray.first?.name == "shopButton") {
                 gameController?.performSegue(withIdentifier: String(describing: ShopController.self), sender: nil)
             }
         }
-    }
-    
-    func changeDifficulty() {
-        let userDefaults = UserDefaults.standard
-        
-        if (difficultyLabelNode?.text == "Easy") {
-            difficultyLabelNode?.text = "Hard"
-            userDefaults.set(true, forKey: "hard")
-            
-        } else {
-            
-            difficultyLabelNode?.text = "Easy"
-            userDefaults.set(false, forKey: "hard")
-        }
-        
-        userDefaults.synchronize()
     }
     
     func coinManager() {
