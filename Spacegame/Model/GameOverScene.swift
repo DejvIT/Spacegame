@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameOverScene: SKScene {
     
+    weak var gameController: GameViewController?
+    
     var gameData = GameData.shared
 
     var starfield:SKEmitterNode?
@@ -43,10 +45,11 @@ class GameOverScene: SKScene {
             if (nodesArray.first?.name == "backToMenu") {
                 
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
-                let gameScene = SKScene(fileNamed: "MenuScene") as! MenuScene
+                let menuScene = SKScene(fileNamed: "MenuScene") as! MenuScene
+                menuScene.gameController = self.gameController
                 self.gameData.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins) + self.coins
                 self.gameData.saveUserDefaultsCoins()
-                self.view?.presentScene(gameScene, transition:transition)
+                self.view?.presentScene(menuScene, transition:transition)
             }
         }
         

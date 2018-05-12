@@ -14,9 +14,20 @@
 		3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5A20757F4D007DB4AB /* Fireball.swift */; };
 		3259CC5D2075805E007DB4AB /* FireballCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */; };
 		3259CC5F207588A7007DB4AB /* FireballController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5E207588A7007DB4AB /* FireballController.swift */; };
+		32697C2F20A79317003A892C /* Blackhole-explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32697C2E20A79317003A892C /* Blackhole-explosion.sks */; };
+		32697C3120A7966B003A892C /* Plasma-explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32697C3020A7966B003A892C /* Plasma-explosion.sks */; };
+		3278D3F8209DFD0600048853 /* spaceship-engine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3278D3F7209DFD0600048853 /* spaceship-engine.mp3 */; };
+		3278D3FA209DFEFF00048853 /* monsterkill-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3278D3F9209DFEFF00048853 /* monsterkill-sound.mp3 */; };
+		3278D3FC209E000700048853 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278D3FB209E000700048853 /* Enemy.swift */; };
+		3278D400209E238600048853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3278D3FE209E238600048853 /* Assets.xcassets */; };
+		3278D406209E253000048853 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3278D405209E253000048853 /* Smoke.sks */; };
+		3278D408209E259700048853 /* Damage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3278D407209E259700048853 /* Damage.sks */; };
+		3278D414209E4E9600048853 /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3278D413209E4E9600048853 /* Snow.sks */; };
+		3278D416209E4EB700048853 /* Magic-skull.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3278D415209E4EB700048853 /* Magic-skull.sks */; };
 		327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 327F7E2A202A07D000648D52 /* GameOverScene.sks */; };
 		327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327F7E2C202A098900648D52 /* GameOverScene.swift */; };
 		3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3288A802205089E400EEDBD8 /* ShopController.storyboard */; };
+		32CB2C9220A4946600B51D37 /* Engine.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32CB2C9120A4946600B51D37 /* Engine.sks */; };
 		32D02ADF2057F92A001B0359 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02ADE2057F92A001B0359 /* ShopController.swift */; };
 		32D02AE12057FE3F001B0359 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02AE02057FE3F001B0359 /* ShopCollectionViewCell.swift */; };
 		32D02AE720580E0E001B0359 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02AE620580E0E001B0359 /* Ship.swift */; };
@@ -44,9 +55,20 @@
 		3259CC5A20757F4D007DB4AB /* Fireball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireball.swift; sourceTree = "<group>"; };
 		3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballCollectionViewCell.swift; sourceTree = "<group>"; };
 		3259CC5E207588A7007DB4AB /* FireballController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballController.swift; sourceTree = "<group>"; };
+		32697C2E20A79317003A892C /* Blackhole-explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Blackhole-explosion.sks"; sourceTree = "<group>"; };
+		32697C3020A7966B003A892C /* Plasma-explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Plasma-explosion.sks"; sourceTree = "<group>"; };
+		3278D3F7209DFD0600048853 /* spaceship-engine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "spaceship-engine.mp3"; sourceTree = "<group>"; };
+		3278D3F9209DFEFF00048853 /* monsterkill-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "monsterkill-sound.mp3"; sourceTree = "<group>"; };
+		3278D3FB209E000700048853 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		3278D3FE209E238600048853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3278D405209E253000048853 /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
+		3278D407209E259700048853 /* Damage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Damage.sks; sourceTree = "<group>"; };
+		3278D413209E4E9600048853 /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
+		3278D415209E4EB700048853 /* Magic-skull.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Magic-skull.sks"; sourceTree = "<group>"; };
 		327F7E2A202A07D000648D52 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameOverScene.sks; path = Spacegame/View/GameOverScene.sks; sourceTree = SOURCE_ROOT; };
 		327F7E2C202A098900648D52 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = Spacegame/Model/GameOverScene.swift; sourceTree = SOURCE_ROOT; };
 		3288A802205089E400EEDBD8 /* ShopController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopController.storyboard; sourceTree = "<group>"; };
+		32CB2C9120A4946600B51D37 /* Engine.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Engine.sks; sourceTree = "<group>"; };
 		32D02ADE2057F92A001B0359 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
 		32D02AE02057FE3F001B0359 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D02AE620580E0E001B0359 /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
@@ -98,6 +120,7 @@
 				32D02AE620580E0E001B0359 /* Ship.swift */,
 				3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */,
 				3213688F2078FDD80001F918 /* GameData.swift */,
+				3278D3FB209E000700048853 /* Enemy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,8 +171,8 @@
 				32D8E8EB2023419D00D6B384 /* Info.plist */,
 				32901B5E208CFE4C00C4274C /* App */,
 				32901B5F208CFE5400C4274C /* Model */,
-				32901B60208CFE5B00C4274C /* View */,
 				32901B61208CFE6100C4274C /* Controller */,
+				32901B60208CFE5B00C4274C /* View */,
 				32D8E8DD2023419D00D6B384 /* Actions.sks */,
 				32E321DC2023B1F4005C19F4 /* Emitters */,
 				32E321DD2023B225005C19F4 /* Sounds */,
@@ -160,9 +183,17 @@
 		32E321DC2023B1F4005C19F4 /* Emitters */ = {
 			isa = PBXGroup;
 			children = (
+				3278D3FE209E238600048853 /* Assets.xcassets */,
 				32E321E22023B737005C19F4 /* spark.png */,
+				3278D407209E259700048853 /* Damage.sks */,
 				32D8E8F72023444A00D6B384 /* Explosion.sks */,
+				3278D405209E253000048853 /* Smoke.sks */,
 				32D8E8F82023444B00D6B384 /* Starfield.sks */,
+				3278D413209E4E9600048853 /* Snow.sks */,
+				3278D415209E4EB700048853 /* Magic-skull.sks */,
+				32CB2C9120A4946600B51D37 /* Engine.sks */,
+				32697C2E20A79317003A892C /* Blackhole-explosion.sks */,
+				32697C3020A7966B003A892C /* Plasma-explosion.sks */,
 			);
 			path = Emitters;
 			sourceTree = "<group>";
@@ -170,6 +201,8 @@
 		32E321DD2023B225005C19F4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				3278D3F7209DFD0600048853 /* spaceship-engine.mp3 */,
+				3278D3F9209DFEFF00048853 /* monsterkill-sound.mp3 */,
 				32D8E8F12023436900D6B384 /* explosion.mp3 */,
 				322ACE94208DD33A004815F3 /* mission_failed.mp3 */,
 				322ACE92208DC74F004815F3 /* main_menu_music.mp3 */,
@@ -239,16 +272,26 @@
 			files = (
 				322ACE95208DD33A004815F3 /* mission_failed.mp3 in Resources */,
 				32E321E32023B737005C19F4 /* spark.png in Resources */,
+				3278D3FA209DFEFF00048853 /* monsterkill-sound.mp3 in Resources */,
+				3278D400209E238600048853 /* Assets.xcassets in Resources */,
 				32D8E8F42023436900D6B384 /* fireball.mp3 in Resources */,
 				32D8E8F32023436900D6B384 /* explosion.mp3 in Resources */,
 				32D8E8E52023419D00D6B384 /* GameViewController.storyboard in Resources */,
+				3278D3F8209DFD0600048853 /* spaceship-engine.mp3 in Resources */,
 				3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */,
 				327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */,
 				32E8C60F2075976600963E93 /* Assets.xcassets in Resources */,
 				32D8E8DC2023419D00D6B384 /* GameScene.sks in Resources */,
+				3278D414209E4E9600048853 /* Snow.sks in Resources */,
+				3278D408209E259700048853 /* Damage.sks in Resources */,
 				324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */,
+				32697C2F20A79317003A892C /* Blackhole-explosion.sks in Resources */,
+				32697C3120A7966B003A892C /* Plasma-explosion.sks in Resources */,
+				3278D416209E4EB700048853 /* Magic-skull.sks in Resources */,
 				32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */,
+				3278D406209E253000048853 /* Smoke.sks in Resources */,
 				322ACE93208DC74F004815F3 /* main_menu_music.mp3 in Resources */,
+				32CB2C9220A4946600B51D37 /* Engine.sks in Resources */,
 				32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */,
 				32D8E8EA2023419D00D6B384 /* LaunchScreen.storyboard in Resources */,
 				32D8E8DE2023419D00D6B384 /* Actions.sks in Resources */,
@@ -264,6 +307,7 @@
 			files = (
 				327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */,
 				321368902078FDD80001F918 /* GameData.swift in Sources */,
+				3278D3FC209E000700048853 /* Enemy.swift in Sources */,
 				3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */,
 				32D02AE720580E0E001B0359 /* Ship.swift in Sources */,
 				32D02ADF2057F92A001B0359 /* ShopController.swift in Sources */,
@@ -349,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -402,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

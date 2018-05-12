@@ -18,7 +18,7 @@ class FireballController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func back(_ sender: Any) {
-        self.performSegue(withIdentifier: String(describing: "ShopController"), sender: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -29,9 +29,6 @@ class FireballController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let gameData = GameData.shared
-        self.coins = gameData.coins
-        self.coinLabel?.text = String(self.coins!)
         
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width)
@@ -43,6 +40,12 @@ class FireballController: UIViewController {
         collectionView?.dataSource = self
         collectionView?.delegate = self
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins)
+        self.coinLabel?.text = String(self.coins!)
     }
     
     public func getNumsOfSelectedFireballs() -> Int {

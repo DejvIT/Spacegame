@@ -13,6 +13,8 @@ var backgroundColorCustom = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    weak var gameController: GameViewController?
+    
     var gameData = GameData.shared
     var fireballs:[Fireball]? = []
     var ship:String?
@@ -22,6 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var starfield:SKEmitterNode?
     var player:SKSpriteNode?
+    var boss: Enemy?
+    var engineAnimation: SKEmitterNode?
     
     var coinLabelNode:SKLabelNode?
     var coins:Int = 0 {
@@ -33,26 +37,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var spawnTimer:Timer?
     var enemySpeedTimer:Timer?
+    var bossTimer: Timer?
+    var bossLaunchFireballTimer: Timer?
     
-    var possibleEnemies = ["devil", "asteroid", "asteroid2", "martian"]
-    var enemySpeed:Double = 2.0
+    var enemySpeed:Double = 4.0
+    var bossIncoming: Bool = false
     
-    let enemyCategory:UInt32 = 0x1 << 1
-    let photonFireballCategory:UInt32 = 0x1 << 0
+    let photonFireballCategory:UInt32 = 0x1 << 0    //1
+    let enemyCategory:UInt32 = 0x1 << 1             //2
+    let bossFireballCategory:UInt32 = 0x1 << 2      //4
+    let playerCategory:UInt32 = 0x1 << 3            //8
     
     var livesArray:[SKSpriteNode]?
-    
     var gameDifficulty:Int?
+    var endButton:SKSpriteNode?
+    var spaceshipEngineSound:SKAudioNode!
     
     override func didMove(to view: SKView) {
         
-        
+        if let musicURL = Bundle.main.url(forResource: "spaceship-engine", withExtension: ".mp3") {
+            spaceshipEngineSound = SKAudioNode(url: musicURL)
+            addChild(spaceshipEngineSound)
+        }
         
         self.backgroundColor = backgroundColorCustom
         fetchPlayableFireballs()
         
         gameDifficulty = gameData.defaults.integer(forKey: gameData.keys.game_difficulty)
-        if gameDifficulty != 1 {
+        if gameDifficulty == 1 {
+            endButton = SKSpriteNode(imageNamed: "skull-btn")
+            endButton?.size = CGSize(width: 40, height: 50)
+            endButton?.position = CGPoint(x: self.frame.size.width - (endButton?.size.width)!,
+                                   y: self.frame.size.height - 50)
+            self.addChild(endButton!)
+        } else {
             addLives()
         }
         
@@ -67,7 +85,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player = SKSpriteNode(imageNamed: ship!)
         player?.size = CGSize(width: 130, height: 130)
         player?.position = CGPoint(x: self.frame.size.width / 2, y: (player?.size.height)! / 2 + 20)
+        
+        player?.physicsBody = SKPhysicsBody(texture: (player?.texture)!, size: CGSize(width: (player?.size.width)!, height: (player?.size.height)!))
+        player?.physicsBody?.isDynamic = true
+        player?.physicsBody?.categoryBitMask = playerCategory
+        player?.physicsBody?.contactTestBitMask = bossFireballCategory
+        player?.physicsBody?.collisionBitMask = 0
+        
         self.addChild(player!)
+        
+        engineAnimation = SKEmitterNode(fileNamed: "Engine")
+        engineAnimation?.position = CGPoint(x: (player?.position.x)!, y: (player?.position.y)! - (player?.size.height)! / 3.5)
+        self.addChild(engineAnimation!)
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self
@@ -81,47 +110,102 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(coinLabelNode!)
         
-        
-        
         spawnTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addEnemy), userInfo: nil, repeats: true)
-        enemySpeedTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(speedUpEnemy), userInfo: nil, repeats: true)
         
+        if gameDifficulty != 1 {
+            
+            enemySpeedTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(speedUpEnemy), userInfo: nil, repeats: true)
+            bossTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(trySpawnBoss), userInfo: nil, repeats: true)
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if let location = touch?.location(in: self) {
+            let nodesArray = self.nodes(at: location)
+            
+            if (nodesArray.first == endButton) {
+                
+                self.gameOver()
+            }
+        }
     }
     
     func addLives() {
         
         livesArray = [SKSpriteNode]()
         
-        //TODO zivoty rozne pre normal a chinese game
-        
-        for live in 1 ... 3 {
+        if gameDifficulty == 2 {
+            
+            for live in 1 ... 3 {
+                let liveNode = SKSpriteNode(imageNamed: "heart")
+                liveNode.position = CGPoint(x: self.frame.size.width - CGFloat(4 - live) * liveNode.size.width,
+                                            y: self.frame.size.height - 50)
+                liveNode.size = CGSize(width: 35, height: 35)
+                self.addChild(liveNode)
+                livesArray?.append(liveNode)
+            }
+        } else if gameDifficulty == 3 {
+            
             let liveNode = SKSpriteNode(imageNamed: "heart")
-            liveNode.position = CGPoint(x: self.frame.size.width - CGFloat(4 - live) * liveNode.size.width,
+            liveNode.position = CGPoint(x: self.frame.size.width - liveNode.size.width,
                                         y: self.frame.size.height - 50)
             liveNode.size = CGSize(width: 35, height: 35)
             self.addChild(liveNode)
             livesArray?.append(liveNode)
+            
         }
         
     }
     
     @objc func speedUpEnemy() {
         
-        //TODO rychlost pre difficulty rozna
-        enemySpeed += 0.05
+        if enemySpeed > 0.5 {
+            enemySpeed -= 0.05 * Double(gameDifficulty!)
+        }
     }
     
     @objc func addEnemy() {
-        possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleEnemies) as! [String]
         
-        let enemy = SKSpriteNode(imageNamed: possibleEnemies[0])
-        let randomEnemyPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
-        let position = CGFloat(randomEnemyPosition.nextInt())
+        var possibleEnemies = [Enemy]()
+        var position: CGFloat
+        var animationDuration: TimeInterval
+        
+        if bossIncoming {
+            
+            possibleEnemies = Enemy.fetchBosses()
+            position = CGFloat(Int(SCREEN_WIDTH) / 2)
+            animationDuration = 20
+            
+            enemySpeedTimer?.invalidate()
+            spawnTimer?.invalidate()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                self.bossIncoming = false
+                self.spawnTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(self.addEnemy), userInfo: nil, repeats: true)
+                self.bossLaunchFireballTimer?.invalidate()
+                
+                if self.gameDifficulty != 1 {
+                    self.enemySpeedTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.speedUpEnemy), userInfo: nil, repeats: true)
+                }
+            }
+            
+        } else {
+            
+            possibleEnemies = Enemy.fetchEnemies()
+            let randomEnemyPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
+            position = CGFloat(randomEnemyPosition.nextInt())
+            animationDuration = enemySpeed
+        }
+        
+        let randomIndex = arc4random_uniform(UInt32(possibleEnemies.count))
+        let enemy = possibleEnemies[Int(randomIndex)]
         
         enemy.position = CGPoint(x: position, y: self.frame.size.height + enemy.size.height)
-        enemy.size = CGSize(width: 80, height: 65)
         
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: (enemy.size))
         enemy.physicsBody?.isDynamic = true
         enemy.physicsBody?.categoryBitMask = enemyCategory
         enemy.physicsBody?.contactTestBitMask = photonFireballCategory
@@ -129,11 +213,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(enemy)
         
-        let animationDuration:TimeInterval = enemySpeed
+        if bossIncoming {
+            self.boss = enemy
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                
+                self.bossLaunchFireballTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.launchBossFireball), userInfo: nil, repeats: true)
+            }
+        }
         
         var actionArray = [SKAction]()
         
-        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -enemy.size.height), duration: animationDuration))
+        if bossIncoming {
+            
+            actionArray.append(SKAction.move(to: CGPoint(x: CGFloat(arc4random_uniform(UInt32(SCREEN_WIDTH))), y: -(enemy.size.height)), duration: animationDuration))
+        } else {
+            
+            actionArray.append(SKAction.move(to: CGPoint(x: position, y: -(enemy.size.height)), duration: animationDuration))
+        }
         
         if gameDifficulty != 1 {
             actionArray.append(SKAction.run {
@@ -145,10 +241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 } else if (self.livesArray?.count == 0) {
                     
-                    let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
-                    let gameScene = SKScene(fileNamed: "GameOverScene") as! GameOverScene
-                    gameScene.coins = self.coins
-                    self.view?.presentScene(gameScene, transition:transition)
+                    self.gameOver()
                 }
                 
             })
@@ -165,10 +258,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             let position = touch.location(in: self)
             player?.position = CGPoint(x: position.x, y: (player?.position.y)!)
+            engineAnimation?.position = CGPoint(x: (player?.position.x)!, y: (player?.position.y)! - (player?.size.height)! / 3.5)
         }
         
         launchFireball()
         
+    }
+    
+    func gameOver() {
+        
+        let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
+        let gameOverScene = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+        self.enemySpeedTimer?.invalidate()
+        self.spawnTimer?.invalidate()
+        gameOverScene.coins = self.coins
+        gameOverScene.gameController = self.gameController
+        self.view?.presentScene(gameOverScene, transition:transition)
     }
     
     func fetchPlayableFireballs() {
@@ -178,10 +283,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         while i < fetchedAll.count {
             if fetchedAll[i].selectedFireball {
                 fireballs?.append(fetchedAll[i])
-                print(fetchedAll[i].name)
             }
             
             i += 1
+        }
+    }
+    
+    @objc func launchBossFireball() {
+        
+        if boss != nil {
+            
+            self.run(SKAction.playSoundFileNamed("fireball.mp3", waitForCompletion: false))
+            
+            let fireballNode = SKSpriteNode(imageNamed: "fireball18-blackhole")
+            fireballNode.size = CGSize(width: 70, height: 70)
+            fireballNode.position = (self.boss?.position)!
+            fireballNode.position.y -= 50
+            
+            fireballNode.physicsBody = SKPhysicsBody(circleOfRadius: max(fireballNode.size.width / 10, fireballNode.size.height / 10))
+            fireballNode.physicsBody?.isDynamic = true
+            
+            fireballNode.physicsBody?.categoryBitMask = bossFireballCategory
+            fireballNode.physicsBody?.contactTestBitMask = (playerCategory | photonFireballCategory)
+            fireballNode.physicsBody?.collisionBitMask = 0
+            fireballNode.physicsBody?.usesPreciseCollisionDetection = true
+            
+            self.addChild(fireballNode)
+            
+            let animationDuration:TimeInterval = 3
+            
+            var actionArray = [SKAction]()
+            
+            actionArray.append(SKAction.move(to: CGPoint(x: (self.player?.position.x)!, y: -self.frame.size.height), duration: animationDuration))
+            actionArray.append(SKAction.removeFromParent())
+            
+            fireballNode.run(SKAction.sequence(actionArray))
         }
     }
     
@@ -189,18 +325,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.playSoundFileNamed("fireball.mp3", waitForCompletion: false))
         
         let randomIndex = GKRandomSource.sharedRandom().nextInt(upperBound: (fireballs?.count)!)
-        print(randomIndex)
         
         let fireballNode = SKSpriteNode(imageNamed: fireballs![randomIndex].name)
         fireballNode.size = CGSize(width: 45, height: 45)
         fireballNode.position = (player?.position)!
         fireballNode.position.y += 40
         
-        fireballNode.physicsBody = SKPhysicsBody(circleOfRadius: fireballNode.size.width / 2)
+        fireballNode.physicsBody = SKPhysicsBody(circleOfRadius: max(fireballNode.size.width / 2, fireballNode.size.height / 2))
         fireballNode.physicsBody?.isDynamic = true
         
         fireballNode.physicsBody?.categoryBitMask = photonFireballCategory
-        fireballNode.physicsBody?.contactTestBitMask = enemyCategory
+        fireballNode.physicsBody?.contactTestBitMask = (enemyCategory | bossFireballCategory)
         fireballNode.physicsBody?.collisionBitMask = 0
         fireballNode.physicsBody?.usesPreciseCollisionDetection = true
         
@@ -210,7 +345,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var actionArray = [SKAction]()
         
-        actionArray.append(SKAction.move(to: CGPoint(x: (player?.position.x)!, y: self.frame.size.height + 10), duration: animationDuration))
+        actionArray.append(SKAction.move(to: CGPoint(x: (player?.position.x)!, y: self.frame.size.height - 10), duration: animationDuration))
         actionArray.append(SKAction.removeFromParent())
         
         fireballNode.run(SKAction.sequence(actionArray))
@@ -220,48 +355,163 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var firstBody:SKPhysicsBody
         var secondBody:SKPhysicsBody
         
+        print("Body A: " + String(contact.bodyA.categoryBitMask))
+        print("Body B:" + String(contact.bodyB.categoryBitMask))
+        print("=========")
+        
         if(contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
             firstBody = contact.bodyA
             secondBody = contact.bodyB
+            
         } else {
+            
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
+    
+        print(secondBody.categoryBitMask & enemyCategory)
         
-        if((firstBody.categoryBitMask & photonFireballCategory) != 0 && (secondBody.categoryBitMask & enemyCategory) != 0) {
-            fireballDidCollideWithEnemy(fireballNode: firstBody.node as! SKSpriteNode, enemyNode: secondBody.node as! SKSpriteNode)
+        if((firstBody.categoryBitMask & photonFireballCategory) == 1 && (secondBody.categoryBitMask & enemyCategory) == 2) {
+            fireballDidCollideWithEnemy(fireballNode: firstBody.node as! SKSpriteNode, enemyNode: secondBody.node as! Enemy)
+        } else if ((firstBody.categoryBitMask & bossFireballCategory) == 4 && (secondBody.categoryBitMask & playerCategory) == 8) {
+            fireballDidCollideWithPlayer(fireballNode: firstBody.node as! SKSpriteNode, playerNode: secondBody.node as! SKSpriteNode)
+        } else if ((firstBody.categoryBitMask & photonFireballCategory) == 1 && (secondBody.categoryBitMask & bossFireballCategory) == 4) {
+            fireballsCollideEachOther(fireballNodeA: firstBody.node as! SKSpriteNode, fireballNodeB: secondBody.node as! SKSpriteNode)
         }
     }
     
-    func fireballDidCollideWithEnemy(fireballNode: SKSpriteNode, enemyNode: SKSpriteNode) {
+    func fireballDidCollideWithEnemy(fireballNode: SKSpriteNode, enemyNode: Enemy) {
         
-        let explosion = SKEmitterNode(fileNamed: "Explosion")!
-        explosion.position = enemyNode.position
-        self.addChild(explosion)
-        
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
-        
-        let coin = SKSpriteNode(imageNamed: "coin")
-        coin.position = CGPoint(x: enemyNode.position.x, y: enemyNode.position.y)
-        coin.size = CGSize(width: 25, height: 45)
-        self.addChild(coin)
-        let animationDuration:TimeInterval = 0.75
-        var actionArray = [SKAction]()
-        actionArray.append(SKAction.move(to: CGPoint(x: coin.position.x, y: coin.position.y - self.frame.size.height), duration: animationDuration))
-        actionArray.append(SKAction.removeFromParent())
-        coin.run(SKAction.sequence(actionArray))
-        
+        enemyNode.health -= 1
         fireballNode.removeFromParent()
-        enemyNode.removeFromParent()
         
+        if enemyNode.health == 0 {
+            
+            if enemyNode.boss {
+                
+                boss = nil
+                coins += gameDifficulty! * 10
+                let skullSmoke = SKEmitterNode(fileNamed: "Magic-skull")!
+                skullSmoke.position = enemyNode.position
+                self.addChild(skullSmoke)
+                self.run(SKAction.playSoundFileNamed("monsterkill-sound.mp3", waitForCompletion: false))
+                self.run(SKAction.wait(forDuration: 2)) {
+                    skullSmoke.removeFromParent()
+                }
+            } else {
+                
+                let explosion = SKEmitterNode(fileNamed: "Explosion")!
+                explosion.position = enemyNode.position
+                self.addChild(explosion)
+                self.run(SKAction.wait(forDuration: 2)) {
+                    explosion.removeFromParent()
+                }
+                self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+                
+                var coin: SKSpriteNode
+                
+                if gameDifficulty == 3 {
+                    coin = SKSpriteNode(imageNamed: "coins-bag")
+                } else {
+                    coin = SKSpriteNode(imageNamed: "coin")
+                }
+                
+                coin.position = CGPoint(x: enemyNode.position.x, y: enemyNode.position.y)
+                coin.size = CGSize(width: 25, height: 45)
+                self.addChild(coin)
+                let animationDuration:TimeInterval = 0.75
+                var actionArray = [SKAction]()
+                actionArray.append(SKAction.move(to: CGPoint(x: coin.position.x, y: coin.position.y - self.frame.size.height), duration: animationDuration))
+                actionArray.append(SKAction.removeFromParent())
+                coin.run(SKAction.sequence(actionArray))
+            }
+            
+            enemyNode.removeFromParent()
+            
+            
+            addCoins()
+        } else {
+            
+            let damage = SKEmitterNode(fileNamed: "Damage")!
+            damage.position = CGPoint(x: enemyNode.position.x, y: enemyNode.position.y - (enemyNode.size.height / 2))
+            self.addChild(damage)
+        }
+        
+    }
+    
+    func fireballDidCollideWithPlayer(fireballNode: SKSpriteNode, playerNode: SKSpriteNode) {
+        
+        
+        let explosion = SKEmitterNode(fileNamed: "Blackhole-explosion")!
+        explosion.position = (player?.position)!
+        self.addChild(explosion)
         self.run(SKAction.wait(forDuration: 2)) {
             explosion.removeFromParent()
         }
+        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        fireballNode.removeFromParent()
         
-        self.coins += 5
+        if gameDifficulty != 1 {
+            if ((self.livesArray?.count)! > 0) {
+                let liveNode = self.livesArray?.first
+                liveNode!.removeFromParent()
+                self.livesArray?.removeFirst()
+                
+            } else if (self.livesArray?.count == 0) {
+                
+                self.gameOver()
+            }
+        }
     }
     
+    func fireballsCollideEachOther(fireballNodeA: SKSpriteNode, fireballNodeB: SKSpriteNode) {
+        
+        let explosion = SKEmitterNode(fileNamed: "Plasma-explosion")!
+        explosion.position = fireballNodeA.position
+        self.addChild(explosion)
+        self.run(SKAction.wait(forDuration: 2)) {
+            explosion.removeFromParent()
+        }
+        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        fireballNodeA.removeFromParent()
+        fireballNodeB.removeFromParent()
+    }
     
+    func addCoins() {
+        
+        switch gameDifficulty {
+        case 1:
+            self.coins += 1
+        case 2:
+            self.coins += 5
+        case 3:
+            self.coins += 10
+        default:
+            break
+        }
+    }
+    
+    @objc func trySpawnBoss() {
+        
+        //print(enemySpeed)
+        
+        if !bossIncoming {
+            
+            if gameDifficulty == 2 {
+                
+                if coins % 20 == 0 && coins != 0 {
+                    bossIncoming = true
+                    enemySpeed += 1.5
+                }
+            } else {
+                
+                if coins % 200 == 0 && coins != 0 {
+                    bossIncoming = true
+                    enemySpeed += 1.2
+                }
+            }
+        }
+    }
     
     
     

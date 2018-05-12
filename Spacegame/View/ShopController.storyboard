@@ -90,6 +90,7 @@
                                 <state key="normal" image="door"/>
                                 <connections>
                                     <action selector="backToMenu:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="svz-bp-le3"/>
+                                    <segue destination="4Ts-nr-Vra" kind="show" identifier="MenuController" id="y54-n6-8nO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LR4-wd-0gp">
@@ -137,7 +138,6 @@
                     <connections>
                         <outlet property="coinLabel" destination="PEQ-Pl-pFt" id="vUJ-Pv-tkv"/>
                         <outlet property="collectionView" destination="NVH-Ps-2c6" id="bdX-7Z-Mzb"/>
-                        <segue destination="4Ts-nr-Vra" kind="show" identifier="MenuController" id="Kpu-UN-d22"/>
                         <segue destination="x31-2N-jLA" kind="show" identifier="FireballController" id="5RW-eA-0aF"/>
                     </connections>
                 </viewController>

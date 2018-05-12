@@ -29,7 +29,6 @@ class MenuScene: SKScene {
             backgroundMusic = SKAudioNode(url: musicURL)
             addChild(backgroundMusic)
         }
-        
         //gameData.removeAllUserDefaults()
         //gameData.addCoins(amount: 10000)
         
@@ -61,17 +60,11 @@ class MenuScene: SKScene {
             gameData.saveUserDefaultsFirstAppRunDone(bool: true)
             gameData.saveUserDefaultsChangeGameDifficulty()
         }
+
+        getDifficulty()
         
         coinLabelNode = self.childNode(withName: "coinLabel") as? SKLabelNode
         coinManager()
-
-        if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 3 {
-            difficultyLabelNode?.text = "Chinese"
-        } else if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 2 {
-            difficultyLabelNode?.text = "Normal"
-        } else {
-            difficultyLabelNode?.text = "Fun"
-        }
         
         print("FirstRunDone: " + String(gameData.defaults.bool(forKey: gameData.keys.first_app_run_done)))
         print("SpaceShip: " + gameData.defaults.string(forKey: gameData.keys.play_ship)!)
@@ -102,10 +95,12 @@ class MenuScene: SKScene {
                 
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = GameScene(size: self.size)
+                gameScene.gameController = self.gameController
                 self.view?.presentScene(gameScene, transition: transition)
                 
             } else if (nodesArray.first?.name == "difficultyButton") {
                 gameData.saveUserDefaultsChangeGameDifficulty()
+                getDifficulty()
                 
             } else if (nodesArray.first?.name == "shopButton") {
                 gameController?.performSegue(withIdentifier: String(describing: ShopController.self), sender: nil)
@@ -117,9 +112,17 @@ class MenuScene: SKScene {
         
         let coins = gameData.defaults.integer(forKey: gameData.keys.coins)
         self.coinLabelNode?.text = String(coins)
-        self.gameData.coins = coins
-        self.gameData.saveUserDefaultsCoins()
         
+    }
+    
+    func getDifficulty() {
+        if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 3 {
+            difficultyLabelNode?.text = "Chinese"
+        } else if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 2 {
+            difficultyLabelNode?.text = "Normal"
+        } else {
+            difficultyLabelNode?.text = "Fun"
+        }
     }
 }
 

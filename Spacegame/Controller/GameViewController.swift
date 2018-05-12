@@ -15,19 +15,23 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "MenuScene") as? MenuScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 scene.gameController = self
-
+                
                 // Present the scene
                 view.presentScene(scene)
             }
-
+            
             view.ignoresSiblingOrder = true
-
+            
             view.showsFPS = true
             view.showsNodeCount = true
         }
@@ -35,11 +39,6 @@ class GameViewController: UIViewController {
 
     override var shouldAutorotate: Bool {
         return true
-    }
-
-    @IBAction func ButtonPressed(_ sender: Any) {
-        
-        
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

@@ -16,7 +16,7 @@ class ShopController: UIViewController {
     var coins:Int!
     
     @IBAction func backToMenu(_ sender: Any) {
-        self.performSegue(withIdentifier: String(describing: "MenuController"), sender: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func fireballShop(_ sender: Any) {
@@ -32,8 +32,6 @@ class ShopController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins)
-        self.coinLabel.text = String(self.coins)
         
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width)
@@ -45,6 +43,12 @@ class ShopController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.coins = self.gameData.defaults.integer(forKey: gameData.keys.coins)
+        self.coinLabel.text = String(self.coins)
     }
 
     override func didReceiveMemoryWarning() {
