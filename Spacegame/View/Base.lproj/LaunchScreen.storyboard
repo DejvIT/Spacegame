@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,8 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="2xd-k2-ipR">
+                                <rect key="frame" x="0.0" y="150.5" width="320" height="266"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4t-yR-IDq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="81.5" width="320" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="B4t-yR-IDq" secondAttribute="height" multiplier="320:69" id="ejS-Qo-jC3"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="LOADING">
                                         <attributes>
@@ -34,10 +41,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="B4t-yR-IDq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4LX-hU-etE"/>
-                            <constraint firstItem="B4t-yR-IDq" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5Oi-EF-enY"/>
-                            <constraint firstItem="B4t-yR-IDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IfD-q6-Knr"/>
-                            <constraint firstItem="B4t-yR-IDq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZAe-Z4-zJ0"/>
+                            <constraint firstItem="B4t-yR-IDq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Fqo-et-mCH"/>
+                            <constraint firstItem="2xd-k2-ipR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Lta-c5-LX8"/>
+                            <constraint firstItem="B4t-yR-IDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OoF-bS-pMO"/>
+                            <constraint firstItem="2xd-k2-ipR" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="40:71" id="U4k-Qp-O8g"/>
+                            <constraint firstItem="2xd-k2-ipR" firstAttribute="top" secondItem="B4t-yR-IDq" secondAttribute="bottom" id="fKz-v5-BpH"/>
+                            <constraint firstItem="2xd-k2-ipR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-10.5" id="qFt-le-Y5i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -47,4 +56,7 @@
             <point key="canvasLocation" x="48.75" y="372.88732394366195"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch" width="266" height="266"/>
+    </resources>
 </document>

@@ -124,19 +124,26 @@ extension FireballController : UIScrollViewDelegate, UICollectionViewDelegate {
                 selectedFireball.owned = true
                 
                 self.gameData.saveUserDefaultsBoughtFireballs(index: indexPath.row, bool: true)
+                self.fireballs = Fireball.fetchFireballs()
                 self.gameData.coins = self.coins
                 self.gameData.saveUserDefaultsCoins()
             }
             
-            self.fireballs = Fireball.fetchFireballs()
-            
+            print(getNumsOfSelectedFireballs())
             if getNumsOfSelectedFireballs() > 0 {
                 selectedFireball.selectedFireball = selectedFireball.changeSelection()
+                
+                self.gameData.saveUserDefaultsSelectedFireballsInShop(index: indexPath.row, bool: selectedFireball.selectedFireball)
+                self.fireballs = Fireball.fetchFireballs()
+                
+                print(getNumsOfSelectedFireballs())
+                if getNumsOfSelectedFireballs() == 0 {
+                    selectedFireball.selectedFireball = selectedFireball.changeSelection()
+                    
+                    self.gameData.saveUserDefaultsSelectedFireballsInShop(index: indexPath.row, bool: selectedFireball.selectedFireball)
+                    self.fireballs = Fireball.fetchFireballs()
+                }
             }
-            
-            self.gameData.saveUserDefaultsSelectedFireballsInShop(index: indexPath.row, bool: selectedFireball.selectedFireball)
-            self.fireballs = Fireball.fetchFireballs()
-            
             
             let array = gameData.defaults.array(forKey: gameData.keys.bought_fireballs)  as? [Bool] ?? [Bool]()
             print(array)

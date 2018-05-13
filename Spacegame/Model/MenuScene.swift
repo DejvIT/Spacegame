@@ -23,6 +23,9 @@ class MenuScene: SKScene {
     
     var backgroundMusic:SKAudioNode!
     
+    /**
+     Initialization of menu, loading saved user data or initialization data for first app's run.
+     **/
     override func didMove(to view: SKView) {
         
         if let musicURL = Bundle.main.url(forResource: "main_menu_music", withExtension: ".mp3") {
@@ -30,7 +33,7 @@ class MenuScene: SKScene {
             addChild(backgroundMusic)
         }
         //gameData.removeAllUserDefaults()
-        //gameData.addCoins(amount: 10000)
+        //gameData.addCoins(amount: 60000)
         
         starfield = self.childNode(withName: "starfield") as? SKEmitterNode
         starfield?.advanceSimulationTime(10)
@@ -52,11 +55,11 @@ class MenuScene: SKScene {
         
         if !gameData.defaults.bool(forKey: gameData.keys.first_app_run_done) {
             
+            gameData.initialShopSettings(index: 0)
             gameData.saveUserDefaultsPlayShip()
             gameData.saveUserDefaultsSelectedShipInShop(index: 0, bool: true)
-            gameData.saveUserDefaultsSelectedFireballsInShop(index: 0, bool: true)
-            gameData.saveUserDefaultsBoughtShips(index: 0, bool: true)
-            gameData.saveUserDefaultsBoughtFireballs(index: 0, bool: true)
+            //gameData.saveUserDefaultsSelectedFireballsInShop(index: 0, bool: true)
+            //gameData.saveUserDefaultsBoughtFireballs(index: 0, bool: true)
             gameData.saveUserDefaultsFirstAppRunDone(bool: true)
             gameData.saveUserDefaultsChangeGameDifficulty()
         }
@@ -84,6 +87,10 @@ class MenuScene: SKScene {
         
     }
     
+    /**
+     This method controls what kind of button user touched/clicked.
+     Then the competent view/behaviour is called.
+     **/
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first
@@ -108,6 +115,9 @@ class MenuScene: SKScene {
         }
     }
     
+    /**
+     This method load the amount of coins from device's memory.
+     **/
     func coinManager() {
         
         let coins = gameData.defaults.integer(forKey: gameData.keys.coins)
@@ -115,6 +125,10 @@ class MenuScene: SKScene {
         
     }
     
+    /**
+     This method controls difficulty label.
+     First load saved game difficulty and then the competent string is represented.
+     **/
     func getDifficulty() {
         if gameData.defaults.integer(forKey: gameData.keys.game_difficulty) == 3 {
             difficultyLabelNode?.text = "Chinese"

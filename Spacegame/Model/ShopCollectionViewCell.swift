@@ -19,6 +19,9 @@ class ShopCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /**
+     Updating of ViewCell in the shop.
+     **/
     private func updateUI()
     {
         if let ship = ship {
@@ -45,6 +48,9 @@ class ShopCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /**
+     Additional settings
+     **/
     override func layoutSubviews() {
         super.layoutSubviews()
         

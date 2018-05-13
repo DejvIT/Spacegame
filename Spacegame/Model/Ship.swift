@@ -16,6 +16,9 @@ class Ship {
     var name:String
     var selectedShip:Bool
     
+    /**
+     Constructor of ship's class
+     **/
     init(price: Int, featuredImage: UIImage, owned: Bool, name: String, selectedShip: Bool)
     {
         self.price = price
@@ -25,6 +28,9 @@ class Ship {
         self.selectedShip = selectedShip
     }
     
+    /**
+     Fetch all data to arraylist according to user saved data.
+     **/
     static func fetchShips() -> [Ship]
     {
         let gameData = GameData.shared

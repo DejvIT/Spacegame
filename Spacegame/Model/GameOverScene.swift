@@ -20,6 +20,9 @@ class GameOverScene: SKScene {
     var coinLabelNode:SKLabelNode?
     var coins:Int = 0
     
+    /**
+        Set up the view with labels, animation and button
+     **/
     override func didMove(to view: SKView) {
         
         self.run(SKAction.playSoundFileNamed("mission_failed.mp3", waitForCompletion: false))
@@ -35,6 +38,10 @@ class GameOverScene: SKScene {
         
     }
     
+    /**
+        This method notify when button is pressed.
+        Save earned coins from the game and initialize menu scene.
+     **/
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first

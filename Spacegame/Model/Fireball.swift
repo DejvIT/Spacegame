@@ -16,6 +16,9 @@ class Fireball {
     var name:String
     var selectedFireball:Bool
     
+    /**
+     Constructor of Fireball's class
+     **/
     init(price: Int, featuredImage: UIImage, owned: Bool, name: String, selectedFireball: Bool)
     {
         self.price = price
@@ -25,10 +28,18 @@ class Fireball {
         self.selectedFireball = selectedFireball
     }
     
+    
+    /**
+     When collection view cell in fireball's shop is touched/clicked the competent
+     cell is selected/deselected
+     **/
     public func changeSelection() -> Bool {
         return !self.selectedFireball
     }
     
+    /**
+     Fetch all data to competent arraylist.
+     **/
     static func fetchFireballs() -> [Fireball]
     {
         let gameData = GameData.shared

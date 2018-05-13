@@ -11,6 +11,15 @@
 		322ACE93208DC74F004815F3 /* main_menu_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 322ACE92208DC74F004815F3 /* main_menu_music.mp3 */; };
 		322ACE95208DD33A004815F3 /* mission_failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 322ACE94208DD33A004815F3 /* mission_failed.mp3 */; };
 		324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 324F4756204459E700F6CAC2 /* MenuScene.sks */; };
+		32528FA120A84FFC001C6F0F /* Player-smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA020A84FFC001C6F0F /* Player-smoke.sks */; };
+		32528FA320A8534C001C6F0F /* Player-back.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA220A8534C001C6F0F /* Player-back.sks */; };
+		32528FA520A85585001C6F0F /* Player-right.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA420A85585001C6F0F /* Player-right.sks */; };
+		32528FA720A85636001C6F0F /* Player-left.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA620A85636001C6F0F /* Player-left.sks */; };
+		32528FC120A89851001C6F0F /* boss-incoming.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32528FBC20A89850001C6F0F /* boss-incoming.mp3 */; };
+		32528FC220A89851001C6F0F /* player-explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32528FBD20A89850001C6F0F /* player-explosion.mp3 */; };
+		32528FC320A89851001C6F0F /* plasma-gun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32528FBE20A89850001C6F0F /* plasma-gun.mp3 */; };
+		32528FC420A89851001C6F0F /* fireball-boss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32528FBF20A89851001C6F0F /* fireball-boss.mp3 */; };
+		32528FC520A89851001C6F0F /* plasma-explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32528FC020A89851001C6F0F /* plasma-explosion.mp3 */; };
 		3259CC5B20757F4D007DB4AB /* Fireball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5A20757F4D007DB4AB /* Fireball.swift */; };
 		3259CC5D2075805E007DB4AB /* FireballCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */; };
 		3259CC5F207588A7007DB4AB /* FireballController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CC5E207588A7007DB4AB /* FireballController.swift */; };
@@ -52,6 +61,15 @@
 		322ACE92208DC74F004815F3 /* main_menu_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main_menu_music.mp3; sourceTree = "<group>"; };
 		322ACE94208DD33A004815F3 /* mission_failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mission_failed.mp3; sourceTree = "<group>"; };
 		324F4756204459E700F6CAC2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		32528FA020A84FFC001C6F0F /* Player-smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-smoke.sks"; sourceTree = "<group>"; };
+		32528FA220A8534C001C6F0F /* Player-back.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-back.sks"; sourceTree = "<group>"; };
+		32528FA420A85585001C6F0F /* Player-right.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-right.sks"; sourceTree = "<group>"; };
+		32528FA620A85636001C6F0F /* Player-left.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-left.sks"; sourceTree = "<group>"; };
+		32528FBC20A89850001C6F0F /* boss-incoming.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "boss-incoming.mp3"; sourceTree = "<group>"; };
+		32528FBD20A89850001C6F0F /* player-explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "player-explosion.mp3"; sourceTree = "<group>"; };
+		32528FBE20A89850001C6F0F /* plasma-gun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "plasma-gun.mp3"; sourceTree = "<group>"; };
+		32528FBF20A89851001C6F0F /* fireball-boss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "fireball-boss.mp3"; sourceTree = "<group>"; };
+		32528FC020A89851001C6F0F /* plasma-explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "plasma-explosion.mp3"; sourceTree = "<group>"; };
 		3259CC5A20757F4D007DB4AB /* Fireball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireball.swift; sourceTree = "<group>"; };
 		3259CC5C2075805E007DB4AB /* FireballCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballCollectionViewCell.swift; sourceTree = "<group>"; };
 		3259CC5E207588A7007DB4AB /* FireballController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireballController.swift; sourceTree = "<group>"; };
@@ -194,6 +212,10 @@
 				32CB2C9120A4946600B51D37 /* Engine.sks */,
 				32697C2E20A79317003A892C /* Blackhole-explosion.sks */,
 				32697C3020A7966B003A892C /* Plasma-explosion.sks */,
+				32528FA020A84FFC001C6F0F /* Player-smoke.sks */,
+				32528FA220A8534C001C6F0F /* Player-back.sks */,
+				32528FA620A85636001C6F0F /* Player-left.sks */,
+				32528FA420A85585001C6F0F /* Player-right.sks */,
 			);
 			path = Emitters;
 			sourceTree = "<group>";
@@ -201,6 +223,11 @@
 		32E321DD2023B225005C19F4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				32528FBC20A89850001C6F0F /* boss-incoming.mp3 */,
+				32528FBF20A89851001C6F0F /* fireball-boss.mp3 */,
+				32528FC020A89851001C6F0F /* plasma-explosion.mp3 */,
+				32528FBE20A89850001C6F0F /* plasma-gun.mp3 */,
+				32528FBD20A89850001C6F0F /* player-explosion.mp3 */,
 				3278D3F7209DFD0600048853 /* spaceship-engine.mp3 */,
 				3278D3F9209DFEFF00048853 /* monsterkill-sound.mp3 */,
 				32D8E8F12023436900D6B384 /* explosion.mp3 */,
@@ -271,12 +298,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				322ACE95208DD33A004815F3 /* mission_failed.mp3 in Resources */,
+				32528FC320A89851001C6F0F /* plasma-gun.mp3 in Resources */,
 				32E321E32023B737005C19F4 /* spark.png in Resources */,
 				3278D3FA209DFEFF00048853 /* monsterkill-sound.mp3 in Resources */,
 				3278D400209E238600048853 /* Assets.xcassets in Resources */,
 				32D8E8F42023436900D6B384 /* fireball.mp3 in Resources */,
+				32528FC520A89851001C6F0F /* plasma-explosion.mp3 in Resources */,
 				32D8E8F32023436900D6B384 /* explosion.mp3 in Resources */,
 				32D8E8E52023419D00D6B384 /* GameViewController.storyboard in Resources */,
+				32528FA520A85585001C6F0F /* Player-right.sks in Resources */,
 				3278D3F8209DFD0600048853 /* spaceship-engine.mp3 in Resources */,
 				3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */,
 				327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */,
@@ -284,17 +314,23 @@
 				32D8E8DC2023419D00D6B384 /* GameScene.sks in Resources */,
 				3278D414209E4E9600048853 /* Snow.sks in Resources */,
 				3278D408209E259700048853 /* Damage.sks in Resources */,
+				32528FC120A89851001C6F0F /* boss-incoming.mp3 in Resources */,
 				324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */,
 				32697C2F20A79317003A892C /* Blackhole-explosion.sks in Resources */,
 				32697C3120A7966B003A892C /* Plasma-explosion.sks in Resources */,
 				3278D416209E4EB700048853 /* Magic-skull.sks in Resources */,
 				32D8E8F92023444B00D6B384 /* Explosion.sks in Resources */,
 				3278D406209E253000048853 /* Smoke.sks in Resources */,
+				32528FC420A89851001C6F0F /* fireball-boss.mp3 in Resources */,
+				32528FC220A89851001C6F0F /* player-explosion.mp3 in Resources */,
 				322ACE93208DC74F004815F3 /* main_menu_music.mp3 in Resources */,
 				32CB2C9220A4946600B51D37 /* Engine.sks in Resources */,
+				32528FA320A8534C001C6F0F /* Player-back.sks in Resources */,
+				32528FA720A85636001C6F0F /* Player-left.sks in Resources */,
 				32D8E8FA2023444B00D6B384 /* Starfield.sks in Resources */,
 				32D8E8EA2023419D00D6B384 /* LaunchScreen.storyboard in Resources */,
 				32D8E8DE2023419D00D6B384 /* Actions.sks in Resources */,
+				32528FA120A84FFC001C6F0F /* Player-smoke.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

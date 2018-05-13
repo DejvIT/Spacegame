@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var starfield:SKEmitterNode?
     var player:SKSpriteNode?
+    var playerAlive: Bool = true
     var boss: Enemy?
     var engineAnimation: SKEmitterNode?
     
@@ -53,6 +54,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var endButton:SKSpriteNode?
     var spaceshipEngineSound:SKAudioNode!
     
+    /**
+     Initialization method:
+     All initial animations, music, timers and sprite kits are set up here.
+     **/
     override func didMove(to view: SKView) {
         
         if let musicURL = Bundle.main.url(forResource: "spaceship-engine", withExtension: ".mp3") {
@@ -120,6 +125,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    /**
+     This method notify when button is pressed.
+     This button finish game and jump to menu.
+     **/
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first
@@ -134,6 +143,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     At the beginning of the every game, the amounts of lives are assigned to player according to game difficulty.
+     **/
     func addLives() {
         
         livesArray = [SKSpriteNode]()
@@ -161,6 +173,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    /**
+     Selector is called regularly according to its timer and speed up game.
+     **/
     @objc func speedUpEnemy() {
         
         if enemySpeed > 0.5 {
@@ -168,6 +183,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     This method controls whole logic about an enemies.
+     Their behaviour, appearence and animations.
+     Detects when enemy survive the player and player lose a piece of life.
+     Spawn bosses instead of common enemy when its time.
+     **/
     @objc func addEnemy() {
         
         var possibleEnemies = [Enemy]()
@@ -178,12 +199,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             possibleEnemies = Enemy.fetchBosses()
             position = CGFloat(Int(SCREEN_WIDTH) / 2)
-            animationDuration = 20
+            animationDuration = 10
             
             enemySpeedTimer?.invalidate()
             spawnTimer?.invalidate()
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                
                 self.bossIncoming = false
+                self.boss = nil
+                
                 self.spawnTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(self.addEnemy), userInfo: nil, repeats: true)
                 self.bossLaunchFireballTimer?.invalidate()
                 
@@ -195,11 +219,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             
             possibleEnemies = Enemy.fetchEnemies()
-            let randomEnemyPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
-            position = CGFloat(randomEnemyPosition.nextInt())
             animationDuration = enemySpeed
         }
         
+        let randomEnemyPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(SCREEN_WIDTH))
+        position = CGFloat(randomEnemyPosition.nextInt())
         let randomIndex = arc4random_uniform(UInt32(possibleEnemies.count))
         let enemy = possibleEnemies[Int(randomIndex)]
         
@@ -215,9 +239,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if bossIncoming {
             self.boss = enemy
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            self.run(SKAction.playSoundFileNamed("boss-incoming.mp3", waitForCompletion: false))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 
-                self.bossLaunchFireballTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.launchBossFireball), userInfo: nil, repeats: true)
+                self.bossLaunchFireballTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.launchBossFireball), userInfo: nil, repeats: true)
             }
         }
         
@@ -252,19 +279,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.run(SKAction.sequence(actionArray))
     }
     
+    /**
+     Touching/clicking on display represent the behaviour of player, where to go and where to shoot.
+     **/
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        // position of the ship to coordinate of x of the touched point
-        if let touch = touches.first {
-            let position = touch.location(in: self)
-            player?.position = CGPoint(x: position.x, y: (player?.position.y)!)
-            engineAnimation?.position = CGPoint(x: (player?.position.x)!, y: (player?.position.y)! - (player?.size.height)! / 3.5)
+        if playerAlive {
+            
+            // position of the ship to coordinate of x of the touched point
+            if let touch = touches.first {
+                let position = touch.location(in: self)
+                player?.position = CGPoint(x: position.x, y: (player?.position.y)!)
+                engineAnimation?.position = CGPoint(x: (player?.position.x)!, y: (player?.position.y)! - (player?.size.height)! / 3.5)
+            }
+            
+            launchFireball()
         }
-        
-        launchFireball()
-        
     }
     
+    /**
+     When player runs out of health, game over scene appear.
+     **/
     func gameOver() {
         
         let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
@@ -276,6 +311,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view?.presentScene(gameOverScene, transition:transition)
     }
     
+    /**
+     Fetch all fireballs player selected in the shop.
+     **/
     func fetchPlayableFireballs() {
         let fetchedAll = Fireball.fetchFireballs()
         
@@ -289,11 +327,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     This selector controls appearance of fireballs sprite node its animation, music and physics body.
+     This selector is called by timer.
+     **/
     @objc func launchBossFireball() {
         
-        if boss != nil {
+        if boss != nil && playerAlive {
             
-            self.run(SKAction.playSoundFileNamed("fireball.mp3", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("fireball-boss.mp3", waitForCompletion: false))
             
             let fireballNode = SKSpriteNode(imageNamed: "fireball18-blackhole")
             fireballNode.size = CGSize(width: 70, height: 70)
@@ -310,7 +352,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(fireballNode)
             
-            let animationDuration:TimeInterval = 3
+            let animationDuration:TimeInterval = 1.5
             
             var actionArray = [SKAction]()
             
@@ -321,8 +363,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     This method controlls players fireballs, its appearance, position, music and physics body.
+     When touch is detected this method is called.
+     **/
     func launchFireball() {
-        self.run(SKAction.playSoundFileNamed("fireball.mp3", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("plasma-gun.mp3", waitForCompletion: false))
         
         let randomIndex = GKRandomSource.sharedRandom().nextInt(upperBound: (fireballs?.count)!)
         
@@ -351,13 +397,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fireballNode.run(SKAction.sequence(actionArray))
     }
     
+    /**
+     This method controls contact of several physics bodies.
+     According to contact, the competent method is called.
+     **/
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody:SKPhysicsBody
         var secondBody:SKPhysicsBody
-        
-        print("Body A: " + String(contact.bodyA.categoryBitMask))
-        print("Body B:" + String(contact.bodyB.categoryBitMask))
-        print("=========")
         
         if(contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
             firstBody = contact.bodyA
@@ -368,8 +414,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-    
-        print(secondBody.categoryBitMask & enemyCategory)
         
         if((firstBody.categoryBitMask & photonFireballCategory) == 1 && (secondBody.categoryBitMask & enemyCategory) == 2) {
             fireballDidCollideWithEnemy(fireballNode: firstBody.node as! SKSpriteNode, enemyNode: secondBody.node as! Enemy)
@@ -380,6 +424,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     Logic of contact between players fireball and enemy.
+     **/
     func fireballDidCollideWithEnemy(fireballNode: SKSpriteNode, enemyNode: Enemy) {
         
         enemyNode.health -= 1
@@ -439,8 +486,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    /**
+     Logic of contact between boss's fireball and player.
+     **/
     func fireballDidCollideWithPlayer(fireballNode: SKSpriteNode, playerNode: SKSpriteNode) {
-        
         
         let explosion = SKEmitterNode(fileNamed: "Blackhole-explosion")!
         explosion.position = (player?.position)!
@@ -448,22 +497,67 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.wait(forDuration: 2)) {
             explosion.removeFromParent()
         }
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         fireballNode.removeFromParent()
         
-        if gameDifficulty != 1 {
-            if ((self.livesArray?.count)! > 0) {
-                let liveNode = self.livesArray?.first
-                liveNode!.removeFromParent()
-                self.livesArray?.removeFirst()
+        if ((self.livesArray?.count)! > 0) {
+            
+            self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+            
+            let liveNode = self.livesArray?.first
+            liveNode!.removeFromParent()
+            self.livesArray?.removeFirst()
+            
+        } else if (self.livesArray?.count == 0) {
+            
+            self.run(SKAction.playSoundFileNamed("player-explosion.mp3", waitForCompletion: false))
+            playerAlive = false
+            
+            let playerExplosion1 = SKEmitterNode(fileNamed: "Player-right")
+            playerExplosion1?.position = (player?.position)!
+            self.addChild(playerExplosion1!)
+            self.run(SKAction.wait(forDuration: 2)) {
+                playerExplosion1?.removeFromParent()
+            }
+            engineAnimation?.removeFromParent()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 
-            } else if (self.livesArray?.count == 0) {
+                let playerExplosion2 = SKEmitterNode(fileNamed: "Player-back")
+                playerExplosion2?.position = (self.player?.position)!
+                self.addChild(playerExplosion2!)
+                self.run(SKAction.wait(forDuration: 2)) {
+                    playerExplosion2?.removeFromParent()
+                }
                 
-                self.gameOver()
+                self.player?.removeFromParent()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                
+                let playerExplosion3 = SKEmitterNode(fileNamed: "Player-left")
+                playerExplosion3?.position = (self.player?.position)!
+                self.addChild(playerExplosion3!)
+                self.run(SKAction.wait(forDuration: 2)) {
+                    playerExplosion3?.removeFromParent()
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                
+                let playerExplosionSmoke = SKEmitterNode(fileNamed: "Player-smoke")
+                playerExplosionSmoke?.position = (self.player?.position)!
+                self.addChild(playerExplosionSmoke!)
+                self.run(SKAction.wait(forDuration: 4)) {
+                    playerExplosionSmoke?.removeFromParent()
+                    self.gameOver()
+                }
             }
         }
     }
     
+    /**
+     Logic of contact between two fireballs.
+     **/
     func fireballsCollideEachOther(fireballNodeA: SKSpriteNode, fireballNodeB: SKSpriteNode) {
         
         let explosion = SKEmitterNode(fileNamed: "Plasma-explosion")!
@@ -472,11 +566,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.wait(forDuration: 2)) {
             explosion.removeFromParent()
         }
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("plasma-explosion.mp3", waitForCompletion: false))
         fireballNodeA.removeFromParent()
         fireballNodeB.removeFromParent()
     }
     
+    /**
+     Method for adding coins according to game difficulty.
+     **/
     func addCoins() {
         
         switch gameDifficulty {
@@ -491,15 +588,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    /**
+     This selector is called regularly by timer and checks if the boss can be spawn.
+     **/
     @objc func trySpawnBoss() {
         
-        //print(enemySpeed)
-        
-        if !bossIncoming {
+        if !bossIncoming && boss == nil {
             
             if gameDifficulty == 2 {
                 
-                if coins % 20 == 0 && coins != 0 {
+                if coins % 150 == 0 && coins != 0 {
                     bossIncoming = true
                     enemySpeed += 1.5
                 }

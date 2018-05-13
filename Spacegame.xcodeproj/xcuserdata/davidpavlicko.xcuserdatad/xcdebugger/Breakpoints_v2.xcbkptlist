@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Spacegame/Model/GameScene.swift"
-            timestampString = "547857109.321748"
+            timestampString = "547932684.010905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Spacegame/Model/GameScene.swift"
-            timestampString = "547857109.322296"
+            timestampString = "547932684.011392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "513"
+            endingLineNumber = "513"
             landmarkName = "fireballDidCollideWithPlayer(fireballNode:playerNode:)"
             landmarkType = "7">
          </BreakpointContent>

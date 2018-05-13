@@ -13,6 +13,9 @@ class Enemy: SKSpriteNode {
     var health: Int
     var boss: Bool
     
+    /**
+     Constructor of enemy's class
+     **/
     init(name: String, health: Int, size: CGSize, boss: Bool) {
         
         self.health = health
@@ -26,6 +29,9 @@ class Enemy: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /**
+     Fetch common enemies
+     **/
     static func fetchEnemies() -> [Enemy] {
 
         return [
@@ -36,6 +42,9 @@ class Enemy: SKSpriteNode {
         ]
     }
     
+    /**
+     Fetch bosses
+     **/
     static func fetchBosses() -> [Enemy] {
         
         return [

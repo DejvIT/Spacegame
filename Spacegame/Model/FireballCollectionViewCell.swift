@@ -21,6 +21,9 @@ class FireballCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /**
+     Update competent collection view cell when something is changed.
+     **/
     private func updateUI()
     {
         if let fireball = fireball {
@@ -47,6 +50,9 @@ class FireballCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /**
+     Additional settings
+     **/
     override func layoutSubviews() {
         super.layoutSubviews()
         
