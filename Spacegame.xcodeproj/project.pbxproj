@@ -10,7 +10,6 @@
 		321368902078FDD80001F918 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3213688F2078FDD80001F918 /* GameData.swift */; };
 		322ACE93208DC74F004815F3 /* main_menu_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 322ACE92208DC74F004815F3 /* main_menu_music.mp3 */; };
 		322ACE95208DD33A004815F3 /* mission_failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 322ACE94208DD33A004815F3 /* mission_failed.mp3 */; };
-		324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 324F4756204459E700F6CAC2 /* MenuScene.sks */; };
 		32528FA120A84FFC001C6F0F /* Player-smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA020A84FFC001C6F0F /* Player-smoke.sks */; };
 		32528FA320A8534C001C6F0F /* Player-back.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA220A8534C001C6F0F /* Player-back.sks */; };
 		32528FA520A85585001C6F0F /* Player-right.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32528FA420A85585001C6F0F /* Player-right.sks */; };
@@ -36,6 +35,7 @@
 		327F7E2B202A07D000648D52 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 327F7E2A202A07D000648D52 /* GameOverScene.sks */; };
 		327F7E2D202A098900648D52 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327F7E2C202A098900648D52 /* GameOverScene.swift */; };
 		3288A803205089E400EEDBD8 /* ShopController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3288A802205089E400EEDBD8 /* ShopController.storyboard */; };
+		32C3141C20A9EF4F00D1A2D4 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32C3141B20A9EF4F00D1A2D4 /* MenuScene.sks */; };
 		32CB2C9220A4946600B51D37 /* Engine.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32CB2C9120A4946600B51D37 /* Engine.sks */; };
 		32D02ADF2057F92A001B0359 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02ADE2057F92A001B0359 /* ShopController.swift */; };
 		32D02AE12057FE3F001B0359 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02AE02057FE3F001B0359 /* ShopCollectionViewCell.swift */; };
@@ -60,7 +60,6 @@
 		3213688F2078FDD80001F918 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		322ACE92208DC74F004815F3 /* main_menu_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main_menu_music.mp3; sourceTree = "<group>"; };
 		322ACE94208DD33A004815F3 /* mission_failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mission_failed.mp3; sourceTree = "<group>"; };
-		324F4756204459E700F6CAC2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		32528FA020A84FFC001C6F0F /* Player-smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-smoke.sks"; sourceTree = "<group>"; };
 		32528FA220A8534C001C6F0F /* Player-back.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-back.sks"; sourceTree = "<group>"; };
 		32528FA420A85585001C6F0F /* Player-right.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Player-right.sks"; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		327F7E2A202A07D000648D52 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameOverScene.sks; path = Spacegame/View/GameOverScene.sks; sourceTree = SOURCE_ROOT; };
 		327F7E2C202A098900648D52 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = Spacegame/Model/GameOverScene.swift; sourceTree = SOURCE_ROOT; };
 		3288A802205089E400EEDBD8 /* ShopController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopController.storyboard; sourceTree = "<group>"; };
+		32C3141B20A9EF4F00D1A2D4 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		32CB2C9120A4946600B51D37 /* Engine.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Engine.sks; sourceTree = "<group>"; };
 		32D02ADE2057F92A001B0359 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
 		32D02AE02057FE3F001B0359 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -150,8 +150,8 @@
 				32D8E8E32023419D00D6B384 /* GameViewController.storyboard */,
 				327F7E2A202A07D000648D52 /* GameOverScene.sks */,
 				32D8E8DB2023419D00D6B384 /* GameScene.sks */,
+				32C3141B20A9EF4F00D1A2D4 /* MenuScene.sks */,
 				32D8E8E82023419D00D6B384 /* LaunchScreen.storyboard */,
-				324F4756204459E700F6CAC2 /* MenuScene.sks */,
 				32E8C60E2075976600963E93 /* Assets.xcassets */,
 			);
 			path = View;
@@ -300,6 +300,7 @@
 				322ACE95208DD33A004815F3 /* mission_failed.mp3 in Resources */,
 				32528FC320A89851001C6F0F /* plasma-gun.mp3 in Resources */,
 				32E321E32023B737005C19F4 /* spark.png in Resources */,
+				32C3141C20A9EF4F00D1A2D4 /* MenuScene.sks in Resources */,
 				3278D3FA209DFEFF00048853 /* monsterkill-sound.mp3 in Resources */,
 				3278D400209E238600048853 /* Assets.xcassets in Resources */,
 				32D8E8F42023436900D6B384 /* fireball.mp3 in Resources */,
@@ -315,7 +316,6 @@
 				3278D414209E4E9600048853 /* Snow.sks in Resources */,
 				3278D408209E259700048853 /* Damage.sks in Resources */,
 				32528FC120A89851001C6F0F /* boss-incoming.mp3 in Resources */,
-				324F4757204459E700F6CAC2 /* MenuScene.sks in Resources */,
 				32697C2F20A79317003A892C /* Blackhole-explosion.sks in Resources */,
 				32697C3120A7966B003A892C /* Plasma-explosion.sks in Resources */,
 				3278D416209E4EB700048853 /* Magic-skull.sks in Resources */,

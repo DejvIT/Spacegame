@@ -29,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var engineAnimation: SKEmitterNode?
     
     var coinLabelNode:SKLabelNode?
+    var seconds:Int = 0
+    var shots:Int = 0
     var coins:Int = 0 {
         didSet {
             coinLabelNode?.text = "Score: \(coins)"
@@ -40,6 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemySpeedTimer:Timer?
     var bossTimer: Timer?
     var bossLaunchFireballTimer: Timer?
+    var gameTimer: Timer?
     
     var enemySpeed:Double = 4.0
     var bossIncoming: Bool = false
@@ -59,6 +62,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      All initial animations, music, timers and sprite kits are set up here.
      **/
     override func didMove(to view: SKView) {
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(addSecond), userInfo: nil, repeats: true)
         
         if let musicURL = Bundle.main.url(forResource: "spaceship-engine", withExtension: ".mp3") {
             spaceshipEngineSound = SKAudioNode(url: musicURL)
@@ -184,6 +189,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     /**
+     Selector manage time
+     **/
+    @objc func addSecond() {
+        seconds += 1
+    }
+    
+    /**
      This method controls whole logic about an enemies.
      Their behaviour, appearence and animations.
      Detects when enemy survive the player and player lose a piece of life.
@@ -294,6 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             launchFireball()
+            shots += 1
         }
     }
     
@@ -307,6 +320,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.enemySpeedTimer?.invalidate()
         self.spawnTimer?.invalidate()
         gameOverScene.coins = self.coins
+        gameOverScene.shots = self.shots
+        gameOverScene.seconds = self.seconds
+        gameOverScene.gameDifficulty = self.gameDifficulty!
         gameOverScene.gameController = self.gameController
         self.view?.presentScene(gameOverScene, transition:transition)
     }
@@ -599,7 +615,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if coins % 150 == 0 && coins != 0 {
                     bossIncoming = true
-                    enemySpeed += 1.5
+                    enemySpeed += 1.8
                 }
             } else {
                 

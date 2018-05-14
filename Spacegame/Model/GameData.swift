@@ -26,7 +26,10 @@ class GameData {
         bought_fireballs: "BoughtFireballs",
         selected_fireball_shop: "SelectedFireballInShop",
         play_fireballs: "PlayFireballs",
-        game_difficulty: "GameDifficulty"
+        game_difficulty: "GameDifficulty",
+        best_score: "BestScore",
+        most_shots: "MostShots",
+        longest_game: "LongestGame"
     )
     
     //Default user data
@@ -38,6 +41,9 @@ class GameData {
     var boughtFireballs:[Bool] = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     var selectedFireballInShop:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     var gameDifficulty:Int = 0
+    var bestScore:[Int] = [0, 0, 0]
+    var mostShots:[Int] = [0, 0, 0]
+    var longestGame:[Int] = [0, 0, 0]
     // end of default user data
     
     //Save user's coins
@@ -144,6 +150,33 @@ class GameData {
         }
         
         defaults.set(gameDifficulty, forKey: keys.game_difficulty)
+    }
+    
+    //Save best score for game difficulty
+    public func saveUserDefaultsBestScore(index: Int, amount: Int) {
+        bestScore = defaults.array(forKey: keys.best_score) as? [Int] ?? [Int]()
+        bestScore[index] = amount
+        defaults.set(bestScore, forKey: keys.best_score)
+    }
+    
+    //Save most shots fired in the game according to difficulty settings
+    public func saveUserDefaultsMostShots(index: Int, amount: Int) {
+        mostShots = defaults.array(forKey: keys.most_shots) as? [Int] ?? [Int]()
+        mostShots[index] = amount
+        defaults.set(mostShots, forKey: keys.most_shots)
+    }
+    
+    //Save the longest game according to every game difficulty
+    public func saveUserDefaultsLongestGame(index: Int, seconds: Int) {
+        longestGame = defaults.array(forKey: keys.longest_game) as? [Int] ?? [Int]()
+        longestGame[index] = seconds
+        defaults.set(longestGame, forKey: keys.longest_game)
+    }
+    
+    public func setInitialStatistics() {
+        defaults.set(bestScore, forKey: keys.best_score)
+        defaults.set(mostShots, forKey: keys.most_shots)
+        defaults.set(longestGame, forKey: keys.longest_game)
     }
     
     //Clear all user defaults settings = reinstall app

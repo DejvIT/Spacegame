@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-Pl-pFt">
-                                <rect key="frame" x="20" y="36" width="84" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-Pl-pFt">
+                                <rect key="frame" x="20" y="36" width="23" height="46"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="35"/>
                                 <color key="textColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,21 +94,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LR4-wd-0gp">
-                                <rect key="frame" x="124" y="479" width="180" height="69"/>
+                                <rect key="frame" x="134" y="483" width="170" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LR4-wd-0gp" secondAttribute="height" multiplier="60:23" id="hjE-an-7hg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
-                                <state key="normal" title="Buy a Fireball">
+                                <state key="normal" title="Buy Fireballs">
                                     <color key="titleColor" red="0.47272333737936695" green="0.21968847828451124" blue="0.73582249365482233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.78039215689999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="fireballShop:" destination="WVz-Nc-mHg" eventType="touchUpInside" id="3pX-uf-ThP"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="N06-Bt-LjQ">
-                                <rect key="frame" x="109" y="20" width="100" height="80"/>
+                                <rect key="frame" x="48" y="20" width="100" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="8ai-RA-3kX"/>
                                     <constraint firstAttribute="width" constant="100" id="tkc-q5-seS"/>
@@ -161,14 +161,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-ik-ywd" userLabel="Coin Label">
-                                <rect key="frame" x="20" y="36" width="84" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-ik-ywd" userLabel="Coin Label">
+                                <rect key="frame" x="20" y="36" width="23" height="46"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="35"/>
                                 <color key="textColor" red="1" green="0.85303324459999996" blue="0.048251949250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-Fh-P1e">
-                                <rect key="frame" x="109" y="20" width="100" height="80"/>
+                                <rect key="frame" x="48" y="20" width="100" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="G19-Pk-K36"/>
                                     <constraint firstAttribute="width" constant="100" id="voi-Ci-3HO"/>
